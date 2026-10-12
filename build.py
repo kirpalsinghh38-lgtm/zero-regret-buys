@@ -1182,7 +1182,7 @@ FAQS = [
      "Yes. As an Amazon Associate I earn from qualifying purchases. Every product link on this site is a paid link, labeled as one \u2014 the commission costs you nothing extra."),
     ("Are these medical recommendations?",
      "No. These are general wellness descriptions, not medical advice. Supplements interact with medications and conditions \u2014 talk to your pharmacist or clinician before starting anything new."),
-    ("Why only twenty-one products?",
+    ("Why only thirty products?",
      "One product per reel episode. The list grows as new episodes drop \u2014 that\u2019s the whole format. A hundred-item catalog would just be another store."),
 ]
 
@@ -1408,7 +1408,7 @@ def cmp_table(root):
     return """
       <div class="cmp-wrap">
         <div class="kicker">COMPARE</div>
-        <h2>Twenty-one products, side by side</h2>
+        <h2>Thirty products, side by side</h2>
         <div class="cmp-scroll">
         <table class="cmp">
           <thead>
@@ -1435,7 +1435,7 @@ def build_index():
   <div class="hero on-dark">
     <div class="wrap hero-solo">
       <div class="eyebrow">A SHORT LIST, ON PURPOSE</div>
-      <h1>Twenty-one picks. <span class="hl">Zero regret.</span></h1>
+      <h1>Thirty picks. <span class="hl">Zero regret.</span></h1>
       <p class="sub">Every product here has exactly one job \u2014 from Sleep and Gym Days to Glass Skin and Even Tone. No invented ratings, no hype without proof, no typed prices. Links are paid Amazon links; the commission costs you nothing extra.</p>
       <div class="hero-ctas">
         <a class="btn btn-lime" href="#quickpicks">See the quick picks</a>
@@ -1446,7 +1446,7 @@ def build_index():
 
   <div class="trustbar">
     <div class="wrap">
-      <p><b>Twenty-one products.</b> Each label checked for the right form and honest facts-panel math. If it didn\u2019t pass, it\u2019s not here. <a href="about.html">How we pick \u2192</a></p>
+      <p><b>Thirty products.</b> Each label checked for the right form and honest facts-panel math. If it didn\u2019t pass, it\u2019s not here. <a href="about.html">How we pick \u2192</a></p>
     </div>
   </div>
 
@@ -1455,7 +1455,7 @@ def build_index():
       <div class="section-head">
         <div class="kicker">QUICK PICKS</div>
         <h2>The whole shelf, in 30 seconds</h2>
-        <p class="lead">Twenty-one products, twenty-one jobs. Tap a row for the full verdict \u2014 or go straight to Amazon.</p>
+        <p class="lead">Thirty products, thirty jobs. Tap a row for the full verdict \u2014 or go straight to Amazon.</p>
         <p class="updated">Updated October 2026</p>
       </div>
       <div class="quickpicks">
@@ -1463,9 +1463,9 @@ def build_index():
       </div>
       <div class="cartall">
         <a class="btn btn-lime btn-big" data-track="cart-all-home" href="%s"
-           target="_blank" rel="sponsored nofollow noopener">Add all 21 to cart on Amazon \u2192</a>
+           target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon \u2192</a>
         <div class="paidnote">(paid link)</div>
-        <p class="micro">One click loads all twenty-one picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
+        <p class="micro">One click loads all thirty picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
       </div>
     </div>
 
@@ -1509,8 +1509,8 @@ def build_index():
 </main>
 """ % (rows, CART_ALL_HTML, latest_img, badge_pill(latest, "badge-sm"),
        latest["pitch"], latest["slug"])
-    return (head("Zero Regret Buys \u2014 Twenty-one picks. Zero regret.",
-                 "Zero Regret Buys: a short, honest list of twenty-one worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
+    return (head("Zero Regret Buys \u2014 Thirty picks. Zero regret.",
+                 "Zero Regret Buys: a short, honest list of thirty worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
                  "index.html", root)
             + header(root, "index.html") + body + footer(root))
 
@@ -1526,7 +1526,7 @@ def build_shop():
       <div class="section-head">
         <div class="kicker">THE SHOP</div>
         <h2>Every pick, filterable.</h2>
-        <p class="lead">All twenty-one Zero Regret Buys in one place. Search, filter by aisle, or sort \u2014 prices change constantly, so we never type them here: click through to see today\u2019s live price on Amazon.</p>
+        <p class="lead">All thirty Zero Regret Buys in one place. Search, filter by aisle, or sort \u2014 prices change constantly, so we never type them here: click through to see today\u2019s live price on Amazon.</p>
         <p class="updated">Last updated: October 2026 \u00b7 List grows as new reel episodes drop.</p>
       </div>
 %(cmp)s
@@ -1567,9 +1567,9 @@ def build_shop():
       </div>
       <div class="cartall">
         <a class="btn btn-lime btn-big" data-track="cart-all" href="%(cartall)s"
-           target="_blank" rel="sponsored nofollow noopener">Add all 21 to cart on Amazon \u2192</a>
+           target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon \u2192</a>
         <div class="paidnote">(paid link)</div>
-        <p class="micro">One click loads all twenty-one picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
+        <p class="micro">One click loads all thirty picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
       </div>
       <p class="resultcount" id="result-count" role="status"></p>
       <div class="grid" id="shop-grid">%(cards)s</div>
@@ -1721,7 +1721,7 @@ def build_about():
       </div>
       <div class="prose">
         <p>Zero Regret Buys started as 60-second Instagram reels: a Skeptic and a Hype Guy arguing about one product while you watch. No scripts that read like ads, no \u201ctop 10\u201d filler \u2014 one product, one argument, one verdict.</p>
-        <p>This site is where the winners live. Twenty-one products, one per episode, each with exactly one job. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be.</p>
+        <p>This site is where the winners live. Thirty products, one per episode, each with exactly one job. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be.</p>
       </div>
     </div>
     <div class="section">
@@ -1793,7 +1793,7 @@ def build_404():
   <div class="notfound">
     <div class="code">404</div>
     <h1>Lost in the supplement aisle.</h1>
-    <p>This page doesn\u2019t exist \u2014 but the twenty-one picks that are one click away.</p>
+    <p>This page doesn\u2019t exist \u2014 but the thirty picks that are one click away.</p>
     <div class="hero-ctas" style="justify-content:center">
       <a class="btn" href="%sindex.html">Back home</a>
       <a class="btn btn-outline" href="%sshop.html">Browse the picks</a>
