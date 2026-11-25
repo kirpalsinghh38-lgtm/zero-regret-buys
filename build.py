@@ -70,7 +70,6 @@ PRODUCTS = [
         "tile": "VD", "keyword": "SHINE", "asin": "B01BPHAD1W",
         "cat": "Personal Care", "cat_slug": "personal-care",
         "sub": "Hair & Scalp", "sub_slug": "hair-scalp",
-        "latest": True,
         "pitch": "An anti-dandruff shampoo that visibly reduces flakes for a calmer-feeling scalp. Pharmacy-aisle serious, not salon-perfume serious.",
         "rule": "",
         "skip": "",
@@ -287,6 +286,7 @@ PRODUCTS = [
         "tile": "O3", "keyword": "REPAIR", "asin": "B08TWTQDCX",
         "cat": "Personal Care", "cat_slug": "personal-care",
         "sub": "Haircare", "sub_slug": "haircare",
+        "latest": True,
         "pitch": "The at-home bond builder \u2014 22,000+ reviews. Repairs the look of damaged hair and reduces breakage. The salon step you do in your shower.",
         "rule": "No.3 specifically \u2014 the take-home treatment, not the shampoo. Damp hair before shampooing, 10+ minutes.",
         "skip": "you expect a conditioner \u2014 this is a pre-shampoo treatment. Very fine hair? Don\u2019t overdo the time.",
@@ -1205,7 +1205,7 @@ def head(title, desc, path, root):
 <link rel="icon" href="%simages/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="%sstyles.css">
 </head>
 <body>
@@ -1459,6 +1459,25 @@ def cat_tiles(root):
     return '<div class="cats">%s\n      </div>' % "".join(out)
 
 
+# Home hero shelf: five picks spanning the three aisles, shown as a composed
+# row of real product photos (Phase 3). Decorative — every product is linked
+# in the quick picks below, so the shelf is aria-hidden.
+HERO_SHELF = [
+    "magnesium-glycinate", "creatine-monohydrate", "vichy-dercos",
+    "azelaic-acid-10", "myhalos-sleep-mask",
+]
+
+
+def hero_shelf(root):
+    """Composed row of product photos for the home hero shelf."""
+    by_slug = {p["slug"]: p for p in PRODUCTS}
+    imgs = "".join(
+        '<img src="%s%s" alt="">' % (root, by_slug[slug]["photos"][0])
+        for slug in HERO_SHELF)
+    return ('<div class="hero-shelf" aria-hidden="true">'
+            '<div class="hero-shelf-row">%s</div></div>' % imgs)
+
+
 # ---------------- index ----------------
 # ---------------- index ----------------
 def build_index():
@@ -1469,15 +1488,17 @@ def build_index():
                   if latest.get("photos") else "")
     body = """
 <main id="main">
-  <div class="hero on-dark">
-    <div class="wrap hero-solo">
-      <div class="eyebrow">A SHORT LIST, ON PURPOSE</div>
-      <h1>Thirty picks. <span class="hl">Zero regret.</span></h1>
-      <p class="sub">Every product here has exactly one job \u2014 from Sleep and Gym Days to Glass Skin and Even Tone. No invented ratings, no hype without proof, no typed prices. Links are paid Amazon links; the commission costs you nothing extra.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-lime" href="#quickpicks">See the quick picks</a>
-        <a class="btn btn-ghost" href="shop.html">Browse the shop</a>
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1>Thirty picks. Zero regret.</h1>
+        <p class="sub">Every product here has exactly one job \u2014 from Sleep and Gym Days to Glass Skin and Even Tone. No invented ratings, no hype without proof, no typed prices. Links are paid Amazon links; the commission costs you nothing extra.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-shelf" href="#quickpicks">See the quick picks</a>
+          <a class="btn btn-outline" href="shop.html">Browse the shop</a>
+        </div>
       </div>
+      %s
     </div>
   </div>
 
@@ -1490,7 +1511,6 @@ def build_index():
   <div class="wrap">
     <div class="section" id="quickpicks">
       <div class="section-head">
-        <div class="kicker">QUICK PICKS</div>
         <h2>The whole shelf, in 30 seconds</h2>
         <p class="lead">Thirty products, thirty jobs. Tap a row for the full verdict \u2014 or go straight to Amazon.</p>
         <p class="updated">Updated %s</p>
@@ -1519,9 +1539,9 @@ def build_index():
       <div class="spotlight">
         <div class="spot-img">%s</div>
         <div class="spot-copy">
-          <div class="kicker">LATEST EPISODE</div>
           %s
-          <h2>Why does dandruff always come back?</h2>
+          %s
+          <h2>%s</h2>
           <p class="lead">%s</p>
           <p style="margin-top:16px"><a class="btn" href="products/%s.html">See the pick \u2192</a></p>
         </div>
@@ -1529,8 +1549,8 @@ def build_index():
     </div>
   </div>
 </main>
-""" % (BUILD_MONTH, rows, CART_ALL_HTML, cat_tiles(root), latest_img, badge_pill(latest, "badge-sm"),
-       latest["pitch"], latest["slug"])
+""" % (hero_shelf(root), BUILD_MONTH, rows, CART_ALL_HTML, cat_tiles(root), latest_img, ep_badge(latest),
+       badge_pill(latest, "badge-sm"), latest["title"], latest["pitch"], latest["slug"])
     return (head("Zero Regret Buys \u2014 Thirty picks. Zero regret.",
                  "Zero Regret Buys: a short, honest list of thirty worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
                  "index.html", root)

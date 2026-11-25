@@ -1,6 +1,7 @@
 /* Zero Regret Buys — global stylesheet
-   Rebuilt 2026-10-12. Sora for display, Inter for body.
-   Lime accent on deep warm charcoal. */
+   Rebuilt 2026-10-12. Phase 3 (2026-11-25): IBM Plex Sans for display and
+   body, IBM Plex Mono for measurements only — Pharmacy shelf direction.
+   Lime retired; shelf green is the accent on the hero and quick picks. */
 
 :root {
   --ink: #1c1917;
@@ -21,8 +22,18 @@
   --radius: 14px;
   --radius-sm: 9px;
   --shadow: 0 1px 2px rgba(28, 25, 23, .05), 0 8px 24px -12px rgba(28, 25, 23, .18);
-  --font-display: "Sora", "Inter", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "IBM Plex Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  /* Phase 3 — Pharmacy shelf tokens (DESIGN.md). Used by the hero, quick
+     picks, and spotlight label only; the global token migration is a later phase. */
+  --paper: #faf9f6;
+  --shelf-ink: #1c1e1c;
+  --shelf-ink-soft: #44463f;
+  --shelf-green: #1e5c46;
+  --label-amber: #b45309;
+  --shelf-line: #e3e0da;
+  --shelf-muted: #5c615c;
 }
 
 /* ---------- reset ---------- */
@@ -85,15 +96,12 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   letter-spacing: .16em; text-transform: uppercase;
   color: var(--lime-ink);
 }
-.on-dark .kicker, .on-dark .eyebrow { color: var(--lime); }
 .lead { font-size: 1.08rem; color: var(--ink-soft); }
-.sub { font-size: 1.05rem; color: #d6d3d1; max-width: 620px; }
-.on-dark .lead { color: #d6d3d1; }
+.sub { font-size: 1.05rem; color: var(--shelf-ink-soft); max-width: 620px; }
 .updated {
   font-size: .8rem; color: var(--faint);
   margin-top: 10px; letter-spacing: .02em;
 }
-.hl { color: var(--lime); }
 
 /* ---------- header ---------- */
 .site-header {
@@ -153,12 +161,28 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .tabbar a[aria-current="page"] { color: var(--lime); }
 
 /* ---------- hero ---------- */
-.hero { padding: 72px 0 64px; }
-.on-dark { background: radial-gradient(1200px 500px at 20% -10%, #2b241a 0%, var(--dark) 55%); color: #fafaf9; }
-.hero-solo { max-width: 760px; }
-.hero-solo h1 { margin: 14px 0 16px; }
-.hero-solo .sub { margin-bottom: 28px; }
+.hero { padding: 72px 0 64px; background: var(--paper); color: var(--shelf-ink); }
+.hero-copy { max-width: 760px; }
+.hero-copy h1 { margin: 0 0 16px; }
+.hero-copy .sub { margin-bottom: 28px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Hero shelf: a composed row of real product photos on a hairline shelf edge. */
+.hero-shelf {
+  margin-top: 44px; padding-bottom: 20px; border-bottom: 2px solid var(--shelf-line);
+  animation: hero-enter .6s ease .18s both;
+}
+.hero-shelf-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 12px; }
+.hero-shelf-row img {
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  background: #fff; border: 1px solid var(--shelf-line); border-radius: 12px;
+}
+
+/* One dealt moment: the hero enters once on load. */
+@keyframes hero-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.hero-copy > * { animation: hero-enter .5s ease both; }
+.hero-copy > *:nth-child(2) { animation-delay: .06s; }
+.hero-copy > *:nth-child(3) { animation-delay: .12s; }
 
 /* ---------- trustbar ---------- */
 .trustbar { background: var(--lime); color: var(--dark); }
@@ -179,8 +203,8 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .btn:active { transform: translateY(0); }
 .btn-lime { background: var(--lime); border-color: var(--lime); color: var(--dark); }
 .btn-lime:hover { background: #c9f24e; }
-.btn-ghost { background: transparent; border-color: rgba(255,255,255,.35); color: #fff; }
-.btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+.btn-shelf { background: var(--shelf-green); border-color: var(--shelf-green); color: #fff; }
+.btn-shelf:hover { background: #184a38; }
 .btn-outline { background: transparent; color: var(--dark); }
 .btn-outline:hover { background: var(--dark); color: #fff; }
 .btn-big { padding: 16px 32px; font-size: 1.05rem; }
@@ -203,24 +227,24 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .quickpicks { display: flex; flex-direction: column; gap: 10px; }
 .qp-row {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  background: var(--card); border: 1px solid var(--line);
+  background: var(--card); border: 1px solid var(--shelf-line);
   border-radius: var(--radius); padding: 12px 16px 12px 12px;
-  transition: box-shadow .15s ease, transform .15s ease;
+  transition: border-color .15s ease;
 }
-.qp-row:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.qp-row:hover { border-color: var(--shelf-green); }
 .qp-main {
   display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0;
   text-decoration: none;
 }
 .qp-photo {
-  width: 64px; height: 64px; flex: none;
+  width: 112px; height: 112px; flex: none;
   border-radius: var(--radius-sm); overflow: hidden;
-  background: var(--line-soft); border: 1px solid var(--line);
+  background: var(--line-soft); border: 1px solid var(--shelf-line);
 }
 .qp-photo img { width: 100%; height: 100%; object-fit: cover; }
 .qp-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .qp-title { font-size: 1rem; font-weight: 700; font-family: var(--font-display); }
-.qp-key { font-size: .85rem; color: var(--muted); }
+.qp-key { font-size: .85rem; color: var(--shelf-muted); }
 .qp-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex: none; }
 .qp-btn { padding: 10px 18px; font-size: .85rem; white-space: nowrap; }
 
@@ -255,6 +279,8 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .spot-img { min-height: 320px; }
 .spot-img img { width: 100%; height: 100%; object-fit: cover; }
 .spot-copy { padding: 40px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.spot-copy .ep { font-size: .72rem; font-weight: 800; letter-spacing: .12em; color: var(--shelf-muted); }
+.spot-copy .ep .latest { color: var(--shelf-green); }
 .spot-copy h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
 
 /* ---------- shop: toolbar, chips, grid ---------- */
@@ -539,5 +565,5 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
