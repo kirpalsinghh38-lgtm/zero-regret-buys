@@ -1134,37 +1134,15 @@ def thumb(p, root):
 
 
 def gallery(p, root):
-    """PDP image gallery: main visual + thumbnail strip (desktop) and a
-    swipeable scroll-snap track with dots + counter (mobile). Tile fallback."""
+    """PDP image: one clean static figure. Every product has a single
+    verified photo; the old swipe track / dots / counter / thumbs were
+    dead markup (a hidden track duplicating the image, no JS ever drove
+    the dots or thumbs) and are gone. Tile fallback for photo-less data."""
     photos = p.get("photos") or []
     if not photos:
         return '<div class="p-tile p-tile-lg" aria-hidden="true"><span>%s</span></div>' % p["tile"]
-    main = ('<div class="pdp-main"><img id="pdpMainImg" src="%s%s" '
+    return ('<div class="pdp-main"><img src="%s%s" '
             'alt="%s product photo"></div>' % (root, photos[0], p["title"]))
-    slides = "".join(
-        '<div class="pdp-slide"><img src="%s%s" alt="%s product photo %d of %d"%s></div>'
-        % (root, ph, p["title"], i + 1, len(photos),
-           ' loading="lazy"' if i else "")
-        for i, ph in enumerate(photos))
-    dots = "".join(
-        '<button type="button" class="pdp-dot%s" data-i="%d" '
-        'aria-label="Show product image %d of %d"></button>'
-        % (" is-active" if i == 0 else "", i, i + 1, len(photos))
-        for i in range(len(photos))) if len(photos) > 1 else ""
-    galnav = ('<div class="pdp-galnav"><div class="pdp-dots">%s</div>'
-              '<div class="pdp-count" id="pdpCount">1 of %d</div></div>'
-              % (dots, len(photos))) if len(photos) > 1 else ""
-    track = ('<div class="pdp-track" id="pdpTrack" aria-label="Product images, swipe to browse">'
-             '%s</div>%s' % (slides, galnav))
-    if len(photos) == 1:
-        return main + track
-    thumbs = "".join(
-        '<button type="button" class="pthumb%s" data-src="%s%s" '
-        'aria-label="View product image %d of %d">'
-        '<img src="%s%s" alt="" loading="lazy"></button>'
-        % (" is-active" if i == 0 else "", root, ph, i + 1, len(photos), root, ph)
-        for i, ph in enumerate(photos))
-    return main + '<div class="pdp-thumbs">%s</div>' % thumbs + track
 
 
 FAQS = [
@@ -1663,7 +1641,7 @@ def build_product(p):
       %(badge)s
       %(ep)s
       <h1>%(title)s</h1>
-      <p class="pdp-meta"><a href="../shop.html?cat=%(cat_slug)s">%(cat)s</a> \u00b7 <a href="../shop.html?sub=%(sub_slug)s">%(sub)s</a></p>
+      <p class="pdp-meta"><a href="../shop.html?cat=%(cat_slug)s">%(cat)s</a> / <a href="../shop.html?sub=%(sub_slug)s">%(sub)s</a></p>
     </div>
     <div class="pdp-hero">
       <div class="pdp-verdict">
@@ -1681,7 +1659,7 @@ def build_product(p):
         <div class="buycard">
           <div class="k">GET THIS PICK</div>
           <a class="btn" data-track="%(slug)s" href="%(url)s"
-             target="_blank" rel="sponsored nofollow noopener">Check on Amazon \u2192</a>
+             target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
           <a class="btn btn-cart" data-track="%(slug)s-cart" href="%(cart_url)s"
              target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
           <div class="paidnote">(paid links)</div>
@@ -1690,7 +1668,7 @@ def build_product(p):
         </div>
         <div class="catchips">
           <div class="k">FILED UNDER</div>
-          <div><strong>%(cat)s</strong> \u00b7 %(sub)s</div>
+          <div><strong>%(cat)s</strong> / %(sub)s</div>
         </div>
       </aside>
     </div>
@@ -1720,7 +1698,7 @@ def build_product(p):
         <div class="kicker">THE FULL STORY</div>
         <h2>Product description</h2>
         <div class="prose">%(desc)s</div>
-        <p class="micro">Every pick follows the same rules: one clear job, label math that checks out, no invented ratings, and no typed prices \u2014 ever. <a href="../about.html">Read how we pick \u2192</a></p>
+        <p class="micro">Every pick follows the same rules: one clear job, label math that checks out, no invented ratings, and no typed prices \u2014 ever. <a href="../about.html">Read how we pick</a></p>
       </section>
     </details>
     <div class="related">
@@ -1736,7 +1714,7 @@ def build_product(p):
     <span class="buybar-title">%(title)s</span>
     <span class="buybar-cta">
       <a class="btn" data-track="%(slug)s-buybar" href="%(url)s"
-         target="_blank" rel="sponsored nofollow noopener">Check on Amazon \u2192</a>
+         target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
       <span class="paidnote">(paid link)</span>
     </span>
   </div>
