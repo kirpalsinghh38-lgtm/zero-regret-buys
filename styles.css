@@ -342,6 +342,7 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 }
 .cartall p { color: #d6d3d1; font-size: .92rem; max-width: 560px; }
 .cartall .micro { font-size: .8rem; color: var(--faint-dark); }
+.cartall .paidnote { color: var(--faint-dark); }
 
 /* ---------- PDP (product page) ---------- */
 .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); padding: 20px 0 4px; flex-wrap: wrap; }
