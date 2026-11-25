@@ -321,6 +321,9 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .card:hover { border-color: var(--shelf-green); }
 /* Photo-led: the product photo is the top of the card, full-bleed, linked. */
 .card-photo { display: block; border-radius: 16px 16px 0 0; overflow: hidden; }
+/* The photo link sits flush in an overflow:hidden card, so the global outset
+   focus ring is clipped on three sides. Draw this ring inside the photo. */
+.card-photo:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: -3px; }
 /* Label rail: episode number left, aisle right — a shelf label, not a kicker. */
 .card-rail {
   display: flex; justify-content: space-between; align-items: baseline;
