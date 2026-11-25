@@ -12,14 +12,17 @@
   var empty = document.getElementById("shop-empty");
   var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
   var total = cards.length;
-  var state = { q: "", cat: "all", sub: "all", sort: "featured" };
+  var state = { q: "", cat: "all", sub: "all", job: "all", sort: "featured" };
 
   var knownCats = [];
   var knownSubs = [];
+  var knownJobs = [];
   cards.forEach(function (card) {
     if (knownCats.indexOf(card.dataset.cat) === -1) knownCats.push(card.dataset.cat);
     if (knownSubs.indexOf(card.dataset.sub) === -1) knownSubs.push(card.dataset.sub);
+    if (card.dataset.job && knownJobs.indexOf(card.dataset.job) === -1) knownJobs.push(card.dataset.job);
   });
+  var JOB_LABELS = { sleep: "Sleep", skin: "Skin", "hair-scalp": "Hair & Scalp", "body-recovery": "Body & Recovery", "inner-health": "Inner Health" };
 
   function setPressed(group, value) {
     var btns = document.querySelectorAll('.chip[data-group="' + group + '"]');
@@ -49,8 +52,9 @@
     cards.forEach(function (card) {
       var okCat = state.cat === "all" || card.dataset.cat === state.cat;
       var okSub = state.sub === "all" || card.dataset.sub === state.sub;
+      var okJob = state.job === "all" || card.dataset.job === state.job;
       var okQ = !q || (card.dataset.search || "").toLowerCase().indexOf(q) !== -1;
-      var show = okCat && okSub && okQ;
+      var show = okCat && okSub && okJob && okQ;
       // Inline display (not the hidden attribute): .card sets display:flex,
       // which would override it.
       card.style.display = show ? "" : "none";
@@ -58,15 +62,17 @@
     });
     sortCards();
     if (count) {
+      var jobLabel = state.job !== "all" ? " · " + (JOB_LABELS[state.job] || state.job) : "";
       count.textContent = shown === total
-        ? "Showing all " + total + " picks"
-        : "Showing " + shown + " of " + total + " picks";
+        ? "Showing all " + total + " picks" + jobLabel
+        : "Showing " + shown + " of " + total + " picks" + jobLabel;
     }
     if (empty) empty.hidden = shown !== 0;
   }
 
   document.querySelectorAll(".chip").forEach(function (btn) {
     btn.addEventListener("click", function () {
+      state.job = "all";
       if (btn.dataset.group === "cat") {
         state.cat = btn.dataset.value;
         if (state.cat !== "all" && state.sub !== "all") {
@@ -87,7 +93,7 @@
     });
   });
 
-  if (search) search.addEventListener("input", function () { state.q = search.value; apply(); });
+  if (search) search.addEventListener("input", function () { state.q = search.value; state.job = "all"; apply(); });
   if (sort) sort.addEventListener("change", function () { state.sort = sort.value; apply(); });
 
   // Deep links (?cat= / ?sub=) apply on load; a sub implies its aisle
@@ -95,6 +101,8 @@
   var params = new URLSearchParams(window.location.search);
   var catParam = params.get("cat");
   var subParam = params.get("sub");
+  var jobParam = params.get("job");
+  if (jobParam && knownJobs.indexOf(jobParam) !== -1) state.job = jobParam;
   if (catParam && knownCats.indexOf(catParam) !== -1) state.cat = catParam;
   if (subParam && knownSubs.indexOf(subParam) !== -1) {
     state.sub = subParam;

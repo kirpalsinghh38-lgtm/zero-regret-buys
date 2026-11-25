@@ -244,29 +244,39 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 .cat-tile {
   display: flex; flex-direction: column; gap: 10px;
-  background: var(--dark); color: #f5f5f4; text-decoration: none;
+  background: var(--card); color: var(--shelf-ink); text-decoration: none;
+  border: 1px solid var(--shelf-line);
   border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden;
   transition: transform .15s ease, box-shadow .15s ease;
 }
 .cat-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-.cat-tile.alt { background: var(--dark-2); }
-.cat-tile .count { font-size: .72rem; font-weight: 800; letter-spacing: .16em; color: var(--lime); }
+.cat-tile .count { font-size: .72rem; font-weight: 800; letter-spacing: .16em; color: var(--shelf-green); }
 .cat-tile h3 { font-size: 1.5rem; }
-.cat-tile p { color: #d6d3d1; font-size: .95rem; }
+.cat-tile p { color: var(--shelf-ink-soft); font-size: .95rem; }
 .subchips { display: flex; flex-wrap: wrap; gap: 8px; }
 .subchips span {
   font-size: .75rem; font-weight: 600;
-  border: 1px solid rgba(255,255,255,.25); border-radius: 999px;
-  padding: 4px 12px; color: #e7e5e4;
+  border: 1px solid var(--shelf-line); border-radius: 999px;
+  padding: 4px 12px; color: var(--shelf-muted);
 }
-.go { margin-top: auto; padding-top: 12px; font-weight: 800; color: var(--lime); }
+.go { margin-top: auto; padding-top: 12px; font-weight: 800; color: var(--shelf-green); }
+
+/* ---------- job rail ---------- */
+.job-rail { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+.job-tile { flex: 0 0 auto; scroll-snap-align: start; background: var(--card); border: 1px solid var(--shelf-line); border-radius: var(--radius); padding: 16px 20px; text-decoration: none; min-width: 150px; }
+.job-tile b { display: block; font-size: 1rem; color: var(--shelf-ink); }
+.job-tile span { font-size: .8rem; color: var(--shelf-muted); }
+.job-tile:hover { border-color: var(--shelf-green); }
+@media (min-width: 901px) {
+  .job-rail { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+  .job-tile { min-width: 0; }
+}
 
 /* ---------- spotlight ---------- */
 .spotlight {
   display: grid; grid-template-columns: 1fr 1.2fr; gap: 0;
-  background: var(--card); border: 1px solid var(--line);
+  background: var(--card); border: 1px solid var(--shelf-line);
   border-radius: calc(var(--radius) + 6px); overflow: hidden;
-  box-shadow: var(--shadow);
 }
 .spot-img { min-height: 320px; }
 .spot-img img { width: 100%; height: 100%; object-fit: cover; }

@@ -669,6 +669,27 @@ for p in PRODUCTS:
     p["badge"] = "Best for " + BADGES[p["slug"]]
     p.update(PDP_COPY[p["slug"]])
 
+# Shop-by-job themes (R2, full-redesign plan Sections 4 and 7). Every
+# "Best for" job sits in exactly one theme; rail counts come from this map.
+JOB_THEMES = [
+    ("sleep", "Sleep",
+     ["Sleep", "Blackout Sleep", "Falling Asleep", "Stress & Sleep", "Mornings"]),
+    ("skin", "Skin",
+     ["Glass Skin", "Dark Spots", "Bright Cleanse", "Dry Skin", "Even Tone",
+      "Firmness", "Brightness", "Budget Hydration", "Lightweight Hydration",
+      "Pores & Oil", "24hr Moisture", "Daily SPF"]),
+    ("hair-scalp", "Hair & Scalp",
+     ["Scalp", "Scalp Care", "Damaged Hair", "Hair, Skin & Nails"]),
+    ("body-recovery", "Body & Recovery",
+     ["Gym Days", "Posture", "Back Relief", "Joint Comfort"]),
+    ("inner-health", "Inner Health",
+     ["Daily Omegas", "Immunity", "Bones", "Gut Health", "Energy Metabolism"]),
+]
+JOB_BY_BADGE = {b: slug for slug, _label, badges in JOB_THEMES for b in badges}
+# Fail loudly if a future episode's job is not in any theme, instead of
+# silently dropping it from the rail.
+assert set(JOB_BY_BADGE) == set(BADGES.values()), "JOB_THEMES is missing a badge"
+
 # Local product photography (verified brand+product matches only).
 # Products without a verified photo fall back to the monogram tile.
 # Lists support galleries — extra photos are appended by the image pass.
@@ -1310,7 +1331,7 @@ def card(p, root):
     prod = root + "products/" + p["slug"] + ".html"
     return """
     <article class="card" data-num="%(num)d" data-title="%(title)s"
-             data-cat="%(cat_slug)s" data-sub="%(sub_slug)s"
+             data-cat="%(cat_slug)s" data-sub="%(sub_slug)s" data-job="%(job)s"
              data-search="%(search)s">
       <a class="card-photo" href="%(prod)s">%(thumb)s</a>
       <div class="card-rail">
@@ -1327,7 +1348,8 @@ def card(p, root):
       <a class="details-link" href="%(prod)s">Full details</a>
     </article>""" % {
         "num": p["num"], "title": p["title"], "cat_slug": p["cat_slug"],
-        "sub_slug": p["sub_slug"], "search": search_blob(p), "ep": ep_badge(p),
+        "sub_slug": p["sub_slug"], "job": JOB_BY_BADGE[BADGES[p["slug"]]],
+        "search": search_blob(p), "ep": ep_badge(p),
         "thumb": thumb(p, root), "badge": badge_pill(p),
         "cat": p["cat"], "sub": p["sub"], "prod": prod,
         "pitch": p["pitch"],
@@ -1367,7 +1389,7 @@ def quickpick_row(p, root):
     </a>
     <span class="qp-cta">
       <a class="btn qp-btn" data-track="%(slug)s-qp" href="%(url)s"
-         target="_blank" rel="sponsored nofollow noopener">Check on Amazon \u2192</a>
+         target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
       <span class="paidnote">(paid link)</span>
     </span>
   </div>""" % {
@@ -1429,28 +1451,38 @@ def cat_tiles(root):
         if p["cat_slug"] not in [c[0] for c in order]:
             order.append((p["cat_slug"], p["cat"]))
     out = []
-    for i, (slug, name) in enumerate(order):
+    for slug, name in order:
         n = sum(1 for p in PRODUCTS if p["cat_slug"] == slug)
         subs = "".join("<span>%s</span>" % s for s in CAT_TILE_SUBS[slug])
-        cls = "cat-tile alt" if i % 2 else "cat-tile"
+        cls = "cat-tile"
         out.append("""
         <a class="%s" href="shop.html?cat=%s">
           <div class="count">%d PICKS</div>
           <h3>%s</h3>
           <p>%s</p>
           <div class="subchips">%s</div>
-          <span class="go">Browse %s \u2192</span>
+          <span class="go">Browse %s</span>
         </a>""" % (cls, slug, n, name, CAT_TILE_COPY[slug], subs, name))
     return '<div class="cats">%s\n      </div>' % "".join(out)
 
 
-# Home hero shelf: five picks spanning the three aisles, shown as a composed
-# row of real product photos (Phase 3). Decorative — every product is linked
-# in the quick picks below, so the shelf is aria-hidden.
-HERO_SHELF = [
-    "magnesium-glycinate", "creatine-monohydrate", "vichy-dercos",
-    "azelaic-acid-10", "myhalos-sleep-mask",
-]
+def job_rail(root):
+    """Shop-by-job rail: the five job themes, counts computed from PRODUCTS."""
+    out = []
+    for slug, label, badges in JOB_THEMES:
+        n = sum(1 for p in PRODUCTS if BADGES[p["slug"]] in badges)
+        out.append("""
+        <a class="job-tile" href="shop.html?job=%s">
+          <b>%s</b><span>%d pick%s</span>
+        </a>""" % (slug, label, n, "" if n == 1 else "s"))
+    return '<div class="job-rail">%s\n      </div>' % "".join(out)
+
+
+# Hero shelf: the latest five by episode, newest first (full-redesign plan,
+# Sections 7 and 11). Computed, so it stays current when a new episode lands.
+# Shown as a composed row of real product photos. Decorative — every product
+# is linked in the quick picks below, so the shelf is aria-hidden.
+HERO_SHELF = [p["slug"] for p in sorted(PRODUCTS, key=lambda p: p["num"], reverse=True)[:5]]
 
 
 def hero_shelf(root):
@@ -1468,7 +1500,7 @@ def hero_shelf(root):
 def build_index():
     root = ""
     latest = next(p for p in PRODUCTS if p.get("latest"))
-    rows = "".join(quickpick_row(p, root) for p in PRODUCTS)
+    rows = "".join(quickpick_row(p, root) for p in reversed(PRODUCTS))
     latest_img = (('<img src="%s%s" alt="%s product photo">' % (root, latest["photos"][0], latest["title"]))
                   if latest.get("photos") else "")
     body = """
@@ -1487,16 +1519,39 @@ def build_index():
     </div>
   </div>
 
-  <div class="trustbar">
-    <div class="wrap">
-      <p><b>Thirty products.</b> Each label checked for the right form and honest facts-panel math. If it didn\u2019t pass, it\u2019s not here. <a href="about.html">How we pick \u2192</a></p>
-    </div>
-  </div>
-
   <div class="wrap">
+    <div class="section">
+      <div class="spotlight">
+        <div class="spot-img">%s</div>
+        <div class="spot-copy">
+          %s
+          %s
+          <h2>%s</h2>
+          <p class="lead">%s</p>
+          <p style="margin-top:16px"><a class="btn" href="products/%s.html">See the pick</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2>Shop by job</h2>
+        <p class="lead">Five themes across the thirty picks.</p>
+      </div>
+      %s
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2>Three aisles. That\u2019s it.</h2>
+        <p class="lead">A short list stays short by staying organized.</p>
+      </div>
+      %s
+    </div>
+
     <div class="section" id="quickpicks">
       <div class="section-head">
-        <h2>The whole shelf, in 30 seconds</h2>
+        <h2>Latest picks</h2>
         <p class="lead">Thirty products, thirty jobs. Tap a row for the full verdict \u2014 or go straight to Amazon.</p>
         <p class="updated">Updated %s</p>
       </div>
@@ -1513,28 +1568,24 @@ def build_index():
 
     <div class="section">
       <div class="section-head">
-        <h2>Three aisles. That\u2019s it.</h2>
-        <p class="lead">A short list stays short by staying organized.</p>
+        <h2>How we pick</h2>
       </div>
-      %s
-    </div>
-
-    <div class="section">
-      <div class="spotlight">
-        <div class="spot-img">%s</div>
-        <div class="spot-copy">
-          %s
-          %s
-          <h2>%s</h2>
-          <p class="lead">%s</p>
-          <p style="margin-top:16px"><a class="btn" href="products/%s.html">See the pick \u2192</a></p>
-        </div>
+      <div class="prose">
+        <p>Each label checked for the right form and honest facts-panel math.</p>
+        <p>If it didn\u2019t pass, it\u2019s not here.</p>
       </div>
     </div>
   </div>
+
+  <div class="trustbar">
+    <div class="wrap">
+      <p><b>Thirty products.</b> Each label checked for the right form and honest facts-panel math. If it didn\u2019t pass, it\u2019s not here. <a href="about.html">How we pick \u2192</a></p>
+    </div>
+  </div>
 </main>
-""" % (hero_shelf(root), BUILD_MONTH, rows, CART_ALL_HTML, cat_tiles(root), latest_img, ep_badge(latest),
-       badge_pill(latest, "badge-sm"), latest["title"], latest["pitch"], latest["slug"])
+""" % (hero_shelf(root), latest_img, ep_badge(latest),
+       badge_pill(latest, "badge-sm"), latest["title"], latest["pitch"], latest["slug"],
+       job_rail(root), cat_tiles(root), BUILD_MONTH, rows, CART_ALL_HTML)
     return (head("Zero Regret Buys \u2014 Thirty picks. Zero regret.",
                  "Zero Regret Buys: a short, honest list of thirty worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
                  "index.html", root)
@@ -1903,14 +1954,17 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
   var empty = document.getElementById("shop-empty");
   var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
   var total = cards.length;
-  var state = { q: "", cat: "all", sub: "all", sort: "featured" };
+  var state = { q: "", cat: "all", sub: "all", job: "all", sort: "featured" };
 
   var knownCats = [];
   var knownSubs = [];
+  var knownJobs = [];
   cards.forEach(function (card) {
     if (knownCats.indexOf(card.dataset.cat) === -1) knownCats.push(card.dataset.cat);
     if (knownSubs.indexOf(card.dataset.sub) === -1) knownSubs.push(card.dataset.sub);
+    if (card.dataset.job && knownJobs.indexOf(card.dataset.job) === -1) knownJobs.push(card.dataset.job);
   });
+  var JOB_LABELS = { sleep: "Sleep", skin: "Skin", "hair-scalp": "Hair & Scalp", "body-recovery": "Body & Recovery", "inner-health": "Inner Health" };
 
   function setPressed(group, value) {
     var btns = document.querySelectorAll('.chip[data-group="' + group + '"]');
@@ -1940,8 +1994,9 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
     cards.forEach(function (card) {
       var okCat = state.cat === "all" || card.dataset.cat === state.cat;
       var okSub = state.sub === "all" || card.dataset.sub === state.sub;
+      var okJob = state.job === "all" || card.dataset.job === state.job;
       var okQ = !q || (card.dataset.search || "").toLowerCase().indexOf(q) !== -1;
-      var show = okCat && okSub && okQ;
+      var show = okCat && okSub && okJob && okQ;
       // Inline display (not the hidden attribute): .card sets display:flex,
       // which would override it.
       card.style.display = show ? "" : "none";
@@ -1949,15 +2004,17 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
     });
     sortCards();
     if (count) {
+      var jobLabel = state.job !== "all" ? " · " + (JOB_LABELS[state.job] || state.job) : "";
       count.textContent = shown === total
-        ? "Showing all " + total + " picks"
-        : "Showing " + shown + " of " + total + " picks";
+        ? "Showing all " + total + " picks" + jobLabel
+        : "Showing " + shown + " of " + total + " picks" + jobLabel;
     }
     if (empty) empty.hidden = shown !== 0;
   }
 
   document.querySelectorAll(".chip").forEach(function (btn) {
     btn.addEventListener("click", function () {
+      state.job = "all";
       if (btn.dataset.group === "cat") {
         state.cat = btn.dataset.value;
         if (state.cat !== "all" && state.sub !== "all") {
@@ -1978,7 +2035,7 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
     });
   });
 
-  if (search) search.addEventListener("input", function () { state.q = search.value; apply(); });
+  if (search) search.addEventListener("input", function () { state.q = search.value; state.job = "all"; apply(); });
   if (sort) sort.addEventListener("change", function () { state.sort = sort.value; apply(); });
 
   // Deep links (?cat= / ?sub=) apply on load; a sub implies its aisle
@@ -1986,6 +2043,8 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
   var params = new URLSearchParams(window.location.search);
   var catParam = params.get("cat");
   var subParam = params.get("sub");
+  var jobParam = params.get("job");
+  if (jobParam && knownJobs.indexOf(jobParam) !== -1) state.job = jobParam;
   if (catParam && knownCats.indexOf(catParam) !== -1) state.cat = catParam;
   if (subParam && knownSubs.indexOf(subParam) !== -1) {
     state.sub = subParam;
