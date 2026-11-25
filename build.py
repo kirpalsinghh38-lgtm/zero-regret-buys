@@ -706,13 +706,13 @@ PHOTOS = {
         "images/products/dr-althea-345.jpg",
     ],
     "axis-y-dark-spot": [
-        "images/products/axis-y-dark-spot.webp",
+        "images/products/axis-y-dark-spot.jpg",
     ],
     "arencia-rice-cleanser": [
         "images/products/arencia-rice-cleanser.jpg",
     ],
     "complex-15-cream": [
-        "images/products/complex-15.png",
+        "images/products/complex-15.jpg",
     ],
     "azelaic-acid-10": [
         "images/products/azelaic-acid-10.png",
