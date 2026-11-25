@@ -344,15 +344,7 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .card h3 a { text-decoration: none; }
 .card h3 a:hover { text-decoration: underline; text-decoration-color: var(--shelf-green); text-decoration-thickness: 3px; }
 .pitch { padding: 8px 18px 0; font-size: .9rem; color: var(--shelf-ink-soft); flex: 1; }
-.card .btn { margin: 14px 18px 0; }
-.card .paidnote { padding: 6px 18px 0; color: var(--shelf-muted); }
-.kwrow { padding: 10px 18px 0; font-size: .8rem; color: var(--shelf-muted); }
-.kwrow b { color: var(--shelf-green); letter-spacing: .06em; }
-.details-link {
-  display: inline-block; margin: 10px 18px 18px;
-  font-weight: 700; font-size: .88rem; color: var(--shelf-ink);
-  text-decoration: none; border-bottom: 2px solid var(--shelf-green);
-}
+.card .btn { margin: 14px 18px 18px; }
 .empty {
   text-align: center; padding: 60px 20px; color: var(--shelf-muted);
   border: 2px dashed var(--shelf-line); border-radius: var(--radius);
@@ -569,6 +561,12 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   .buybar-title { display: none; }
   .buybar-cta { flex: 1; align-items: stretch; }
   .buybar-cta .btn { width: 100%; }
+  .searchrow { flex-direction: column; }
+  .chiprow-sub { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card-rail, .card h3, .pitch { padding-left: 12px; padding-right: 12px; }
+  .card .badge { margin-left: 12px; margin-right: 12px; display: inline-block; white-space: normal; line-height: 1.35; }
+  .card .btn { margin: 12px 12px 12px; white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

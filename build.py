@@ -1341,11 +1341,7 @@ def card(p, root):
       <h3><a href="%(prod)s">%(title)s</a></h3>
       %(badge)s
       <p class="pitch">%(pitch)s</p>
-      <a class="btn btn-shelf" data-track="%(slug)s" href="%(url)s"
-         target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-      <div class="paidnote">(paid link)</div>
-      <div class="kwrow">Reel keyword: <b>%(keyword)s</b></div>
-      <a class="details-link" href="%(prod)s">Full details</a>
+      <a class="btn btn-shelf" href="%(prod)s">See the pick</a>
     </article>""" % {
         "num": p["num"], "title": p["title"], "cat_slug": p["cat_slug"],
         "sub_slug": p["sub_slug"], "job": JOB_BY_BADGE[BADGES[p["slug"]]],
@@ -1353,7 +1349,6 @@ def card(p, root):
         "thumb": thumb(p, root), "badge": badge_pill(p),
         "cat": p["cat"], "sub": p["sub"], "prod": prod,
         "pitch": p["pitch"],
-        "slug": p["slug"], "url": p["url"], "keyword": p["keyword"],
     }
 
 
@@ -1399,7 +1394,7 @@ def quickpick_row(p, root):
 
 
 def cmp_table(root):
-    """Shop comparison table: six rows of Best for / key detail / Amazon action."""
+    """Shop comparison table: one row per product — Best for, key detail, Amazon action."""
     rows = "".join(
         """
       <tr>
@@ -1601,11 +1596,10 @@ def build_shop():
   <div class="wrap">
     <div class="section" style="padding-top:48px">
       <div class="section-head">
-        <h2>Every pick, filterable.</h2>
-        <p class="lead">All thirty Zero Regret Buys in one place. Search, filter by aisle, or sort \u2014 prices change constantly, so we never type them here: click through to see today\u2019s live price on Amazon.</p>
+        <h2>The Shop</h2>
+        <p class="lead">All thirty picks in one place. Prices change constantly, so we never type them here \u2014 click through to see today\u2019s live price.</p>
         <p class="updated">Last updated: %(build_month)s. List grows as new reel episodes drop.</p>
       </div>
-%(cmp)s
       <div class="toolbar">
         <div class="searchrow">
           <div class="searchbox">
@@ -1622,6 +1616,7 @@ def build_shop():
             </select>
           </div>
         </div>
+        <p class="resultcount" id="result-count" role="status"></p>
         <div class="chiprow" role="group" aria-label="Filter by category">
           <span class="chip-label">AISLE</span>
           <button class="chip" data-group="cat" data-value="all" aria-pressed="true">All</button>
@@ -1629,7 +1624,7 @@ def build_shop():
           <button class="chip" data-group="cat" data-value="personal-care" aria-pressed="false">Personal Care</button>
           <button class="chip" data-group="cat" data-value="gadgets" aria-pressed="false">Gadgets</button>
         </div>
-        <div class="chiprow" role="group" aria-label="Filter by subcategory">
+        <div class="chiprow chiprow-sub" role="group" aria-label="Filter by subcategory">
           <span class="chip-label">SHELF</span>
           <button class="chip sub" data-group="sub" data-value="all" data-cat="" aria-pressed="true">All</button>
           <button class="chip sub" data-group="sub" data-value="minerals" data-cat="supplements" aria-pressed="false">Minerals</button>
@@ -1641,17 +1636,17 @@ def build_shop():
           <button class="chip sub" data-group="sub" data-value="posture" data-cat="gadgets" aria-pressed="false">Posture</button>
         </div>
       </div>
+      <div class="grid" id="shop-grid">%(cards)s</div>
+      <div class="empty" id="shop-empty" hidden>
+        <h3>No picks match that.</h3>
+        <p>Try a different search or clear the filters.</p>
+      </div>
+%(cmp)s
       <div class="cartall">
         <a class="btn btn-shelf btn-big" data-track="cart-all" href="%(cartall)s"
            target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
         <div class="paidnote">(paid link)</div>
         <p class="micro">One click loads all thirty picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
-      </div>
-      <p class="resultcount" id="result-count" role="status"></p>
-      <div class="grid" id="shop-grid">%(cards)s</div>
-      <div class="empty" id="shop-empty" hidden>
-        <h3>No picks match that.</h3>
-        <p>Try a different search or clear the filters.</p>
       </div>
     </div>
   </div>
@@ -2010,6 +2005,8 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
         : "Showing " + shown + " of " + total + " picks" + jobLabel;
     }
     if (empty) empty.hidden = shown !== 0;
+    setPressed("cat", state.job === "all" ? state.cat : "");
+    setPressed("sub", state.job === "all" ? state.sub : "");
   }
 
   document.querySelectorAll(".chip").forEach(function (btn) {
@@ -2021,15 +2018,11 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
           var subBtn = document.querySelector('.chip[data-group="sub"][data-value="' + state.sub + '"]');
           if (subBtn && subBtn.dataset.cat && subBtn.dataset.cat !== state.cat) state.sub = "all";
         }
-        setPressed("cat", state.cat);
-        setPressed("sub", state.sub);
       } else {
         state.sub = btn.dataset.value;
         if (state.sub !== "all" && btn.dataset.cat) {
           state.cat = btn.dataset.cat;
-          setPressed("cat", state.cat);
         }
-        setPressed("sub", state.sub);
       }
       apply();
     });
@@ -2053,8 +2046,6 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
       if (subBtn && subBtn.dataset.cat) state.cat = subBtn.dataset.cat;
     }
   }
-  setPressed("cat", state.cat);
-  setPressed("sub", state.sub);
   apply();
 })();
 """

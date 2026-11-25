@@ -68,6 +68,8 @@
         : "Showing " + shown + " of " + total + " picks" + jobLabel;
     }
     if (empty) empty.hidden = shown !== 0;
+    setPressed("cat", state.job === "all" ? state.cat : "");
+    setPressed("sub", state.job === "all" ? state.sub : "");
   }
 
   document.querySelectorAll(".chip").forEach(function (btn) {
@@ -79,15 +81,11 @@
           var subBtn = document.querySelector('.chip[data-group="sub"][data-value="' + state.sub + '"]');
           if (subBtn && subBtn.dataset.cat && subBtn.dataset.cat !== state.cat) state.sub = "all";
         }
-        setPressed("cat", state.cat);
-        setPressed("sub", state.sub);
       } else {
         state.sub = btn.dataset.value;
         if (state.sub !== "all" && btn.dataset.cat) {
           state.cat = btn.dataset.cat;
-          setPressed("cat", state.cat);
         }
-        setPressed("sub", state.sub);
       }
       apply();
     });
@@ -111,7 +109,5 @@
       if (subBtn && subBtn.dataset.cat) state.cat = subBtn.dataset.cat;
     }
   }
-  setPressed("cat", state.cat);
-  setPressed("sub", state.sub);
   apply();
 })();
