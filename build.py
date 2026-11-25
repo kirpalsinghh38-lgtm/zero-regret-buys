@@ -671,33 +671,21 @@ for p in PRODUCTS:
 PHOTOS = {
     "magnesium-glycinate": [
         "images/products/mg-glycinate-webber-1.jpg",
-        "images/products/mg-glycinate-webber-2.jpg",
     ],
     "creatine-monohydrate": [
         "images/products/creatine-monohydrate-2.jpg",
-        "images/products/creatine-monohydrate.jpg",
-        "images/products/creatine-monohydrate-3.jpg",
     ],
     "omega-3-fish-oil": [
         "images/products/omega-3-1.jpg",
-        "images/products/omega-3-2.jpg",
     ],
     "zinc-citrate": [
         "images/products/zinc-citrate.jpg",
-        "images/products/zinc-citrate-2.jpg",
-        "images/products/zinc-citrate-3.jpg",
-        "images/products/zinc-citrate-4.jpg",
     ],
     "vitamin-d3-k2": [
         "images/products/vitamin-d3-k2.jpg",
-        "images/products/vitamin-d3-k2-2.jpg",
-        "images/products/vitamin-d3-k2-3.jpg",
     ],
     "vichy-dercos": [
         "images/products/vichy-dercos.jpg",
-        "images/products/vichy-dercos-2.jpg",
-        "images/products/vichy-dercos-3.jpg",
-        "images/products/vichy-dercos-4.jpg",
     ],
     "retinal-shot-booster": [
         "images/products/retinal-shot-celimax.webp",
