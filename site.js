@@ -55,8 +55,6 @@
       var okJob = state.job === "all" || card.dataset.job === state.job;
       var okQ = !q || (card.dataset.search || "").toLowerCase().indexOf(q) !== -1;
       var show = okCat && okSub && okJob && okQ;
-      // Inline display (not the hidden attribute): .card sets display:flex,
-      // which would override it.
       card.style.display = show ? "" : "none";
       if (show) shown += 1;
     });
