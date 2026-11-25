@@ -1179,7 +1179,7 @@ def head(title, desc, path, root):
 <meta property="og:description" content="%s">
 <meta property="og:type" content="website">
 <meta property="og:image" content="%s/images/logo.jpg">
-<meta name="theme-color" content="#faf9f7">
+<meta name="theme-color" content="#faf9f6">
 <link rel="icon" href="%simages/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1234,7 +1234,7 @@ def header(root, current, tab=True):
     </a>
     <nav class="mainnav" aria-label="Primary">
       %s
-      <a class="nav-cta" href="%sshop.html">Browse the picks</a>
+      <a class="nav-cta" href="%sshop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
 </header>
@@ -1243,6 +1243,9 @@ def header(root, current, tab=True):
 
 
 def footer(root):
+    n_sup = sum(1 for p in PRODUCTS if p["cat_slug"] == "supplements")
+    n_pc = sum(1 for p in PRODUCTS if p["cat_slug"] == "personal-care")
+    n_gad = sum(1 for p in PRODUCTS if p["cat_slug"] == "gadgets")
     return """
 <footer class="site-footer">
   <div class="footer-grid">
@@ -1253,26 +1256,26 @@ def footer(root):
       </a>
       <p>One product per reel episode. No invented ratings, ever.</p>
     </div>
-    <details class="footer-col" open>
-      <summary>EXPLORE</summary>
+    <div class="footer-col">
+      <h3>Explore</h3>
       <nav aria-label="Footer">
         <a href="%sindex.html">Home</a>
         <a href="%sshop.html">Shop all picks</a>
         <a href="%sabout.html">How we pick</a>
         <a href="%sfaq.html">FAQ</a>
       </nav>
-    </details>
-    <details class="footer-col" open>
-      <summary>CATEGORIES</summary>
+    </div>
+    <div class="footer-col">
+      <h3>Categories</h3>
       <nav aria-label="Categories">
-        <a href="%sshop.html?cat=supplements">Supplements</a>
-        <a href="%sshop.html?cat=personal-care">Personal Care</a>
-        <a href="%sshop.html?cat=gadgets">Gadgets</a>
+        <a href="%sshop.html?cat=supplements">Supplements (%d)</a>
+        <a href="%sshop.html?cat=personal-care">Personal Care (%d)</a>
+        <a href="%sshop.html?cat=gadgets">Gadgets (%d)</a>
         <a href="%sshop.html?sub=minerals">Minerals</a>
         <a href="%sshop.html?sub=hair-scalp">Hair &amp; Scalp</a>
         <a href="%sshop.html?sub=skincare">Skincare</a>
       </nav>
-    </details>
+    </div>
   </div>
   <div class="footer-disclosure">
     <p><b>%s</b> Product links on this site are affiliate (paid) links \u2014 if you buy through them, we may earn a commission at no extra cost to you. It keeps the reels free and the picks honest. <a href="%sabout.html#disclosure">Why this matters</a></p>
@@ -1289,7 +1292,7 @@ def footer(root):
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
-""" % (root, root, root, root, root, root, root, root, root, root, root, root, DISCLOSURE, root, root)
+""" % (root, root, root, root, root, root, root, n_sup, root, n_pc, root, n_gad, root, root, root, DISCLOSURE, root, root)
 
 
 def ep_badge(p):
@@ -1391,7 +1394,6 @@ def cmp_table(root):
         for p in PRODUCTS)
     return """
       <div class="cmp-wrap">
-        <div class="kicker">COMPARE</div>
         <h2>Thirty products, side by side</h2>
         <div class="cmp-scroll">
         <table class="cmp">
@@ -1511,7 +1513,6 @@ def build_index():
 
     <div class="section">
       <div class="section-head">
-        <div class="kicker">SHOP BY CATEGORY</div>
         <h2>Three aisles. That\u2019s it.</h2>
         <p class="lead">A short list stays short by staying organized.</p>
       </div>
@@ -1549,7 +1550,6 @@ def build_shop():
   <div class="wrap">
     <div class="section" style="padding-top:48px">
       <div class="section-head">
-        <div class="kicker">THE SHOP</div>
         <h2>Every pick, filterable.</h2>
         <p class="lead">All thirty Zero Regret Buys in one place. Search, filter by aisle, or sort \u2014 prices change constantly, so we never type them here: click through to see today\u2019s live price on Amazon.</p>
         <p class="updated">Last updated: %(build_month)s. List grows as new reel episodes drop.</p>
@@ -1646,28 +1646,27 @@ def build_product(p):
     <div class="pdp-hero">
       <div class="pdp-verdict">
         <div class="verdict-card">
-          <div class="k">OUR VERDICT</div>
+          <h2>Our verdict</h2>
           <p>%(verdict)s</p>
         </div>
         <div class="getif">
-          <div class="k">GET THIS IF\u2026</div>
+          <h2>Get this if\u2026</h2>
           <ul>%(getif)s</ul>
         </div>
         <p class="updated">Updated %(build_month)s</p>
       </div>
       <aside class="pdp-buy" aria-label="Buy this pick">
         <div class="buycard">
-          <div class="k">GET THIS PICK</div>
+          <h2>Get this pick</h2>
           <a class="btn" data-track="%(slug)s" href="%(url)s"
              target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
           <a class="btn btn-cart" data-track="%(slug)s-cart" href="%(cart_url)s"
              target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
           <div class="paidnote">(paid links)</div>
           <p class="micro">Prices change daily \u2014 Amazon shows today\u2019s live price when you click.</p>
-          <p class="micro">%(disclosure)s</p>
         </div>
         <div class="catchips">
-          <div class="k">FILED UNDER</div>
+          <div class="card-label">Filed under</div>
           <div><strong>%(cat)s</strong> / %(sub)s</div>
         </div>
       </aside>
@@ -1686,7 +1685,6 @@ def build_product(p):
       <details class="pdp-acc" open>
         <summary>Reel keyword</summary>
         <div class="kwcard">
-          <div class="k">REEL KEYWORD</div>
           <b class="keyword">%(keyword)s</b>
           <p>Comment this word under the reel and the link lands in your DMs.</p>
         </div>
@@ -1695,7 +1693,6 @@ def build_product(p):
     <details class="pdp-acc pdp-story" open>
       <summary>Product description</summary>
       <section class="pdp-desc" aria-label="Product description">
-        <div class="kicker">THE FULL STORY</div>
         <h2>Product description</h2>
         <div class="prose">%(desc)s</div>
         <p class="micro">Every pick follows the same rules: one clear job, label math that checks out, no invented ratings, and no typed prices \u2014 ever. <a href="../about.html">Read how we pick</a></p>
@@ -1703,7 +1700,6 @@ def build_product(p):
     </details>
     <div class="related">
       <div class="section-head">
-        <div class="kicker">KEEP BROWSING</div>
         <h2>You might also regret not buying</h2>
       </div>
       <div class="grid">%(rel)s</div>
@@ -1724,7 +1720,7 @@ def build_product(p):
        "verdict": p["verdict"], "getif": getif, "gallery": gallery(p, root),
        "bullets": bullets, "keyword": p["keyword"],
        "slug": p["slug"], "url": p["url"], "cart_url": p["cart_url"],
-       "disclosure": DISCLOSURE, "sub": p["sub"], "desc": desc,
+       "sub": p["sub"], "desc": desc,
        "rel": rel, "sq": sq_thumb(p, root), "build_month": BUILD_MONTH}
     return (head("%s \u2014 Zero Regret Buys" % p["title"],
                  "%s Our verdict, who it\u2019s for, and the reel keyword %s. Paid Amazon link labeled." % (meta_pitch(p["pitch"]), p["keyword"]),
@@ -1741,18 +1737,16 @@ def build_about():
   <div class="wrap">
     <div class="section" style="padding-top:48px">
       <div class="section-head">
-        <div class="kicker">ABOUT</div>
         <h2>We\u2019re the picky friend who reads labels.</h2>
         <p class="updated">Updated %s</p>
       </div>
       <div class="prose">
         <p>Zero Regret Buys started as 60-second Instagram reels: a Skeptic and a Hype Guy arguing about one product while you watch. No scripts that read like ads, no \u201ctop 10\u201d filler \u2014 one product, one argument, one verdict.</p>
-        <p>This site is where the winners live. Thirty products, one per episode, each with exactly one job. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be.</p>
+        <p>This site is where the winners live. Thirty products, one per episode, each with exactly one job. Nothing here is sponsored into existence \u2014 the only money in the system is the standard Amazon commission, labeled on every link, as it should be.</p>
       </div>
     </div>
     <div class="section">
       <div class="section-head">
-        <div class="kicker">HOW WE PICK</div>
         <h2>Four rules. Miss one, and it never makes the page.</h2>
       </div>
       <div class="prose">
@@ -1767,7 +1761,6 @@ def build_about():
     </div>
     <div class="section" id="disclosure">
       <div class="section-head">
-        <div class="kicker">DISCLOSURE</div>
         <h2>Affiliate disclosure</h2>
       </div>
       <div class="prose">
@@ -1795,7 +1788,6 @@ def build_faq():
   <div class="wrap">
     <div class="section faq-list" style="padding-top:48px">
       <div class="section-head">
-        <div class="kicker">FAQ</div>
         <h2>Questions, answered.</h2>
         <p class="lead">The stuff people actually ask.</p>
         <p class="updated">Updated %s</p>
@@ -1841,7 +1833,6 @@ def build_terms():
   <div class="wrap">
     <div class="section" style="padding-top:48px">
       <div class="section-head">
-        <div class="kicker">TERMS</div>
         <h2>Terms of use</h2>
         <p class="updated">Updated %s</p>
       </div>
@@ -1874,7 +1865,6 @@ def build_privacy():
   <div class="wrap">
     <div class="section" style="padding-top:48px">
       <div class="section-head">
-        <div class="kicker">PRIVACY</div>
         <h2>Privacy policy</h2>
         <p class="updated">Updated %s</p>
       </div>
