@@ -1683,10 +1683,13 @@ def build_product(p):
       <span aria-current="page">%(title)s</span>
     </nav>
     <a class="pdp-back" href="../shop.html">&#8249; All picks</a>
+    <div class="pdp-gallery" aria-label="Product images">
+      %(gallery)s
+    </div>
     <div class="pdp-head">
-      %(badge)s
-      %(ep)s
       <h1>%(title)s</h1>
+      %(ep)s
+      %(badge)s
       <p class="pdp-meta"><a href="../shop.html?cat=%(cat_slug)s">%(cat)s</a> / <a href="../shop.html?sub=%(sub_slug)s">%(sub)s</a></p>
     </div>
     <div class="pdp-hero">
@@ -1694,10 +1697,6 @@ def build_product(p):
         <div class="verdict-card">
           <h2>Our verdict</h2>
           <p>%(verdict)s</p>
-        </div>
-        <div class="getif">
-          <h2>Get this if\u2026</h2>
-          <ul>%(getif)s</ul>
         </div>
         <p class="updated">Updated %(build_month)s</p>
       </div>
@@ -1709,16 +1708,13 @@ def build_product(p):
           <a class="btn btn-cart" data-track="%(slug)s-cart" href="%(cart_url)s"
              target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
           <div class="paidnote">(paid links)</div>
-          <p class="micro">Prices change daily \u2014 Amazon shows today\u2019s live price when you click.</p>
+          <p class="micro">Opens on Amazon \u2014 today\u2019s live price is shown when you click.</p>
         </div>
         <div class="catchips">
           <div class="card-label">Filed under</div>
           <div><strong>%(cat)s</strong> / %(sub)s</div>
         </div>
       </aside>
-    </div>
-    <div class="pdp-gallery" aria-label="Product images">
-      %(gallery)s
     </div>
     <div class="pdp-mid">
       <details class="pdp-acc" open>
@@ -1728,6 +1724,10 @@ def build_product(p):
           <ul>%(bullets)s</ul>
         </div>
       </details>
+      <div class="getif">
+        <h2>Get this if\u2026</h2>
+        <ul>%(getif)s</ul>
+      </div>
       <details class="pdp-acc" open>
         <summary>Reel keyword</summary>
         <div class="kwcard">
@@ -1746,7 +1746,7 @@ def build_product(p):
     </details>
     <div class="related">
       <div class="section-head">
-        <h2>You might also regret not buying</h2>
+        <h2>Keep browsing</h2>
       </div>
       <div class="grid">%(rel)s</div>
     </div>
