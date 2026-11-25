@@ -1331,17 +1331,19 @@ def card(p, root):
     <article class="card" data-num="%(num)d" data-title="%(title)s"
              data-cat="%(cat_slug)s" data-sub="%(sub_slug)s"
              data-search="%(search)s">
-      %(ep)s
-      %(badge)s
-      %(thumb)s
-      <div class="cattag"><strong>%(cat)s</strong> \u00b7 %(sub)s</div>
+      <a class="card-photo" href="%(prod)s">%(thumb)s</a>
+      <div class="card-rail">
+        %(ep)s
+        <span class="cattag">%(cat)s / %(sub)s</span>
+      </div>
       <h3><a href="%(prod)s">%(title)s</a></h3>
+      %(badge)s
       <p class="pitch">%(pitch)s</p>
-      <a class="btn" data-track="%(slug)s" href="%(url)s"
-         target="_blank" rel="sponsored nofollow noopener">Check on Amazon \u2192</a>
+      <a class="btn btn-shelf" data-track="%(slug)s" href="%(url)s"
+         target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
       <div class="paidnote">(paid link)</div>
       <div class="kwrow">Reel keyword: <b>%(keyword)s</b></div>
-      <a class="details-link" href="%(prod)s">Full details \u2192</a>
+      <a class="details-link" href="%(prod)s">Full details</a>
     </article>""" % {
         "num": p["num"], "title": p["title"], "cat_slug": p["cat_slug"],
         "sub_slug": p["sub_slug"], "search": search_blob(p), "ep": ep_badge(p),
@@ -1352,9 +1354,12 @@ def card(p, root):
     }
 
 
-def badge_pill(p, size=""):
-    """'Best for X' pill badge."""
+def badge_pill(p, size="", value_only=False):
+    """'Best for X' pill badge. value_only renders just the value (for the
+    comparison table, whose column header already says 'Best for')."""
     cls = "badge" + (" " + size if size else "")
+    if value_only:
+        return '<span class="%s"><b>%s</b></span>' % (cls, BADGES[p["slug"]])
     return '<span class="%s">Best for <b>%s</b></span>' % (cls, BADGES[p["slug"]])
 
 
@@ -1399,11 +1404,11 @@ def cmp_table(root):
         <td>%s</td>
         <td>%s</td>
         <td>
-          <a class="btn" data-track="%s-cmp" href="%s"
-             target="_blank" rel="sponsored nofollow noopener">Check on Amazon \u2192</a>
+          <a class="btn btn-shelf" data-track="%s-cmp" href="%s"
+             target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
           <div class="paidnote">(paid link)</div>
         </td>
-      </tr>""" % (sq_thumb(p, root), p["title"], badge_pill(p, "badge-sm"),
+      </tr>""" % (sq_thumb(p, root), p["title"], badge_pill(p, "badge-sm", value_only=True),
                  p["key"], p["slug"], p["url"])
         for p in PRODUCTS)
     return """
@@ -1519,8 +1524,8 @@ def build_index():
 %s
       </div>
       <div class="cartall">
-        <a class="btn btn-lime btn-big" data-track="cart-all-home" href="%s"
-           target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon \u2192</a>
+        <a class="btn btn-shelf btn-big" data-track="cart-all-home" href="%s"
+           target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
         <div class="paidnote">(paid link)</div>
         <p class="micro">One click loads all thirty picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
       </div>
@@ -1569,7 +1574,7 @@ def build_shop():
         <div class="kicker">THE SHOP</div>
         <h2>Every pick, filterable.</h2>
         <p class="lead">All thirty Zero Regret Buys in one place. Search, filter by aisle, or sort \u2014 prices change constantly, so we never type them here: click through to see today\u2019s live price on Amazon.</p>
-        <p class="updated">Last updated: %(build_month)s \u00b7 List grows as new reel episodes drop.</p>
+        <p class="updated">Last updated: %(build_month)s. List grows as new reel episodes drop.</p>
       </div>
 %(cmp)s
       <div class="toolbar">
@@ -1608,8 +1613,8 @@ def build_shop():
         </div>
       </div>
       <div class="cartall">
-        <a class="btn btn-lime btn-big" data-track="cart-all" href="%(cartall)s"
-           target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon \u2192</a>
+        <a class="btn btn-shelf btn-big" data-track="cart-all" href="%(cartall)s"
+           target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
         <div class="paidnote">(paid link)</div>
         <p class="micro">One click loads all thirty picks into your Amazon.ca cart \u2014 remove anything you don\u2019t want before checkout.</p>
       </div>
