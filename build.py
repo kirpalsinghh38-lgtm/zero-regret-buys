@@ -9,6 +9,10 @@ Redesign 2026-10-05: verdict-first PDPs, quick-picks strip, comparison table,
 'Best for X' badges, updated-date stamps, one-line trust bar, human-voice About.
 """
 import os
+from datetime import datetime
+
+# Build date stamp, generated at regen time (Phase 0: no more hardcoded months).
+BUILD_MONTH = datetime.now().strftime("%B %Y")
 
 SITE = os.path.dirname(os.path.abspath(__file__))
 BASE = "https://zero-regret-buys-kirpal-singh.vercel.app"
@@ -1175,6 +1179,14 @@ FAQS = [
 ]
 
 
+def meta_pitch(pitch, limit=155):
+    """Truncate a pitch at a word boundary so meta descriptions never end mid-word."""
+    if len(pitch) <= limit:
+        return pitch
+    cut = pitch[:limit].rsplit(" ", 1)[0]
+    return cut if cut else pitch[:limit]
+
+
 def head(title, desc, path, root):
     canon = BASE + ("/" if path == "index.html" else "/" + path)
     return """<!DOCTYPE html>
@@ -1188,6 +1200,8 @@ def head(title, desc, path, root):
 <meta property="og:title" content="%s">
 <meta property="og:description" content="%s">
 <meta property="og:type" content="website">
+<meta property="og:image" content="%s/images/logo.jpg">
+<meta name="theme-color" content="#faf9f7">
 <link rel="icon" href="%simages/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1195,7 +1209,7 @@ def head(title, desc, path, root):
 <link rel="stylesheet" href="%sstyles.css">
 </head>
 <body>
-""" % (title, desc, canon, title, desc, root, root)
+""" % (title, desc, canon, title, desc, BASE, root, root)
 
 
 def disclosure_bar(root):
@@ -1283,8 +1297,7 @@ def footer(root):
     </details>
   </div>
   <div class="footer-disclosure">
-    <p><b>%s</b> Product links on this site are affiliate (paid) links \u2014 if you buy through them, we may earn a commission at no extra cost to you. It keeps the reels free and the picks honest.</p>
-    <p>%s Links on this site are paid links. <a href="%sabout.html#disclosure">Why this matters</a></p>
+    <p><b>%s</b> Product links on this site are affiliate (paid) links \u2014 if you buy through them, we may earn a commission at no extra cost to you. It keeps the reels free and the picks honest. <a href="%sabout.html#disclosure">Why this matters</a></p>
   </div>
   <div class="footer-base">
     <span>\u00a9 2026 Zero Regret Buys</span>
@@ -1298,7 +1311,7 @@ def footer(root):
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
-""" % (root, root, root, root, root, root, root, root, root, root, root, root, DISCLOSURE, DISCLOSURE, root, root)
+""" % (root, root, root, root, root, root, root, root, root, root, root, root, DISCLOSURE, root, root)
 
 
 def ep_badge(p):
@@ -1406,8 +1419,44 @@ def cmp_table(root):
           </tbody>
         </table>
         </div>
-        <p class="updated">Updated October 2026</p>
-      </div>""" % rows
+        <p class="updated">Updated %s</p>
+      </div>""" % (rows, BUILD_MONTH)
+
+
+# Home category tiles: counts computed from PRODUCTS (Phase 0); tile copy is
+# fixed per aisle, sub-chips list the shelves the shop toolbar filters by.
+CAT_TILE_COPY = {
+    "supplements": "The daily staples: minerals, performance, and everyday essentials \u2014 each with label math you can verify.",
+    "personal-care": "What actually works on the outside \u2014 from scalp to glass skin.",
+    "gadgets": "Sleep, posture, and recovery gear \u2014 tools with one clear job each.",
+}
+CAT_TILE_SUBS = {
+    "supplements": ["Minerals", "Performance", "Everyday Essentials"],
+    "personal-care": ["Hair &amp; Scalp", "Skincare"],
+    "gadgets": ["Sleep", "Posture"],
+}
+
+
+def cat_tiles(root):
+    """Category tiles with counts computed from PRODUCTS, in first-appearance order."""
+    order = []
+    for p in PRODUCTS:
+        if p["cat_slug"] not in [c[0] for c in order]:
+            order.append((p["cat_slug"], p["cat"]))
+    out = []
+    for i, (slug, name) in enumerate(order):
+        n = sum(1 for p in PRODUCTS if p["cat_slug"] == slug)
+        subs = "".join("<span>%s</span>" % s for s in CAT_TILE_SUBS[slug])
+        cls = "cat-tile alt" if i % 2 else "cat-tile"
+        out.append("""
+        <a class="%s" href="shop.html?cat=%s">
+          <div class="count">%d PICKS</div>
+          <h3>%s</h3>
+          <p>%s</p>
+          <div class="subchips">%s</div>
+          <span class="go">Browse %s \u2192</span>
+        </a>""" % (cls, slug, n, name, CAT_TILE_COPY[slug], subs, name))
+    return '<div class="cats">%s\n      </div>' % "".join(out)
 
 
 # ---------------- index ----------------
@@ -1444,7 +1493,7 @@ def build_index():
         <div class="kicker">QUICK PICKS</div>
         <h2>The whole shelf, in 30 seconds</h2>
         <p class="lead">Thirty products, thirty jobs. Tap a row for the full verdict \u2014 or go straight to Amazon.</p>
-        <p class="updated">Updated October 2026</p>
+        <p class="updated">Updated %s</p>
       </div>
       <div class="quickpicks">
 %s
@@ -1460,25 +1509,10 @@ def build_index():
     <div class="section">
       <div class="section-head">
         <div class="kicker">SHOP BY CATEGORY</div>
-        <h2>Two aisles. That\u2019s it.</h2>
+        <h2>Three aisles. That\u2019s it.</h2>
         <p class="lead">A short list stays short by staying organized.</p>
       </div>
-      <div class="cats">
-        <a class="cat-tile" href="shop.html?cat=supplements">
-          <div class="count">5 PICKS</div>
-          <h3>Supplements</h3>
-          <p>The daily staples: minerals, performance, and everyday essentials \u2014 each with label math you can verify.</p>
-          <div class="subchips"><span>Minerals</span><span>Performance</span><span>Everyday Essentials</span></div>
-          <span class="go">Browse Supplements \u2192</span>
-        </a>
-        <a class="cat-tile alt" href="shop.html?cat=personal-care">
-          <div class="count">7 PICKS</div>
-          <h3>Personal Care</h3>
-          <p>What actually works on the outside \u2014 from scalp to glass skin.</p>
-          <div class="subchips"><span>Hair &amp; Scalp</span><span>Skincare</span></div>
-          <span class="go">Browse Personal Care \u2192</span>
-        </a>
-      </div>
+      %s
     </div>
 
     <div class="section">
@@ -1495,7 +1529,7 @@ def build_index():
     </div>
   </div>
 </main>
-""" % (rows, CART_ALL_HTML, latest_img, badge_pill(latest, "badge-sm"),
+""" % (BUILD_MONTH, rows, CART_ALL_HTML, cat_tiles(root), latest_img, badge_pill(latest, "badge-sm"),
        latest["pitch"], latest["slug"])
     return (head("Zero Regret Buys \u2014 Thirty picks. Zero regret.",
                  "Zero Regret Buys: a short, honest list of thirty worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
@@ -1515,7 +1549,7 @@ def build_shop():
         <div class="kicker">THE SHOP</div>
         <h2>Every pick, filterable.</h2>
         <p class="lead">All thirty Zero Regret Buys in one place. Search, filter by aisle, or sort \u2014 prices change constantly, so we never type them here: click through to see today\u2019s live price on Amazon.</p>
-        <p class="updated">Last updated: October 2026 \u00b7 List grows as new reel episodes drop.</p>
+        <p class="updated">Last updated: %(build_month)s \u00b7 List grows as new reel episodes drop.</p>
       </div>
 %(cmp)s
       <div class="toolbar">
@@ -1561,14 +1595,15 @@ def build_shop():
       </div>
       <p class="resultcount" id="result-count" role="status"></p>
       <div class="grid" id="shop-grid">%(cards)s</div>
-      <div class="empty" id="shop-empty">
+      <div class="empty" id="shop-empty" hidden>
         <h3>No picks match that.</h3>
         <p>Try a different search or clear the filters.</p>
       </div>
     </div>
   </div>
 </main>
-""" % {"cmp": cmp_table(root), "cards": cards, "cartall": CART_ALL_HTML}
+""" % {"cmp": cmp_table(root), "cards": cards, "cartall": CART_ALL_HTML,
+       "build_month": BUILD_MONTH}
     return (head("Shop all picks \u2014 Zero Regret Buys",
                  "Browse every Zero Regret Buy: supplements and personal care picks with one clear job each. Paid Amazon links labeled.",
                  "shop.html", root)
@@ -1615,7 +1650,7 @@ def build_product(p):
           <div class="k">GET THIS IF\u2026</div>
           <ul>%(getif)s</ul>
         </div>
-        <p class="updated">Updated October 2026</p>
+        <p class="updated">Updated %(build_month)s</p>
       </div>
       <aside class="pdp-buy" aria-label="Buy this pick">
         <div class="buycard">
@@ -1687,9 +1722,9 @@ def build_product(p):
        "bullets": bullets, "keyword": p["keyword"],
        "slug": p["slug"], "url": p["url"], "cart_url": p["cart_url"],
        "disclosure": DISCLOSURE, "sub": p["sub"], "desc": desc,
-       "rel": rel, "sq": sq_thumb(p, root)}
+       "rel": rel, "sq": sq_thumb(p, root), "build_month": BUILD_MONTH}
     return (head("%s \u2014 Zero Regret Buys" % p["title"],
-                 "%s Our verdict, who it\u2019s for, and the reel keyword %s. Paid Amazon link labeled." % (p["pitch"][:120], p["keyword"]),
+                 "%s Our verdict, who it\u2019s for, and the reel keyword %s. Paid Amazon link labeled." % (meta_pitch(p["pitch"]), p["keyword"]),
                  "products/%s.html" % p["slug"], root)
             + header(root, "shop.html", tab=False) + body + footer(root))
 
@@ -1705,7 +1740,7 @@ def build_about():
       <div class="section-head">
         <div class="kicker">ABOUT</div>
         <h2>We\u2019re the picky friend who reads labels.</h2>
-        <p class="updated">Updated October 2026</p>
+        <p class="updated">Updated %s</p>
       </div>
       <div class="prose">
         <p>Zero Regret Buys started as 60-second Instagram reels: a Skeptic and a Hype Guy arguing about one product while you watch. No scripts that read like ads, no \u201ctop 10\u201d filler \u2014 one product, one argument, one verdict.</p>
@@ -1739,7 +1774,7 @@ def build_about():
     </div>
   </div>
 </main>
-""" % DISCLOSURE
+""" % (BUILD_MONTH, DISCLOSURE)
     return (head("How we pick \u2014 Zero Regret Buys",
                  "Why Zero Regret Buys exists, the four rules every pick must pass, and the full affiliate disclosure.",
                  "about.html", root)
@@ -1760,13 +1795,13 @@ def build_faq():
         <div class="kicker">FAQ</div>
         <h2>Questions, answered.</h2>
         <p class="lead">The stuff people actually ask.</p>
-        <p class="updated">Updated October 2026</p>
+        <p class="updated">Updated %s</p>
       </div>
       %s
     </div>
   </div>
 </main>
-""" % items
+""" % (BUILD_MONTH, items)
     return (head("FAQ \u2014 Zero Regret Buys",
                  "Why no prices, how the commission works, and why the list stays short. Zero Regret Buys FAQ.",
                  "faq.html", root)
@@ -1805,7 +1840,7 @@ def build_terms():
       <div class="section-head">
         <div class="kicker">TERMS</div>
         <h2>Terms of use</h2>
-        <p class="updated">Updated October 2026</p>
+        <p class="updated">Updated %s</p>
       </div>
       <div class="prose">
         <p>Zero Regret Buys is a personal product-curation site and companion uploader tool operated by its owner. By using this site or the companion TikTok uploader, you agree to the following:</p>
@@ -1821,7 +1856,7 @@ def build_terms():
     </div>
   </div>
 </main>
-""" % root
+""" % (BUILD_MONTH, root)
     return (head("Terms of use \u2014 Zero Regret Buys",
                  "Terms of use for the Zero Regret Buys site and companion uploader tool.",
                  "terms.html", root)
@@ -1838,7 +1873,7 @@ def build_privacy():
       <div class="section-head">
         <div class="kicker">PRIVACY</div>
         <h2>Privacy policy</h2>
-        <p class="updated">Updated October 2026</p>
+        <p class="updated">Updated %s</p>
       </div>
       <div class="prose">
         <p>Zero Regret Buys collects as little as possible:</p>
@@ -1854,11 +1889,123 @@ def build_privacy():
     </div>
   </div>
 </main>
-""" % root
+""" % (BUILD_MONTH, root)
     return (head("Privacy policy \u2014 Zero Regret Buys",
                  "Privacy policy for the Zero Regret Buys site and companion uploader tool.",
                  "privacy.html", root)
             + header(root, "") + body + footer(root))
+
+
+SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-free.
+// Included in the footer of every page; does nothing when the shop grid
+// is absent (e.g. product pages), so it is safe to load site-wide.
+(function () {
+  "use strict";
+  var grid = document.getElementById("shop-grid");
+  if (!grid) return;
+
+  var search = document.getElementById("shop-search");
+  var sort = document.getElementById("shop-sort");
+  var count = document.getElementById("result-count");
+  var empty = document.getElementById("shop-empty");
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
+  var total = cards.length;
+  var state = { q: "", cat: "all", sub: "all", sort: "featured" };
+
+  var knownCats = [];
+  var knownSubs = [];
+  cards.forEach(function (card) {
+    if (knownCats.indexOf(card.dataset.cat) === -1) knownCats.push(card.dataset.cat);
+    if (knownSubs.indexOf(card.dataset.sub) === -1) knownSubs.push(card.dataset.sub);
+  });
+
+  function setPressed(group, value) {
+    var btns = document.querySelectorAll('.chip[data-group="' + group + '"]');
+    btns.forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.dataset.value === value ? "true" : "false");
+    });
+  }
+
+  function sortCards() {
+    var ordered = cards.slice();
+    if (state.sort === "az") {
+      ordered.sort(function (a, b) { return a.dataset.title.localeCompare(b.dataset.title); });
+    } else if (state.sort === "cat") {
+      ordered.sort(function (a, b) {
+        if (a.dataset.cat === b.dataset.cat) return a.dataset.title.localeCompare(b.dataset.title);
+        return a.dataset.cat.localeCompare(b.dataset.cat);
+      });
+    } else {
+      ordered.sort(function (a, b) { return Number(a.dataset.num) - Number(b.dataset.num); });
+    }
+    ordered.forEach(function (card) { grid.appendChild(card); });
+  }
+
+  function apply() {
+    var q = state.q.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function (card) {
+      var okCat = state.cat === "all" || card.dataset.cat === state.cat;
+      var okSub = state.sub === "all" || card.dataset.sub === state.sub;
+      var okQ = !q || (card.dataset.search || "").toLowerCase().indexOf(q) !== -1;
+      var show = okCat && okSub && okQ;
+      // Inline display (not the hidden attribute): .card sets display:flex,
+      // which would override it.
+      card.style.display = show ? "" : "none";
+      if (show) shown += 1;
+    });
+    sortCards();
+    if (count) {
+      count.textContent = shown === total
+        ? "Showing all " + total + " picks"
+        : "Showing " + shown + " of " + total + " picks";
+    }
+    if (empty) empty.hidden = shown !== 0;
+  }
+
+  document.querySelectorAll(".chip").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (btn.dataset.group === "cat") {
+        state.cat = btn.dataset.value;
+        if (state.cat !== "all" && state.sub !== "all") {
+          var subBtn = document.querySelector('.chip[data-group="sub"][data-value="' + state.sub + '"]');
+          if (subBtn && subBtn.dataset.cat && subBtn.dataset.cat !== state.cat) state.sub = "all";
+        }
+        setPressed("cat", state.cat);
+        setPressed("sub", state.sub);
+      } else {
+        state.sub = btn.dataset.value;
+        if (state.sub !== "all" && btn.dataset.cat) {
+          state.cat = btn.dataset.cat;
+          setPressed("cat", state.cat);
+        }
+        setPressed("sub", state.sub);
+      }
+      apply();
+    });
+  });
+
+  if (search) search.addEventListener("input", function () { state.q = search.value; apply(); });
+  if (sort) sort.addEventListener("change", function () { state.sort = sort.value; apply(); });
+
+  // Deep links (?cat= / ?sub=) apply on load; a sub implies its aisle
+  // unless a cat was given explicitly.
+  var params = new URLSearchParams(window.location.search);
+  var catParam = params.get("cat");
+  var subParam = params.get("sub");
+  if (catParam && knownCats.indexOf(catParam) !== -1) state.cat = catParam;
+  if (subParam && knownSubs.indexOf(subParam) !== -1) {
+    state.sub = subParam;
+    if (!catParam) {
+      var subBtn = document.querySelector('.chip[data-group="sub"][data-value="' + subParam + '"]');
+      if (subBtn && subBtn.dataset.cat) state.cat = subBtn.dataset.cat;
+    }
+  }
+  setPressed("cat", state.cat);
+  setPressed("sub", state.sub);
+  apply();
+})();
+"""
 
 
 def write(path, content):
@@ -1870,6 +2017,7 @@ def write(path, content):
 
 
 def main():
+    write("site.js", SITE_JS)
     write("index.html", build_index())
     write("shop.html", build_shop())
     write("about.html", build_about())
