@@ -3,7 +3,7 @@
    body, IBM Plex Mono for measurements only — Pharmacy shelf direction.
    Phase 4 (2026-11-25): shop grid + cards on the shelf tokens (border-only
    cards, photo-led, shelf-green badges and CTAs, light cartall strip).
-   Lime retired; shelf green is the accent on the hero, quick picks, and shop. */
+   Shelf green is the accent on the hero, quick picks, and shop. */
 
 :root {
   --ink: #1c1917;
@@ -128,13 +128,11 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   text-decoration: none; font-weight: 600; font-size: .92rem;
   color: var(--ink-soft); padding: 8px 12px; border-radius: 8px;
 }
-.mainnav a:hover { background: var(--line-soft); color: var(--ink); }
 .mainnav a[aria-current="page"] { color: var(--ink); background: var(--line-soft); }
 .nav-cta {
   background: var(--dark) !important; color: #fff !important;
   margin-left: 8px;
 }
-.nav-cta:hover { background: var(--dark-2) !important; }
 .cta-short { display: none; }
 
 /* mobile bottom tab bar */
@@ -196,15 +194,11 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   padding: 12px 24px; line-height: 1.2;
   transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
 .btn:active { transform: translateY(0); }
 .btn-shelf { background: var(--shelf-green); border-color: var(--shelf-green); color: #fff; }
-.btn-shelf:hover { background: #184a38; }
 .btn-outline { background: transparent; color: var(--dark); }
-.btn-outline:hover { background: var(--dark); color: #fff; }
 .btn-big { padding: 16px 32px; font-size: 1.05rem; }
 .btn-cart { background: var(--shelf-green); border-color: var(--shelf-green); }
-.btn-cart:hover { background: #184a38; }
 .paidnote { font-size: .75rem; color: var(--faint); }
 
 /* ---------- badges ---------- */
@@ -226,7 +220,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   border-radius: var(--radius); padding: 12px 16px 12px 12px;
   transition: border-color .15s ease;
 }
-.qp-row:hover { border-color: var(--shelf-green); }
 .qp-main {
   display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0;
   text-decoration: none;
@@ -250,9 +243,8 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   background: var(--card); color: var(--shelf-ink); text-decoration: none;
   border: 1px solid var(--shelf-line);
   border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden;
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: border-color .15s ease;
 }
-.cat-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .cat-tile .count { font-size: .72rem; font-weight: 800; letter-spacing: .16em; color: var(--shelf-green); }
 .cat-tile h3 { font-size: 1.5rem; }
 .cat-tile p { color: var(--shelf-ink-soft); font-size: .95rem; }
@@ -269,7 +261,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .job-tile { flex: 0 0 auto; scroll-snap-align: start; background: var(--card); border: 1px solid var(--shelf-line); border-radius: var(--radius); padding: 16px 20px; text-decoration: none; min-width: 150px; }
 .job-tile b { display: block; font-size: 1rem; color: var(--shelf-ink); }
 .job-tile span { font-size: .8rem; color: var(--shelf-muted); }
-.job-tile:hover { border-color: var(--shelf-green); }
 @media (min-width: 901px) {
   .job-rail { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
   .job-tile { min-width: 0; }
@@ -322,7 +313,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   border-radius: 999px; padding: 8px 16px; font-size: .85rem; font-weight: 600;
   transition: all .12s ease;
 }
-.chip:hover { border-color: var(--shelf-green); color: var(--shelf-ink); }
 .chip[aria-pressed="true"] { background: var(--shelf-green); border-color: var(--shelf-green); color: #fff; }
 .resultcount { font-size: .85rem; color: var(--shelf-muted); font-weight: 600; }
 
@@ -334,7 +324,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   transition: border-color .15s ease;
   position: relative;
 }
-.card:hover { border-color: var(--shelf-green); }
 /* Photo-led: the product photo is the top of the card, full-bleed, linked. */
 .card-photo { display: block; border-radius: 16px 16px 0 0; overflow: hidden; }
 /* The photo link sits flush in an overflow:hidden card, so the global outset
@@ -356,7 +345,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .cattag { padding: 0; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--shelf-muted); }
 .card h3 { padding: 10px 18px 0; font-size: 1.05rem; }
 .card h3 a { text-decoration: none; }
-.card h3 a:hover { text-decoration: underline; text-decoration-color: var(--shelf-green); text-decoration-thickness: 3px; }
 .pitch { padding: 8px 18px 0; font-size: .9rem; color: var(--shelf-ink-soft); flex: 1; }
 .card .btn { margin: 14px 18px 18px; }
 .empty {
@@ -372,7 +360,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .cmp thead th { background: var(--paper); color: var(--shelf-ink); font-family: var(--font-display); font-size: .85rem; letter-spacing: .02em; border-bottom: 2px solid var(--shelf-green); }
 .cmp thead th:first-child { border-radius: 0; }
 .cmp tbody tr:last-child td { border-bottom: 0; }
-.cmp tbody tr:hover td { background: var(--paper); }
 .cmp-prod { display: flex; align-items: center; gap: 12px; font-weight: 700; }
 .cmp-prod img { width: 48px; height: 48px; object-fit: cover; border-radius: 8px; border: 1px solid var(--shelf-line); }
 .cmp .btn { padding: 8px 16px; font-size: .8rem; white-space: nowrap; }
@@ -392,10 +379,8 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 /* ---------- PDP (product page) ---------- */
 .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); padding: 20px 0 4px; flex-wrap: wrap; }
 .breadcrumb a { text-decoration: none; font-weight: 600; }
-.breadcrumb a:hover { color: var(--ink); }
 .breadcrumb [aria-hidden="true"]::after { content: "/"; margin-left: 8px; color: var(--faint); }
 .pdp-back { display: inline-block; margin: 8px 0 20px; font-weight: 700; font-size: .9rem; text-decoration: none; color: var(--ink-soft); }
-.pdp-back:hover { color: var(--ink); }
 .pdp-head { margin-bottom: 24px; }
 .pdp-head .ep {
   font-size: .72rem; font-weight: 800; letter-spacing: .12em;
@@ -494,7 +479,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .buybar-title { font-weight: 700; font-size: .92rem; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .buybar-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex: none; }
 .buybar-cta .btn { padding: 10px 18px; font-size: .85rem; background: var(--shelf-green); border-color: var(--shelf-green); color: #fff; }
-.buybar-cta .btn:hover { background: #184a38; }
 .buybar-cta .paidnote { color: var(--faint-dark); }
 
 /* related */
@@ -523,7 +507,6 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 }
 .footer-col nav { display: flex; flex-direction: column; gap: 8px; }
 .footer-col nav a { text-decoration: none; font-size: .9rem; color: #d6d3d1; }
-.footer-col nav a:hover { color: #fff; text-decoration: underline; }
 .footer-disclosure {
   max-width: 1120px; margin-inline: auto; padding: 0 20px 24px;
   font-size: .8rem; color: var(--faint-dark); border-top: 1px solid rgba(255,255,255,.08);
@@ -544,6 +527,29 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 }
 .notfound h1 { margin: 8px 0 12px; }
 .notfound p { color: var(--muted); margin-bottom: 28px; }
+
+/* ---------- hover layer (desktop only) ---------- */
+/* All :hover states live here, gated to devices with a real hover
+   capability, so a tap on a phone never leaves a hover state stuck. */
+@media (hover: hover) {
+  .mainnav a:hover { background: var(--line-soft); color: var(--ink); }
+  .nav-cta:hover { background: var(--dark-2) !important; }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn-shelf:hover { background: #184a38; }
+  .btn-outline:hover { background: var(--dark); color: #fff; }
+  .btn-cart:hover { background: #184a38; }
+  .qp-row:hover { border-color: var(--shelf-green); }
+  .cat-tile:hover { border-color: var(--shelf-green); }
+  .job-tile:hover { border-color: var(--shelf-green); }
+  .chip:hover { border-color: var(--shelf-green); color: var(--shelf-ink); }
+  .card:hover { border-color: var(--shelf-green); }
+  .card h3 a:hover { text-decoration: underline; text-decoration-color: var(--shelf-green); text-decoration-thickness: 3px; }
+  .cmp tbody tr:hover td { background: var(--paper); }
+  .breadcrumb a:hover { color: var(--ink); }
+  .pdp-back:hover { color: var(--ink); }
+  .buybar-cta .btn:hover { background: #184a38; }
+  .footer-col nav a:hover { color: #fff; text-decoration: underline; }
+}
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
