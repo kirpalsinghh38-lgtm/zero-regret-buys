@@ -452,6 +452,10 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px;
 }
 .pdp-acc summary::-webkit-details-marker { display: none; }
+/* The summary sits flush in an overflow:hidden accordion, so the global outset
+   focus ring is clipped on three sides (only its bottom edge shows). Draw this
+   ring inside the header instead — same fix as the card photo in Phase 4b. */
+.pdp-acc summary:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: -3px; }
 .pdp-acc summary::after {
   content: "+"; font-size: 1.4rem; font-weight: 400; color: var(--shelf-green); flex: none;
   transition: transform .15s ease;
