@@ -1246,7 +1246,7 @@ def header(root, current, tab=True):
         % (root, href, ' aria-current="page"' if href == current else "",
            TAB_ICONS[href][0], TAB_ICONS[href][1])
         for href in TAB_ICONS)) if tab else ""
-    return """
+    return announce_strip() + """
 <header class="site-header">
   <div class="header-inner">
     <a class="brandmark" href="%sindex.html" aria-label="Zero Regret Buys — home">
@@ -1491,7 +1491,46 @@ def hero_shelf(root):
 
 
 # ---------------- index ----------------
-# ---------------- index ----------------
+# R5: banners. SEASONAL and ANNOUNCE are empty by default — they render
+# nothing until a real season / event is set. To fill the seasonal slot:
+#   SEASONAL = {"heading": "...", "line": "...", "slug": "olaplex-no3",
+#               "cta": "See the pick"}
+# To announce a real event: ANNOUNCE = "One line of text."
+SEASONAL = None
+ANNOUNCE = None
+
+
+def seasonal_banner(root):
+    """Story banner for the season (Section 10). Renders nothing when
+    SEASONAL is empty."""
+    if not SEASONAL:
+        return ""
+    p = next((x for x in PRODUCTS if x["slug"] == SEASONAL["slug"]), None)
+    if p is None:
+        return ""
+    img = ('<img src="%s%s" alt="%s product photo">' % (root, p["photos"][0], p["title"])
+           if p.get("photos") else "")
+    return """
+    <div class="section seasonal">
+      <div class="seasonal-img">%s</div>
+      <div class="seasonal-copy">
+        <h2>%s</h2>
+        <p class="lead">%s</p>
+        <p style="margin-top:16px"><a class="btn" href="%sproducts/%s.html">%s</a></p>
+      </div>
+    </div>
+""" % (img, SEASONAL["heading"], SEASONAL["line"], root, p["slug"],
+       SEASONAL.get("cta", "See the pick"))
+
+
+def announce_strip():
+    """One-line strip at the top of every page (Section 10). Renders
+    nothing when ANNOUNCE is empty."""
+    if not ANNOUNCE:
+        return ""
+    return '<div class="announce" role="status"><p>%s</p></div>' % ANNOUNCE
+
+
 def build_index():
     root = ""
     latest = next(p for p in PRODUCTS if p.get("latest"))
@@ -1543,7 +1582,7 @@ def build_index():
       </div>
       %s
     </div>
-
+%s
     <div class="section" id="quickpicks">
       <div class="section-head">
         <h2>Latest picks</h2>
@@ -1572,15 +1611,15 @@ def build_index():
     </div>
   </div>
 
-  <div class="trustbar">
+  <div class="truststrip">
     <div class="wrap">
-      <p><b>Thirty products.</b> Each label checked for the right form and honest facts-panel math. If it didn\u2019t pass, it\u2019s not here. <a href="about.html">How we pick \u2192</a></p>
+      <p>Paid Amazon links. 30 picks, checked, no prices typed. <a href="about.html">How we pick</a></p>
     </div>
   </div>
 </main>
 """ % (hero_shelf(root), latest_img, ep_badge(latest),
        badge_pill(latest, "badge-sm"), latest["title"], latest["pitch"], latest["slug"],
-       job_rail(root), cat_tiles(root), BUILD_MONTH, rows, CART_ALL_HTML)
+       job_rail(root), cat_tiles(root), seasonal_banner(root), BUILD_MONTH, rows, CART_ALL_HTML)
     return (head("Zero Regret Buys \u2014 Thirty picks. Zero regret.",
                  "Zero Regret Buys: a short, honest list of thirty worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
                  "index.html", root)

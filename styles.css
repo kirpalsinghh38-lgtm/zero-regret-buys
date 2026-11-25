@@ -16,7 +16,6 @@
   --line-soft: #f1ece3;
   --dark: #171310;
   --dark-2: #221d17;
-  --lime: #b8e62e;
   --radius: 14px;
   --radius-sm: 9px;
   --shadow: 0 1px 2px rgba(28, 25, 23, .05), 0 8px 24px -12px rgba(28, 25, 23, .18);
@@ -178,11 +177,15 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .hero-copy > *:nth-child(2) { animation-delay: .06s; }
 .hero-copy > *:nth-child(3) { animation-delay: .12s; }
 
-/* ---------- trustbar ---------- */
-.trustbar { background: var(--lime); color: var(--dark); }
-.trustbar .wrap { padding-block: 14px; }
-.trustbar p { font-size: .95rem; font-weight: 500; }
-.trustbar a { font-weight: 800; text-decoration: none; border-bottom: 2px solid var(--dark); }
+/* ---------- announcement strip ---------- */
+.announce { background: var(--shelf-green); color: #fff; }
+.announce p { max-width: 1120px; margin-inline: auto; padding: 10px 20px; text-align: center; font-size: .9rem; font-weight: 600; }
+
+/* ---------- trust strip ---------- */
+.truststrip { border-top: 1px solid var(--line); }
+.truststrip .wrap { padding-block: 18px; }
+.truststrip p { font-size: .95rem; font-weight: 500; color: var(--shelf-green); text-align: center; }
+.truststrip a { font-weight: 800; color: var(--shelf-green); }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -284,6 +287,17 @@ h3 { font-size: 1.2rem; font-weight: 700; }
 .spot-copy .ep { font-size: .72rem; font-weight: 800; letter-spacing: .12em; color: var(--shelf-muted); }
 .spot-copy .ep .latest { color: var(--shelf-green); }
 .spot-copy h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+
+/* ---------- seasonal banner ---------- */
+.seasonal {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 0;
+  background: var(--card); border: 1px solid var(--shelf-line);
+  border-radius: calc(var(--radius) + 6px); overflow: hidden;
+}
+.seasonal-img { min-height: 320px; }
+.seasonal-img img { width: 100%; height: 100%; object-fit: cover; }
+.seasonal-copy { padding: 40px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.seasonal-copy h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
 
 /* ---------- shop: toolbar, chips, grid ---------- */
 .toolbar { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
@@ -538,6 +552,9 @@ h3 { font-size: 1.2rem; font-weight: 700; }
   .spotlight { grid-template-columns: 1fr; }
   .spot-img { min-height: 240px; }
   .spot-copy { padding: 28px; }
+  .seasonal { grid-template-columns: 1fr; }
+  .seasonal-img { min-height: 240px; }
+  .seasonal-copy { padding: 28px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 680px) {
