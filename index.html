@@ -24,13 +24,14 @@
     </a>
     <nav class="mainnav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a>
+      <a class="nav-picks js-open-shortlist" href="#">Your picks <span class="picks-count" data-picks-count>0</span></a>
       <a class="nav-cta" href="shop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
 </header>
 
 <nav class="tabbar" aria-label="Mobile">
-  <a href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="shop.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a>
+  <a href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="shop.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a><button type="button" class="tab-picks js-open-shortlist" aria-label="Your picks"><span class="tab-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4.5L6 21z"/></svg><span class="picks-count" data-picks-count>0</span></span><span>Picks</span></button>
 </nav>
 
 <main id="main">
@@ -51,10 +52,14 @@
 
 <article class="card" data-num="30" data-title="Olaplex No.3 Hair Perfector"
          data-cat="personal-care" data-sub="haircare" data-job="hair-scalp"
-         data-search="Olaplex No.3 Hair Perfector The at-home bond builder — 22,000+ reviews. Repairs the look of damaged hair and reduces breakage. The salon step you do in your shower. Personal Care Haircare Damaged Hair REPAIR">
-  <a class="card-photo" href="products/olaplex-no3.html"><img src="images/products/olaplex-no3.jpg" alt="Olaplex No.3 Hair Perfector product photo" loading="lazy"></a>
+         data-slug="olaplex-no3" data-asin="B08TWTQDCX" data-search="Olaplex No.3 Hair Perfector The at-home bond builder — 22,000+ reviews. Repairs the look of damaged hair and reduces breakage. The salon step you do in your shower. Personal Care Haircare Damaged Hair REPAIR ep30">
+  <div class="card-photo">
+    <a href="products/olaplex-no3.html"><img src="images/products/olaplex-no3.jpg" alt="Olaplex No.3 Hair Perfector product photo" loading="lazy"></a>
+    <span class="newtag">New</span>
+    <button type="button" class="savebtn js-save" data-slug="olaplex-no3" data-asin="B08TWTQDCX" aria-pressed="false" aria-label="Save Olaplex No.3 Hair Perfector to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Damaged Hair</span>
+    <div class="card-meta"><span class="badge">Best for Damaged Hair</span> <span class="ep">Ep 30</span></div>
     <h3><a href="products/olaplex-no3.html">Olaplex No.3 Hair Perfector</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08TWTQDCX?tag=zeroregretb04-20"
@@ -64,10 +69,14 @@
 </article>
 <article class="card" data-num="29" data-title="Comfier Cordless Scalp Massager"
          data-cat="gadgets" data-sub="recovery" data-job="hair-scalp"
-         data-search="Comfier Cordless Scalp Massager A cordless scalp massager with deep-kneading nodes — waterproof, for stress relief and the best head massage you’ve had at home. Gadgets Recovery Scalp Care KNEAD">
-  <a class="card-photo" href="products/scalp-massager.html"><img src="images/products/scalp-massager.jpg" alt="Comfier Cordless Scalp Massager product photo" loading="lazy"></a>
+         data-slug="scalp-massager" data-asin="B08KGD8JWK" data-search="Comfier Cordless Scalp Massager A cordless scalp massager with deep-kneading nodes — waterproof, for stress relief and the best head massage you’ve had at home. Gadgets Recovery Scalp Care KNEAD ep29">
+  <div class="card-photo">
+    <a href="products/scalp-massager.html"><img src="images/products/scalp-massager.jpg" alt="Comfier Cordless Scalp Massager product photo" loading="lazy"></a>
+    <span class="newtag">New</span>
+    <button type="button" class="savebtn js-save" data-slug="scalp-massager" data-asin="B08KGD8JWK" aria-pressed="false" aria-label="Save Comfier Cordless Scalp Massager to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Scalp Care</span>
+    <div class="card-meta"><span class="badge">Best for Scalp Care</span> <span class="ep">Ep 29</span></div>
     <h3><a href="products/scalp-massager.html">Comfier Cordless Scalp Massager</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08KGD8JWK?tag=zeroregretb04-20"
@@ -77,10 +86,14 @@
 </article>
 <article class="card" data-num="28" data-title="ELEBOX Acupressure Mat + Pillow Set"
          data-cat="gadgets" data-sub="recovery" data-job="body-recovery"
-         data-search="ELEBOX Acupressure Mat + Pillow Set An acupressure mat and pillow set for back and neck relief — lie back, breathe, decompress. The 20-minute reset. Gadgets Recovery Back Relief RELIEF">
-  <a class="card-photo" href="products/acupressure-mat.html"><img src="images/products/acupressure-mat.jpg" alt="ELEBOX Acupressure Mat + Pillow Set product photo" loading="lazy"></a>
+         data-slug="acupressure-mat" data-asin="B07M9CGZNY" data-search="ELEBOX Acupressure Mat + Pillow Set An acupressure mat and pillow set for back and neck relief — lie back, breathe, decompress. The 20-minute reset. Gadgets Recovery Back Relief RELIEF ep28">
+  <div class="card-photo">
+    <a href="products/acupressure-mat.html"><img src="images/products/acupressure-mat.jpg" alt="ELEBOX Acupressure Mat + Pillow Set product photo" loading="lazy"></a>
+    <span class="newtag">New</span>
+    <button type="button" class="savebtn js-save" data-slug="acupressure-mat" data-asin="B07M9CGZNY" aria-pressed="false" aria-label="Save ELEBOX Acupressure Mat + Pillow Set to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Back Relief</span>
+    <div class="card-meta"><span class="badge">Best for Back Relief</span> <span class="ep">Ep 28</span></div>
     <h3><a href="products/acupressure-mat.html">ELEBOX Acupressure Mat + Pillow Set</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07M9CGZNY?tag=zeroregretb04-20"
@@ -90,10 +103,14 @@
 </article>
 <article class="card" data-num="27" data-title="Neutrogena Hydro Boost Gel Cream"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="Neutrogena Hydro Boost Gel Cream A hyaluronic gel-cream for instant hydration — lightweight, never greasy. The drugstore hydrator that punches above its price. Personal Care Skincare Lightweight Hydration BOOST">
-  <a class="card-photo" href="products/hydro-boost-gel.html"><img src="images/products/hydro-boost-gel.jpg" alt="Neutrogena Hydro Boost Gel Cream product photo" loading="lazy"></a>
+         data-slug="hydro-boost-gel" data-asin="B00YPBGIIS" data-search="Neutrogena Hydro Boost Gel Cream A hyaluronic gel-cream for instant hydration — lightweight, never greasy. The drugstore hydrator that punches above its price. Personal Care Skincare Lightweight Hydration BOOST ep27">
+  <div class="card-photo">
+    <a href="products/hydro-boost-gel.html"><img src="images/products/hydro-boost-gel.jpg" alt="Neutrogena Hydro Boost Gel Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="hydro-boost-gel" data-asin="B00YPBGIIS" aria-pressed="false" aria-label="Save Neutrogena Hydro Boost Gel Cream to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Lightweight Hydration</span>
+    <div class="card-meta"><span class="badge">Best for Lightweight Hydration</span> <span class="ep">Ep 27</span></div>
     <h3><a href="products/hydro-boost-gel.html">Neutrogena Hydro Boost Gel Cream</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00YPBGIIS?tag=zeroregretb04-20"
@@ -103,10 +120,14 @@
 </article>
 <article class="card" data-num="26" data-title="The Ordinary Niacinamide 10% + Zinc 1%"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="The Ordinary Niacinamide 10% + Zinc 1% The cult pore-minimizer — 10% niacinamide with 1% zinc, 51,000+ reviews. Regulates oil and refines the look of pores. Personal Care Skincare Pores & Oil PORES">
-  <a class="card-photo" href="products/ordinary-niacinamide.html"><img src="images/products/ordinary-niacinamide.jpg" alt="The Ordinary Niacinamide 10% + Zinc 1% product photo" loading="lazy"></a>
+         data-slug="ordinary-niacinamide" data-asin="B01MDTVZTZ" data-search="The Ordinary Niacinamide 10% + Zinc 1% The cult pore-minimizer — 10% niacinamide with 1% zinc, 51,000+ reviews. Regulates oil and refines the look of pores. Personal Care Skincare Pores & Oil PORES ep26">
+  <div class="card-photo">
+    <a href="products/ordinary-niacinamide.html"><img src="images/products/ordinary-niacinamide.jpg" alt="The Ordinary Niacinamide 10% + Zinc 1% product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="ordinary-niacinamide" data-asin="B01MDTVZTZ" aria-pressed="false" aria-label="Save The Ordinary Niacinamide 10% + Zinc 1% to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Pores & Oil</span>
+    <div class="card-meta"><span class="badge">Best for Pores & Oil</span> <span class="ep">Ep 26</span></div>
     <h3><a href="products/ordinary-niacinamide.html">The Ordinary Niacinamide 10% + Zinc 1%</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01MDTVZTZ?tag=zeroregretb04-20"
@@ -116,10 +137,14 @@
 </article>
 <article class="card" data-num="25" data-title="CeraVe Moisturizing Cream"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="CeraVe Moisturizing Cream The 24-hour moisturizer with three essential ceramides — dermatologist-developed, fragrance-free. The tub that dermatologists actually name. Personal Care Skincare 24hr Moisture SOFT">
-  <a class="card-photo" href="products/cerave-cream.html"><img src="images/products/cerave-cream.jpg" alt="CeraVe Moisturizing Cream product photo" loading="lazy"></a>
+         data-slug="cerave-cream" data-asin="B083GGFTPW" data-search="CeraVe Moisturizing Cream The 24-hour moisturizer with three essential ceramides — dermatologist-developed, fragrance-free. The tub that dermatologists actually name. Personal Care Skincare 24hr Moisture SOFT ep25">
+  <div class="card-photo">
+    <a href="products/cerave-cream.html"><img src="images/products/cerave-cream.jpg" alt="CeraVe Moisturizing Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="cerave-cream" data-asin="B083GGFTPW" aria-pressed="false" aria-label="Save CeraVe Moisturizing Cream to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for 24hr Moisture</span>
+    <div class="card-meta"><span class="badge">Best for 24hr Moisture</span> <span class="ep">Ep 25</span></div>
     <h3><a href="products/cerave-cream.html">CeraVe Moisturizing Cream</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B083GGFTPW?tag=zeroregretb04-20"
@@ -129,10 +154,14 @@
 </article>
 <article class="card" data-num="24" data-title="Jamieson Melatonin 10mg Dual-Action"
          data-cat="supplements" data-sub="sleep" data-job="sleep"
-         data-search="Jamieson Melatonin 10mg Dual-Action A dual-action melatonin — helps you fall asleep faster and resets a scrambled sleep cycle. The training-wheels bottle for broken sleep. Supplements Sleep Falling Asleep REST">
-  <a class="card-photo" href="products/melatonin-10mg.html"><img src="images/products/melatonin-10mg.jpg" alt="Jamieson Melatonin 10mg Dual-Action product photo" loading="lazy"></a>
+         data-slug="melatonin-10mg" data-asin="B0797NJW1Q" data-search="Jamieson Melatonin 10mg Dual-Action A dual-action melatonin — helps you fall asleep faster and resets a scrambled sleep cycle. The training-wheels bottle for broken sleep. Supplements Sleep Falling Asleep REST ep24">
+  <div class="card-photo">
+    <a href="products/melatonin-10mg.html"><img src="images/products/melatonin-10mg.jpg" alt="Jamieson Melatonin 10mg Dual-Action product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="melatonin-10mg" data-asin="B0797NJW1Q" aria-pressed="false" aria-label="Save Jamieson Melatonin 10mg Dual-Action to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Falling Asleep</span>
+    <div class="card-meta"><span class="badge">Best for Falling Asleep</span> <span class="ep">Ep 24</span></div>
     <h3><a href="products/melatonin-10mg.html">Jamieson Melatonin 10mg Dual-Action</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0797NJW1Q?tag=zeroregretb04-20"
@@ -142,10 +171,14 @@
 </article>
 <article class="card" data-num="23" data-title="Webber Naturals Turmeric Curcumin + Black Pepper"
          data-cat="supplements" data-sub="joints" data-job="body-recovery"
-         data-search="Webber Naturals Turmeric Curcumin + Black Pepper A turmeric curcumin with black pepper extract — the pepper boosts absorption. For joint comfort and everyday inflammation support. Supplements Joints Joint Comfort JOINTS">
-  <a class="card-photo" href="products/turmeric-curcumin.html"><img src="images/products/turmeric-curcumin.jpg" alt="Webber Naturals Turmeric Curcumin + Black Pepper product photo" loading="lazy"></a>
+         data-slug="turmeric-curcumin" data-asin="B09T8PKKRG" data-search="Webber Naturals Turmeric Curcumin + Black Pepper A turmeric curcumin with black pepper extract — the pepper boosts absorption. For joint comfort and everyday inflammation support. Supplements Joints Joint Comfort JOINTS ep23">
+  <div class="card-photo">
+    <a href="products/turmeric-curcumin.html"><img src="images/products/turmeric-curcumin.jpg" alt="Webber Naturals Turmeric Curcumin + Black Pepper product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="turmeric-curcumin" data-asin="B09T8PKKRG" aria-pressed="false" aria-label="Save Webber Naturals Turmeric Curcumin + Black Pepper to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Joint Comfort</span>
+    <div class="card-meta"><span class="badge">Best for Joint Comfort</span> <span class="ep">Ep 23</span></div>
     <h3><a href="products/turmeric-curcumin.html">Webber Naturals Turmeric Curcumin + Black Pepper</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B09T8PKKRG?tag=zeroregretb04-20"
@@ -155,10 +188,14 @@
 </article>
 <article class="card" data-num="22" data-title="Nature's Bounty Vitamin B12 2500mcg"
          data-cat="supplements" data-sub="energy" data-job="inner-health"
-         data-search="Nature's Bounty Vitamin B12 2500mcg A high-potency B12 for energy metabolism — cherry-flavoured fast-dissolve tablets. B12 helps prevent deficiency, and this is the easy daily. Supplements Energy Energy Metabolism ENERGY">
-  <a class="card-photo" href="products/b12-2500.html"><img src="images/products/b12-2500.jpg" alt="Nature's Bounty Vitamin B12 2500mcg product photo" loading="lazy"></a>
+         data-slug="b12-2500" data-asin="B00BMEHEXE" data-search="Nature's Bounty Vitamin B12 2500mcg A high-potency B12 for energy metabolism — cherry-flavoured fast-dissolve tablets. B12 helps prevent deficiency, and this is the easy daily. Supplements Energy Energy Metabolism ENERGY ep22">
+  <div class="card-photo">
+    <a href="products/b12-2500.html"><img src="images/products/b12-2500.jpg" alt="Nature's Bounty Vitamin B12 2500mcg product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="b12-2500" data-asin="B00BMEHEXE" aria-pressed="false" aria-label="Save Nature's Bounty Vitamin B12 2500mcg to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Energy Metabolism</span>
+    <div class="card-meta"><span class="badge">Best for Energy Metabolism</span> <span class="ep">Ep 22</span></div>
     <h3><a href="products/b12-2500.html">Nature's Bounty Vitamin B12 2500mcg</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00BMEHEXE?tag=zeroregretb04-20"
@@ -168,10 +205,14 @@
 </article>
 <article class="card" data-num="21" data-title="Philips SmartSleep Wake-Up Light"
          data-cat="gadgets" data-sub="sleep" data-job="sleep"
-         data-search="Philips SmartSleep Wake-Up Light A sunrise-simulating alarm — 14,000+ ratings. Wake up to gradually brightening light, not a blaring alarm. Gadgets Sleep Mornings DAWN">
-  <a class="card-photo" href="products/philips-wake-up.html"><img src="images/products/philips-wake-up.jpg" alt="Philips SmartSleep Wake-Up Light product photo" loading="lazy"></a>
+         data-slug="philips-wake-up" data-asin="B0093162RM" data-search="Philips SmartSleep Wake-Up Light A sunrise-simulating alarm — 14,000+ ratings. Wake up to gradually brightening light, not a blaring alarm. Gadgets Sleep Mornings DAWN ep21">
+  <div class="card-photo">
+    <a href="products/philips-wake-up.html"><img src="images/products/philips-wake-up.jpg" alt="Philips SmartSleep Wake-Up Light product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="philips-wake-up" data-asin="B0093162RM" aria-pressed="false" aria-label="Save Philips SmartSleep Wake-Up Light to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Mornings</span>
+    <div class="card-meta"><span class="badge">Best for Mornings</span> <span class="ep">Ep 21</span></div>
     <h3><a href="products/philips-wake-up.html">Philips SmartSleep Wake-Up Light</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0093162RM?tag=zeroregretb04-20"
@@ -181,10 +222,14 @@
 </article>
 <article class="card" data-num="20" data-title="Schiara Posture Corrector"
          data-cat="gadgets" data-sub="posture" data-job="body-recovery"
-         data-search="Schiara Posture Corrector An adjustable posture corrector — 30,000+ ratings. A chiropractor noticed the difference in weeks. Gadgets Posture Posture TALL">
-  <a class="card-photo" href="products/schiara-posture.html"><img src="images/products/schiara-posture.jpg" alt="Schiara Posture Corrector product photo" loading="lazy"></a>
+         data-slug="schiara-posture" data-asin="B07VST9VYH" data-search="Schiara Posture Corrector An adjustable posture corrector — 30,000+ ratings. A chiropractor noticed the difference in weeks. Gadgets Posture Posture TALL ep20">
+  <div class="card-photo">
+    <a href="products/schiara-posture.html"><img src="images/products/schiara-posture.jpg" alt="Schiara Posture Corrector product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="schiara-posture" data-asin="B07VST9VYH" aria-pressed="false" aria-label="Save Schiara Posture Corrector to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Posture</span>
+    <div class="card-meta"><span class="badge">Best for Posture</span> <span class="ep">Ep 20</span></div>
     <h3><a href="products/schiara-posture.html">Schiara Posture Corrector</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07VST9VYH?tag=zeroregretb04-20"
@@ -194,10 +239,14 @@
 </article>
 <article class="card" data-num="19" data-title="MyHalos 3D Blackout Sleep Mask"
          data-cat="gadgets" data-sub="sleep" data-job="sleep"
-         data-search="MyHalos 3D Blackout Sleep Mask A 3D contoured blackout mask — 100% darkness, zero eye pressure. Insomniacs call it a game-changer. Gadgets Sleep Blackout Sleep DARK">
-  <a class="card-photo" href="products/myhalos-sleep-mask.html"><img src="images/products/myhalos-sleep-mask.jpg" alt="MyHalos 3D Blackout Sleep Mask product photo" loading="lazy"></a>
+         data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" data-search="MyHalos 3D Blackout Sleep Mask A 3D contoured blackout mask — 100% darkness, zero eye pressure. Insomniacs call it a game-changer. Gadgets Sleep Blackout Sleep DARK ep19">
+  <div class="card-photo">
+    <a href="products/myhalos-sleep-mask.html"><img src="images/products/myhalos-sleep-mask.jpg" alt="MyHalos 3D Blackout Sleep Mask product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" aria-pressed="false" aria-label="Save MyHalos 3D Blackout Sleep Mask to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Blackout Sleep</span>
+    <div class="card-meta"><span class="badge">Best for Blackout Sleep</span> <span class="ep">Ep 19</span></div>
     <h3><a href="products/myhalos-sleep-mask.html">MyHalos 3D Blackout Sleep Mask</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B09CZ68WV3?tag=zeroregretb04-20"
@@ -207,10 +256,14 @@
 </article>
 <article class="card" data-num="18" data-title="Garnier Ombrelle Anti-Shine SPF 60"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="Garnier Ombrelle Anti-Shine SPF 60 Canada’s daily sunscreen — SPF 60, lightweight, no white cast. The one reviewers actually wear every day. Personal Care Skincare Daily SPF SHADE">
-  <a class="card-photo" href="products/ombrelle-spf60.html"><img src="images/products/ombrelle-spf60.jpg" alt="Garnier Ombrelle Anti-Shine SPF 60 product photo" loading="lazy"></a>
+         data-slug="ombrelle-spf60" data-asin="B081DNB1B2" data-search="Garnier Ombrelle Anti-Shine SPF 60 Canada’s daily sunscreen — SPF 60, lightweight, no white cast. The one reviewers actually wear every day. Personal Care Skincare Daily SPF SHADE ep18">
+  <div class="card-photo">
+    <a href="products/ombrelle-spf60.html"><img src="images/products/ombrelle-spf60.jpg" alt="Garnier Ombrelle Anti-Shine SPF 60 product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="ombrelle-spf60" data-asin="B081DNB1B2" aria-pressed="false" aria-label="Save Garnier Ombrelle Anti-Shine SPF 60 to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Daily SPF</span>
+    <div class="card-meta"><span class="badge">Best for Daily SPF</span> <span class="ep">Ep 18</span></div>
     <h3><a href="products/ombrelle-spf60.html">Garnier Ombrelle Anti-Shine SPF 60</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B081DNB1B2?tag=zeroregretb04-20"
@@ -220,10 +273,14 @@
 </article>
 <article class="card" data-num="17" data-title="The Ordinary Hyaluronic Acid 2% + B5"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="The Ordinary Hyaluronic Acid 2% + B5 The cult budget hydrator — 2% hyaluronic acid with B5. A 73-year-old reviewer said it virtually erased her fine lines. Personal Care Skincare Budget Hydration QUENCH">
-  <a class="card-photo" href="products/ordinary-hyaluronic.html"><img src="images/products/ordinary-hyaluronic.jpg" alt="The Ordinary Hyaluronic Acid 2% + B5 product photo" loading="lazy"></a>
+         data-slug="ordinary-hyaluronic" data-asin="B01MYEZPC8" data-search="The Ordinary Hyaluronic Acid 2% + B5 The cult budget hydrator — 2% hyaluronic acid with B5. A 73-year-old reviewer said it virtually erased her fine lines. Personal Care Skincare Budget Hydration QUENCH ep17">
+  <div class="card-photo">
+    <a href="products/ordinary-hyaluronic.html"><img src="images/products/ordinary-hyaluronic.jpg" alt="The Ordinary Hyaluronic Acid 2% + B5 product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="ordinary-hyaluronic" data-asin="B01MYEZPC8" aria-pressed="false" aria-label="Save The Ordinary Hyaluronic Acid 2% + B5 to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Budget Hydration</span>
+    <div class="card-meta"><span class="badge">Best for Budget Hydration</span> <span class="ep">Ep 17</span></div>
     <h3><a href="products/ordinary-hyaluronic.html">The Ordinary Hyaluronic Acid 2% + B5</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01MYEZPC8?tag=zeroregretb04-20"
@@ -233,10 +290,14 @@
 </article>
 <article class="card" data-num="16" data-title="TruSkin Vitamin C Serum"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="TruSkin Vitamin C Serum A vitamin C serum for brighter-looking skin — 106,000+ ratings. People say their skin looks brighter and spots are fading. Personal Care Skincare Brightness GLOW">
-  <a class="card-photo" href="products/truskin-vitamin-c.html"><img src="images/products/truskin-vitamin-c.jpg" alt="TruSkin Vitamin C Serum product photo" loading="lazy"></a>
+         data-slug="truskin-vitamin-c" data-asin="B01M4MCUAF" data-search="TruSkin Vitamin C Serum A vitamin C serum for brighter-looking skin — 106,000+ ratings. People say their skin looks brighter and spots are fading. Personal Care Skincare Brightness GLOW ep16">
+  <div class="card-photo">
+    <a href="products/truskin-vitamin-c.html"><img src="images/products/truskin-vitamin-c.jpg" alt="TruSkin Vitamin C Serum product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="truskin-vitamin-c" data-asin="B01M4MCUAF" aria-pressed="false" aria-label="Save TruSkin Vitamin C Serum to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Brightness</span>
+    <div class="card-meta"><span class="badge">Best for Brightness</span> <span class="ep">Ep 16</span></div>
     <h3><a href="products/truskin-vitamin-c.html">TruSkin Vitamin C Serum</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01M4MCUAF?tag=zeroregretb04-20"
@@ -246,10 +307,14 @@
 </article>
 <article class="card" data-num="15" data-title="Webber Naturals Probiotic 30 Billion"
          data-cat="supplements" data-sub="gut-health" data-job="inner-health"
-         data-search="Webber Naturals Probiotic 30 Billion A 30-billion CFU probiotic with 8 strains — one capsule daily. People say it sorted their bloating and gut issues. Supplements Gut Health Gut Health GUT">
-  <a class="card-photo" href="products/probiotic-30b.html"><img src="images/products/probiotic-30b.jpg" alt="Webber Naturals Probiotic 30 Billion product photo" loading="lazy"></a>
+         data-slug="probiotic-30b" data-asin="B00L3WSHDG" data-search="Webber Naturals Probiotic 30 Billion A 30-billion CFU probiotic with 8 strains — one capsule daily. People say it sorted their bloating and gut issues. Supplements Gut Health Gut Health GUT ep15">
+  <div class="card-photo">
+    <a href="products/probiotic-30b.html"><img src="images/products/probiotic-30b.jpg" alt="Webber Naturals Probiotic 30 Billion product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="probiotic-30b" data-asin="B00L3WSHDG" aria-pressed="false" aria-label="Save Webber Naturals Probiotic 30 Billion to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Gut Health</span>
+    <div class="card-meta"><span class="badge">Best for Gut Health</span> <span class="ep">Ep 15</span></div>
     <h3><a href="products/probiotic-30b.html">Webber Naturals Probiotic 30 Billion</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00L3WSHDG?tag=zeroregretb04-20"
@@ -259,10 +324,14 @@
 </article>
 <article class="card" data-num="14" data-title="Organika Enhanced Collagen Powder"
          data-cat="supplements" data-sub="beauty" data-job="hair-scalp"
-         data-search="Organika Enhanced Collagen Powder A Canadian-made collagen powder — unflavoured, 500g — for hair, skin, and nails. People say their hair got thicker and nails stronger. Supplements Beauty Hair, Skin & Nails PLUMP">
-  <a class="card-photo" href="products/organika-collagen.html"><img src="images/products/organika-collagen.jpg" alt="Organika Enhanced Collagen Powder product photo" loading="lazy"></a>
+         data-slug="organika-collagen" data-asin="B01MZ1FC46" data-search="Organika Enhanced Collagen Powder A Canadian-made collagen powder — unflavoured, 500g — for hair, skin, and nails. People say their hair got thicker and nails stronger. Supplements Beauty Hair, Skin & Nails PLUMP ep14">
+  <div class="card-photo">
+    <a href="products/organika-collagen.html"><img src="images/products/organika-collagen.jpg" alt="Organika Enhanced Collagen Powder product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="organika-collagen" data-asin="B01MZ1FC46" aria-pressed="false" aria-label="Save Organika Enhanced Collagen Powder to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Hair, Skin & Nails</span>
+    <div class="card-meta"><span class="badge">Best for Hair, Skin & Nails</span> <span class="ep">Ep 14</span></div>
     <h3><a href="products/organika-collagen.html">Organika Enhanced Collagen Powder</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01MZ1FC46?tag=zeroregretb04-20"
@@ -272,10 +341,14 @@
 </article>
 <article class="card" data-num="13" data-title="Webber Naturals Ashwagandha 7200mg (KSM-66)"
          data-cat="supplements" data-sub="adaptogens" data-job="sleep"
-         data-search="Webber Naturals Ashwagandha 7200mg (KSM-66) A KSM-66 ashwagandha — the studied extract form — for stress and sleep. People say it calmed their stress and fixed their sleep. Supplements Adaptogens Stress & Sleep CALM">
-  <a class="card-photo" href="products/ashwagandha-ksm66.html"><img src="images/products/ashwagandha-ksm66.jpg" alt="Webber Naturals Ashwagandha 7200mg (KSM-66) product photo" loading="lazy"></a>
+         data-slug="ashwagandha-ksm66" data-asin="B0B8PGT48W" data-search="Webber Naturals Ashwagandha 7200mg (KSM-66) A KSM-66 ashwagandha — the studied extract form — for stress and sleep. People say it calmed their stress and fixed their sleep. Supplements Adaptogens Stress & Sleep CALM ep13">
+  <div class="card-photo">
+    <a href="products/ashwagandha-ksm66.html"><img src="images/products/ashwagandha-ksm66.jpg" alt="Webber Naturals Ashwagandha 7200mg (KSM-66) product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="ashwagandha-ksm66" data-asin="B0B8PGT48W" aria-pressed="false" aria-label="Save Webber Naturals Ashwagandha 7200mg (KSM-66) to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Stress & Sleep</span>
+    <div class="card-meta"><span class="badge">Best for Stress & Sleep</span> <span class="ep">Ep 13</span></div>
     <h3><a href="products/ashwagandha-ksm66.html">Webber Naturals Ashwagandha 7200mg (KSM-66)</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0B8PGT48W?tag=zeroregretb04-20"
@@ -285,10 +358,14 @@
 </article>
 <article class="card" data-num="12" data-title="The Ordinary Azelaic Acid Suspension 10%"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="The Ordinary Azelaic Acid Suspension 10% A 10% azelaic acid suspension for the look of blemish-prone skin and a brighter, more even tone. The multitasker that doesn’t brag. Personal Care Skincare Even Tone EVEN">
-  <a class="card-photo" href="products/azelaic-acid-10.html"><img src="images/products/azelaic-acid-10.png" alt="The Ordinary Azelaic Acid Suspension 10% product photo" loading="lazy"></a>
+         data-slug="azelaic-acid-10" data-asin="B06WD5J8KY" data-search="The Ordinary Azelaic Acid Suspension 10% A 10% azelaic acid suspension for the look of blemish-prone skin and a brighter, more even tone. The multitasker that doesn’t brag. Personal Care Skincare Even Tone EVEN ep12">
+  <div class="card-photo">
+    <a href="products/azelaic-acid-10.html"><img src="images/products/azelaic-acid-10.png" alt="The Ordinary Azelaic Acid Suspension 10% product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="azelaic-acid-10" data-asin="B06WD5J8KY" aria-pressed="false" aria-label="Save The Ordinary Azelaic Acid Suspension 10% to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Even Tone</span>
+    <div class="card-meta"><span class="badge">Best for Even Tone</span> <span class="ep">Ep 12</span></div>
     <h3><a href="products/azelaic-acid-10.html">The Ordinary Azelaic Acid Suspension 10%</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B06WD5J8KY?tag=zeroregretb04-20"
@@ -298,10 +375,14 @@
 </article>
 <article class="card" data-num="11" data-title="Complex 15 Daily Face Cream"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="Complex 15 Daily Face Cream A propylene-glycol daily face cream — hypoallergenic, unscented, non-greasy, oil-free. The Canadian pharmacy answer to the viral cheap-cream slot. Personal Care Skincare Dry Skin DEW">
-  <a class="card-photo" href="products/complex-15-cream.html"><img src="images/products/complex-15.jpg" alt="Complex 15 Daily Face Cream product photo" loading="lazy"></a>
+         data-slug="complex-15-cream" data-asin="B00BPDF0YC" data-search="Complex 15 Daily Face Cream A propylene-glycol daily face cream — hypoallergenic, unscented, non-greasy, oil-free. The Canadian pharmacy answer to the viral cheap-cream slot. Personal Care Skincare Dry Skin DEW ep11">
+  <div class="card-photo">
+    <a href="products/complex-15-cream.html"><img src="images/products/complex-15.jpg" alt="Complex 15 Daily Face Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="complex-15-cream" data-asin="B00BPDF0YC" aria-pressed="false" aria-label="Save Complex 15 Daily Face Cream to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Dry Skin</span>
+    <div class="card-meta"><span class="badge">Best for Dry Skin</span> <span class="ep">Ep 11</span></div>
     <h3><a href="products/complex-15-cream.html">Complex 15 Daily Face Cream</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00BPDF0YC?tag=zeroregretb04-20"
@@ -311,10 +392,14 @@
 </article>
 <article class="card" data-num="10" data-title="Arencia Fresh Green Rice Mochi Cleanser"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="Arencia Fresh Green Rice Mochi Cleanser A rice-powder mochi cleanser for hydrating, deep cleansing with a brightening angle. The fun-textured first step that made the screenshots. Personal Care Skincare Bright Cleanse BRIGHT">
-  <a class="card-photo" href="products/arencia-rice-cleanser.html"><img src="images/products/arencia-rice-cleanser.jpg" alt="Arencia Fresh Green Rice Mochi Cleanser product photo" loading="lazy"></a>
+         data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" data-search="Arencia Fresh Green Rice Mochi Cleanser A rice-powder mochi cleanser for hydrating, deep cleansing with a brightening angle. The fun-textured first step that made the screenshots. Personal Care Skincare Bright Cleanse BRIGHT ep10">
+  <div class="card-photo">
+    <a href="products/arencia-rice-cleanser.html"><img src="images/products/arencia-rice-cleanser.jpg" alt="Arencia Fresh Green Rice Mochi Cleanser product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" aria-pressed="false" aria-label="Save Arencia Fresh Green Rice Mochi Cleanser to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Bright Cleanse</span>
+    <div class="card-meta"><span class="badge">Best for Bright Cleanse</span> <span class="ep">Ep 10</span></div>
     <h3><a href="products/arencia-rice-cleanser.html">Arencia Fresh Green Rice Mochi Cleanser</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0C1BMWPR2?tag=zeroregretb04-20"
@@ -324,10 +409,14 @@
 </article>
 <article class="card" data-num="9" data-title="Axis-Y Dark Spot Correcting Glow Serum"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="Axis-Y Dark Spot Correcting Glow Serum A niacinamide serum aimed at the look of dark spots and post-blemish marks, for a more even-looking tone. The slow, steady brightening lane. Personal Care Skincare Dark Spots CLEAR">
-  <a class="card-photo" href="products/axis-y-dark-spot.html"><img src="images/products/axis-y-dark-spot.jpg" alt="Axis-Y Dark Spot Correcting Glow Serum product photo" loading="lazy"></a>
+         data-slug="axis-y-dark-spot" data-asin="B091238V7N" data-search="Axis-Y Dark Spot Correcting Glow Serum A niacinamide serum aimed at the look of dark spots and post-blemish marks, for a more even-looking tone. The slow, steady brightening lane. Personal Care Skincare Dark Spots CLEAR ep9">
+  <div class="card-photo">
+    <a href="products/axis-y-dark-spot.html"><img src="images/products/axis-y-dark-spot.jpg" alt="Axis-Y Dark Spot Correcting Glow Serum product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="axis-y-dark-spot" data-asin="B091238V7N" aria-pressed="false" aria-label="Save Axis-Y Dark Spot Correcting Glow Serum to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Dark Spots</span>
+    <div class="card-meta"><span class="badge">Best for Dark Spots</span> <span class="ep">Ep 9</span></div>
     <h3><a href="products/axis-y-dark-spot.html">Axis-Y Dark Spot Correcting Glow Serum</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B091238V7N?tag=zeroregretb04-20"
@@ -337,10 +426,14 @@
 </article>
 <article class="card" data-num="8" data-title="Dr. Althea 345 Relief Cream"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="Dr. Althea 345 Relief Cream A niacinamide cream built for the glass-skin look — calm, even-looking skin with a dewy finish. Fragrance-free and made for all skin types. Personal Care Skincare Glass Skin GLASS">
-  <a class="card-photo" href="products/dr-althea-345.html"><img src="images/products/dr-althea-345.jpg" alt="Dr. Althea 345 Relief Cream product photo" loading="lazy"></a>
+         data-slug="dr-althea-345" data-asin="B07PK2P2XB" data-search="Dr. Althea 345 Relief Cream A niacinamide cream built for the glass-skin look — calm, even-looking skin with a dewy finish. Fragrance-free and made for all skin types. Personal Care Skincare Glass Skin GLASS ep8">
+  <div class="card-photo">
+    <a href="products/dr-althea-345.html"><img src="images/products/dr-althea-345.jpg" alt="Dr. Althea 345 Relief Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="dr-althea-345" data-asin="B07PK2P2XB" aria-pressed="false" aria-label="Save Dr. Althea 345 Relief Cream to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Glass Skin</span>
+    <div class="card-meta"><span class="badge">Best for Glass Skin</span> <span class="ep">Ep 8</span></div>
     <h3><a href="products/dr-althea-345.html">Dr. Althea 345 Relief Cream</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07PK2P2XB?tag=zeroregretb04-20"
@@ -350,10 +443,14 @@
 </article>
 <article class="card" data-num="7" data-title="celimax Vita A Retinal Shot Tightening Booster"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-search="celimax Vita A Retinal Shot Tightening Booster A 0.1% retinal booster with micro-fine A-Shot particles, made for the look of firmer skin and tighter-looking pores. Nighttime only — retinal and sunlight don’t mix. Personal Care Skincare Firmness FIRM">
-  <a class="card-photo" href="products/retinal-shot-booster.html"><img src="images/products/retinal-shot-celimax.webp" alt="celimax Vita A Retinal Shot Tightening Booster product photo" loading="lazy"></a>
+         data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" data-search="celimax Vita A Retinal Shot Tightening Booster A 0.1% retinal booster with micro-fine A-Shot particles, made for the look of firmer skin and tighter-looking pores. Nighttime only — retinal and sunlight don’t mix. Personal Care Skincare Firmness FIRM ep7">
+  <div class="card-photo">
+    <a href="products/retinal-shot-booster.html"><img src="images/products/retinal-shot-celimax.webp" alt="celimax Vita A Retinal Shot Tightening Booster product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" aria-pressed="false" aria-label="Save celimax Vita A Retinal Shot Tightening Booster to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Firmness</span>
+    <div class="card-meta"><span class="badge">Best for Firmness</span> <span class="ep">Ep 7</span></div>
     <h3><a href="products/retinal-shot-booster.html">celimax Vita A Retinal Shot Tightening Booster</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0DK4Y2YP3?tag=zeroregretb04-20"
@@ -363,10 +460,14 @@
 </article>
 <article class="card" data-num="6" data-title="Vichy Dercos Anti-Dandruff Shampoo"
          data-cat="personal-care" data-sub="hair-scalp" data-job="hair-scalp"
-         data-search="Vichy Dercos Anti-Dandruff Shampoo An anti-dandruff shampoo that visibly reduces flakes for a calmer-feeling scalp. Pharmacy-aisle serious, not salon-perfume serious. Personal Care Hair & Scalp Scalp SHINE">
-  <a class="card-photo" href="products/vichy-dercos.html"><img src="images/products/vichy-dercos.jpg" alt="Vichy Dercos Anti-Dandruff Shampoo product photo" loading="lazy"></a>
+         data-slug="vichy-dercos" data-asin="B01BPHAD1W" data-search="Vichy Dercos Anti-Dandruff Shampoo An anti-dandruff shampoo that visibly reduces flakes for a calmer-feeling scalp. Pharmacy-aisle serious, not salon-perfume serious. Personal Care Hair & Scalp Scalp SHINE ep6">
+  <div class="card-photo">
+    <a href="products/vichy-dercos.html"><img src="images/products/vichy-dercos.jpg" alt="Vichy Dercos Anti-Dandruff Shampoo product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="vichy-dercos" data-asin="B01BPHAD1W" aria-pressed="false" aria-label="Save Vichy Dercos Anti-Dandruff Shampoo to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Scalp</span>
+    <div class="card-meta"><span class="badge">Best for Scalp</span> <span class="ep">Ep 6</span></div>
     <h3><a href="products/vichy-dercos.html">Vichy Dercos Anti-Dandruff Shampoo</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01BPHAD1W?tag=zeroregretb04-20"
@@ -376,10 +477,14 @@
 </article>
 <article class="card" data-num="5" data-title="Vitamin D3 + K2"
          data-cat="supplements" data-sub="everyday-essentials" data-job="inner-health"
-         data-search="Vitamin D3 + K2 Helps in the development and maintenance of bones and teeth, and helps the body absorb calcium. D3 with K2 — never solo. Supplements Everyday Essentials Bones BONES">
-  <a class="card-photo" href="products/vitamin-d3-k2.html"><img src="images/products/vitamin-d3-k2.jpg" alt="Vitamin D3 + K2 product photo" loading="lazy"></a>
+         data-slug="vitamin-d3-k2" data-asin="B08WNTMWRV" data-search="Vitamin D3 + K2 Helps in the development and maintenance of bones and teeth, and helps the body absorb calcium. D3 with K2 — never solo. Supplements Everyday Essentials Bones BONES ep5">
+  <div class="card-photo">
+    <a href="products/vitamin-d3-k2.html"><img src="images/products/vitamin-d3-k2.jpg" alt="Vitamin D3 + K2 product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="vitamin-d3-k2" data-asin="B08WNTMWRV" aria-pressed="false" aria-label="Save Vitamin D3 + K2 to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Bones</span>
+    <div class="card-meta"><span class="badge">Best for Bones</span> <span class="ep">Ep 5</span></div>
     <h3><a href="products/vitamin-d3-k2.html">Vitamin D3 + K2</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08WNTMWRV?tag=zeroregretb04-20"
@@ -389,10 +494,14 @@
 </article>
 <article class="card" data-num="4" data-title="Zinc Citrate"
          data-cat="supplements" data-sub="minerals" data-job="inner-health"
-         data-search="Zinc Citrate A source of zinc — an essential mineral involved in tissue formation and everyday cellular housekeeping. Supplements Minerals Immunity SHIELD">
-  <a class="card-photo" href="products/zinc-citrate.html"><img src="images/products/zinc-citrate.jpg" alt="Zinc Citrate product photo" loading="lazy"></a>
+         data-slug="zinc-citrate" data-asin="B009D9NIGW" data-search="Zinc Citrate A source of zinc — an essential mineral involved in tissue formation and everyday cellular housekeeping. Supplements Minerals Immunity SHIELD ep4">
+  <div class="card-photo">
+    <a href="products/zinc-citrate.html"><img src="images/products/zinc-citrate.jpg" alt="Zinc Citrate product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="zinc-citrate" data-asin="B009D9NIGW" aria-pressed="false" aria-label="Save Zinc Citrate to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Immunity</span>
+    <div class="card-meta"><span class="badge">Best for Immunity</span> <span class="ep">Ep 4</span></div>
     <h3><a href="products/zinc-citrate.html">Zinc Citrate</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B009D9NIGW?tag=zeroregretb04-20"
@@ -402,10 +511,14 @@
 </article>
 <article class="card" data-num="3" data-title="Omega-3 Fish Oil"
          data-cat="supplements" data-sub="everyday-essentials" data-job="inner-health"
-         data-search="Omega-3 Fish Oil A source of EPA and DHA omega-3 fatty acids for the maintenance of good health. The unglamorous daily the wellness aisle wishes it could be. Supplements Everyday Essentials Daily Omegas OMEGA">
-  <a class="card-photo" href="products/omega-3-fish-oil.html"><img src="images/products/omega-3-1.jpg" alt="Omega-3 Fish Oil product photo" loading="lazy"></a>
+         data-slug="omega-3-fish-oil" data-asin="B079NP724M" data-search="Omega-3 Fish Oil A source of EPA and DHA omega-3 fatty acids for the maintenance of good health. The unglamorous daily the wellness aisle wishes it could be. Supplements Everyday Essentials Daily Omegas OMEGA ep3">
+  <div class="card-photo">
+    <a href="products/omega-3-fish-oil.html"><img src="images/products/omega-3-1.jpg" alt="Omega-3 Fish Oil product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="omega-3-fish-oil" data-asin="B079NP724M" aria-pressed="false" aria-label="Save Omega-3 Fish Oil to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Daily Omegas</span>
+    <div class="card-meta"><span class="badge">Best for Daily Omegas</span> <span class="ep">Ep 3</span></div>
     <h3><a href="products/omega-3-fish-oil.html">Omega-3 Fish Oil</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B079NP724M?tag=zeroregretb04-20"
@@ -415,10 +528,14 @@
 </article>
 <article class="card" data-num="2" data-title="Creatine Monohydrate"
          data-cat="supplements" data-sub="performance" data-job="body-recovery"
-         data-search="Creatine Monohydrate Supports lean mass and strength gains when combined with resistance training. One of the most studied sports supplements out there. Supplements Performance Gym Days GAINS">
-  <a class="card-photo" href="products/creatine-monohydrate.html"><img src="images/products/creatine-monohydrate-2.jpg" alt="Creatine Monohydrate product photo" loading="lazy"></a>
+         data-slug="creatine-monohydrate" data-asin="B0043YLNSC" data-search="Creatine Monohydrate Supports lean mass and strength gains when combined with resistance training. One of the most studied sports supplements out there. Supplements Performance Gym Days GAINS ep2">
+  <div class="card-photo">
+    <a href="products/creatine-monohydrate.html"><img src="images/products/creatine-monohydrate-2.jpg" alt="Creatine Monohydrate product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="creatine-monohydrate" data-asin="B0043YLNSC" aria-pressed="false" aria-label="Save Creatine Monohydrate to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Gym Days</span>
+    <div class="card-meta"><span class="badge">Best for Gym Days</span> <span class="ep">Ep 2</span></div>
     <h3><a href="products/creatine-monohydrate.html">Creatine Monohydrate</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0043YLNSC?tag=zeroregretb04-20"
@@ -428,10 +545,14 @@
 </article>
 <article class="card" data-num="1" data-title="Magnesium Bisglycinate"
          data-cat="supplements" data-sub="minerals" data-job="sleep"
-         data-search="Magnesium Bisglycinate A source of magnesium — a mineral that helps maintain proper muscle function and plays a role in tissue formation. Supplements Minerals Sleep SLEEP">
-  <a class="card-photo" href="products/magnesium-glycinate.html"><img src="images/products/mg-glycinate-webber-1.jpg" alt="Magnesium Bisglycinate product photo" loading="lazy"></a>
+         data-slug="magnesium-glycinate" data-asin="B08WVD2YDB" data-search="Magnesium Bisglycinate A source of magnesium — a mineral that helps maintain proper muscle function and plays a role in tissue formation. Supplements Minerals Sleep SLEEP ep1">
+  <div class="card-photo">
+    <a href="products/magnesium-glycinate.html"><img src="images/products/mg-glycinate-webber-1.jpg" alt="Magnesium Bisglycinate product photo" loading="lazy"></a>
+    
+    <button type="button" class="savebtn js-save" data-slug="magnesium-glycinate" data-asin="B08WVD2YDB" aria-pressed="false" aria-label="Save Magnesium Bisglycinate to your picks">+</button>
+  </div>
   <div class="card-body">
-    <span class="badge">Best for Sleep</span>
+    <div class="card-meta"><span class="badge">Best for Sleep</span> <span class="ep">Ep 1</span></div>
     <h3><a href="products/magnesium-glycinate.html">Magnesium Bisglycinate</a></h3>
     
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08WVD2YDB?tag=zeroregretb04-20"
@@ -440,6 +561,7 @@
   </div>
 </article>
       </div>
+      <div class="shelf-rail" aria-hidden="true"></div>
 
       <div class="cartall">
         <a class="btn btn-shelf btn-big" href="https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=zeroregretb04-20&amp;ASIN.1=B08WVD2YDB&amp;Quantity.1=1&amp;ASIN.2=B0043YLNSC&amp;Quantity.2=1&amp;ASIN.3=B079NP724M&amp;Quantity.3=1&amp;ASIN.4=B009D9NIGW&amp;Quantity.4=1&amp;ASIN.5=B08WNTMWRV&amp;Quantity.5=1&amp;ASIN.6=B01BPHAD1W&amp;Quantity.6=1&amp;ASIN.7=B0DK4Y2YP3&amp;Quantity.7=1&amp;ASIN.8=B07PK2P2XB&amp;Quantity.8=1&amp;ASIN.9=B091238V7N&amp;Quantity.9=1&amp;ASIN.10=B0C1BMWPR2&amp;Quantity.10=1&amp;ASIN.11=B00BPDF0YC&amp;Quantity.11=1&amp;ASIN.12=B06WD5J8KY&amp;Quantity.12=1&amp;ASIN.13=B0B8PGT48W&amp;Quantity.13=1&amp;ASIN.14=B01MZ1FC46&amp;Quantity.14=1&amp;ASIN.15=B00L3WSHDG&amp;Quantity.15=1&amp;ASIN.16=B01M4MCUAF&amp;Quantity.16=1&amp;ASIN.17=B01MYEZPC8&amp;Quantity.17=1&amp;ASIN.18=B081DNB1B2&amp;Quantity.18=1&amp;ASIN.19=B09CZ68WV3&amp;Quantity.19=1&amp;ASIN.20=B07VST9VYH&amp;Quantity.20=1&amp;ASIN.21=B0093162RM&amp;Quantity.21=1&amp;ASIN.22=B00BMEHEXE&amp;Quantity.22=1&amp;ASIN.23=B09T8PKKRG&amp;Quantity.23=1&amp;ASIN.24=B0797NJW1Q&amp;Quantity.24=1&amp;ASIN.25=B083GGFTPW&amp;Quantity.25=1&amp;ASIN.26=B01MDTVZTZ&amp;Quantity.26=1&amp;ASIN.27=B00YPBGIIS&amp;Quantity.27=1&amp;ASIN.28=B07M9CGZNY&amp;Quantity.28=1&amp;ASIN.29=B08KGD8JWK&amp;Quantity.29=1&amp;ASIN.30=B08TWTQDCX&amp;Quantity.30=1"
@@ -467,6 +589,23 @@
     <p class="footer-copy">© 2026 Zero Regret Buys</p>
   </div>
 </footer>
+<div class="shortlist" id="shortlist" hidden>
+  <div class="shortlist-backdrop js-close-shortlist"></div>
+  <aside class="shortlist-panel" role="dialog" aria-modal="true" aria-label="Your picks">
+    <div class="shortlist-head">
+      <h2>Your picks <span class="picks-count" data-picks-count>0</span></h2>
+      <button type="button" class="shortlist-close js-close-shortlist" aria-label="Close">×</button>
+    </div>
+    <p class="shortlist-empty" id="shortlist-empty">Nothing saved yet. Tap + on any pick to save it here.</p>
+    <ul class="shortlist-list" id="shortlist-list"></ul>
+    <div class="shortlist-foot" id="shortlist-foot" hidden>
+      <a class="btn btn-shelf btn-block" id="shortlist-cart" href="#" target="_blank" rel="sponsored nofollow noopener">Add your picks to Amazon cart</a>
+      <div class="paidnote">(paid link)</div>
+      <button type="button" class="shortlist-clear" id="shortlist-clear">Clear all</button>
+    </div>
+  </aside>
+</div>
 <script src="site.js"></script>
+<script src="shortlist.js"></script>
 </body>
 </html>

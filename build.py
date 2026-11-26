@@ -5,6 +5,7 @@ paragraphs. All content (products, links, photos, copy) comes from
 data.py untouched, so every affiliate link, ASIN and photo is identical
 to v1. This file holds only the new design: templates + page assembly.
 """
+import json
 import os
 from datetime import datetime
 
@@ -36,6 +37,17 @@ JOB_BY_BADGE = {
 
 NAV = [("index.html", "Home"), ("shop.html", "Shop"), ("about.html", "About")]
 
+# The 3 newest picks (highest episode numbers) get a NEW tag.
+NEWEST = {p["num"] for p in sorted(PRODUCTS, key=lambda p: p["num"], reverse=True)[:3]}
+
+
+def ep_label(p):
+    return '<span class="ep">Ep %s</span>' % p["num"]
+
+
+def new_tag(p):
+    return '<span class="newtag">New</span>' if p["num"] in NEWEST else ""
+
 TAB_ICONS = {
     "index.html": ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>', "Home"),
     "shop.html": ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg>', "Shop"),
@@ -53,7 +65,8 @@ def meta_pitch(pitch, limit=155):
     return pitch if len(pitch) <= limit else pitch[: limit - 1].rsplit(" ", 1)[0] + "…"
 
 
-def head(title, desc, path, root):
+def head(title, desc, path, root, body_class=""):
+    body_attr = ' class="%s"' % body_class if body_class else ""
     return """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,8 +83,11 @@ def head(title, desc, path, root):
 <link rel="icon" href="%simages/logo.jpg">
 <link rel="stylesheet" href="%sstyles.css">
 </head>
-<body>
-""" % (title, desc, title, desc, BASE, path, BASE, root, root)
+<body%s>
+""" % (title, desc, title, desc, BASE, path, BASE, root, root, body_attr)
+
+
+PICKS_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4.5L6 21z"/></svg>', "Picks")
 
 
 def header(root, current, tab=True):
@@ -79,14 +95,17 @@ def header(root, current, tab=True):
         '<a href="%s%s"%s>%s</a>' % (root, href, ' aria-current="page"' if href == current else "", label)
         for href, label in NAV
     )
+    picks_tab = (
+        '<button type="button" class="tab-picks js-open-shortlist" aria-label="Your picks"><span class="tab-icon-wrap">%s<span class="picks-count" data-picks-count>0</span></span><span>%s</span></button>'
+        % (PICKS_ICON[0], PICKS_ICON[1]))
     tabbar = ("""
 <nav class="tabbar" aria-label="Mobile">
-  %s
-</nav>""" % "".join(
+  %s%s
+</nav>""" % ("".join(
         '<a href="%s%s"%s>%s<span>%s</span></a>'
         % (root, href, ' aria-current="page"' if href == current else "",
            TAB_ICONS[href][0], TAB_ICONS[href][1])
-        for href in TAB_ICONS)) if tab else ""
+        for href in TAB_ICONS), picks_tab)) if tab else ""
     return """
 <header class="site-header">
   <div class="header-inner">
@@ -96,6 +115,7 @@ def header(root, current, tab=True):
     </a>
     <nav class="mainnav" aria-label="Primary">
       %s
+      <a class="nav-picks js-open-shortlist" href="#">Your picks <span class="picks-count" data-picks-count>0</span></a>
       <a class="nav-cta" href="%sshop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
@@ -123,11 +143,28 @@ def footer(root):
     <p class="footer-copy">© %s Zero Regret Buys</p>
   </div>
 </footer>
+<div class="shortlist" id="shortlist" hidden>
+  <div class="shortlist-backdrop js-close-shortlist"></div>
+  <aside class="shortlist-panel" role="dialog" aria-modal="true" aria-label="Your picks">
+    <div class="shortlist-head">
+      <h2>Your picks <span class="picks-count" data-picks-count>0</span></h2>
+      <button type="button" class="shortlist-close js-close-shortlist" aria-label="Close">×</button>
+    </div>
+    <p class="shortlist-empty" id="shortlist-empty">Nothing saved yet. Tap + on any pick to save it here.</p>
+    <ul class="shortlist-list" id="shortlist-list"></ul>
+    <div class="shortlist-foot" id="shortlist-foot" hidden>
+      <a class="btn btn-shelf btn-block" id="shortlist-cart" href="#" target="_blank" rel="sponsored nofollow noopener">Add your picks to Amazon cart</a>
+      <div class="paidnote">(paid link)</div>
+      <button type="button" class="shortlist-clear" id="shortlist-clear">Clear all</button>
+    </div>
+  </aside>
+</div>
 <script src="%ssite.js"></script>
+<script src="%sshortlist.js"></script>
 </body>
 </html>
 """ % (root, root, root, root, root, root, DISCLOSURE, root,
-       datetime.now().year, root)
+       datetime.now().year, root, root)
 
 
 def badge(p):
@@ -135,8 +172,8 @@ def badge(p):
 
 
 def search_blob(p):
-    return "%s %s %s %s %s %s" % (
-        p["title"], p["pitch"], p["cat"], p["sub"], BADGES[p["slug"]], p["keyword"])
+    return "%s %s %s %s %s %s ep%s" % (
+        p["title"], p["pitch"], p["cat"], p["sub"], BADGES[p["slug"]], p["keyword"], p["num"])
 
 
 def card(p, root, pitch=True):
@@ -146,13 +183,19 @@ def card(p, root, pitch=True):
     img = ('<img src="%s%s" alt="%s product photo" loading="lazy">'
            % (root, photo, p["title"])) if photo else ""
     pitch_html = '<p class="pitch">%s</p>' % p["pitch"] if pitch else ""
+    savebtn = ('<button type="button" class="savebtn js-save" data-slug="%(slug)s" data-asin="%(asin)s" aria-pressed="false" aria-label="Save %(title)s to your picks">+</button>'
+               % {"slug": p["slug"], "asin": p["asin"], "title": p["title"]})
     return """
 <article class="card" data-num="%(num)s" data-title="%(title)s"
          data-cat="%(cat_slug)s" data-sub="%(sub_slug)s" data-job="%(job)s"
-         data-search="%(search)s">
-  <a class="card-photo" href="%(root)sproducts/%(slug)s.html">%(img)s</a>
+         data-slug="%(slug)s" data-asin="%(asin)s" data-search="%(search)s">
+  <div class="card-photo">
+    <a href="%(root)sproducts/%(slug)s.html">%(img)s</a>
+    %(newtag)s
+    %(savebtn)s
+  </div>
   <div class="card-body">
-    %(badge)s
+    <div class="card-meta">%(badge)s %(ep)s</div>
     <h3><a href="%(root)sproducts/%(slug)s.html">%(title)s</a></h3>
     %(pitch_html)s
     <a class="btn btn-shelf btn-block" href="%(url)s"
@@ -163,7 +206,9 @@ def card(p, root, pitch=True):
         "num": p["num"], "title": p["title"], "cat_slug": p["cat_slug"],
         "sub_slug": p["sub_slug"], "job": JOB_BY_BADGE[BADGES[p["slug"]]],
         "search": search_blob(p), "root": root, "slug": p["slug"],
-        "img": img, "badge": badge(p), "pitch_html": pitch_html, "url": p["url"],
+        "asin": p["asin"], "img": img, "badge": badge(p), "ep": ep_label(p),
+        "newtag": new_tag(p), "savebtn": savebtn,
+        "pitch_html": pitch_html, "url": p["url"],
     }
 
 
@@ -199,6 +244,7 @@ def build_index():
       <div class="grid">
 %s
       </div>
+      <div class="shelf-rail" aria-hidden="true"></div>
 %s
     </div>
   </div>
@@ -255,6 +301,7 @@ def build_shop():
       <div class="grid" id="shop-grid">
 %s
       </div>
+      <div class="shelf-rail" aria-hidden="true"></div>
       <p class="empty" id="shop-empty" hidden>Nothing matches — try a different word.</p>
       <div class="cmp">
         <h2>Compare</h2>
@@ -266,12 +313,16 @@ def build_shop():
         </div>
       </div>
 %s
+      <div class="sticky-cart">
+        <a class="btn btn-shelf" href="%s" target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
+        <span class="sticky-paid">(paid link)</span>
+      </div>
     </div>
   </div>
-""" % (aisle_chips, shelf_chips, cards, rows, cartall_block())
+""" % (aisle_chips, shelf_chips, cards, rows, cartall_block(), CART_ALL_HTML)
     return (head("The Shop — Zero Regret Buys",
                  "All thirty picks in one place. Search, filter, compare — then check today’s live price on Amazon.",
-                 "shop.html", root)
+                 "shop.html", root, body_class="shop-page")
             + header(root, "shop.html") + body + footer(root))
 
 
@@ -289,6 +340,11 @@ def build_product(p):
     photo = p["photos"][0] if p.get("photos") else ""
     img = ('<img src="%s%s" alt="%s product photo">' % (root, photo, p["title"])) if photo else ""
     getif = "".join("<li>%s</li>" % g for g in copy["getif"])
+    skip_text = p.get("skip") or ""
+    skip_html = ('<div class="skipif"><h2>Skip this if…</h2><p>%s</p></div>'
+                 % (skip_text[:1].upper() + skip_text[1:])) if skip_text else ""
+    savebtn = ('<button type="button" class="btn btn-outline js-save" data-slug="%(slug)s" data-asin="%(asin)s" aria-pressed="false">+ Save to your picks</button>'
+               % {"slug": p["slug"], "asin": p["asin"]})
     more = "".join(card(q, root) for q in related(p))
     body = """
 <main id="main">
@@ -299,7 +355,7 @@ def build_product(p):
       <div class="pdp-grid">
         <div class="pdp-photo">%(img)s</div>
         <div class="pdp-info">
-          %(badge)s
+          <div class="pdp-meta">%(badge)s %(ep)s %(newtag)s</div>
           <h1>%(title)s</h1>
           <p class="key">%(key)s</p>
           <p class="verdict">%(verdict)s</p>
@@ -307,11 +363,13 @@ def build_product(p):
             <a class="btn btn-shelf" href="%(url)s" target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
             <a class="btn" href="%(cart_url)s" target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
             <div class="paidnote">(paid links)</div>
+            %(savebtn)s
           </div>
           <div class="getif">
             <h2>Get this if…</h2>
             <ul>%(getif)s</ul>
           </div>
+          %(skip_html)s
           <div class="kwcard">
             <div class="kw">%(keyword)s</div>
             <p>Comment this word under the reel and the link lands in your DMs.</p>
@@ -328,15 +386,17 @@ def build_product(p):
   </div>
 """ % {
         "cat_slug": p["cat_slug"], "cat": p["cat"], "title": p["title"],
-        "img": img, "badge": badge(p), "key": copy["key"],
+        "img": img, "badge": badge(p), "ep": ep_label(p), "newtag": new_tag(p),
+        "key": copy["key"],
         "verdict": short_verdict(p), "url": p["url"],
-        "cart_url": p["cart_url"], "getif": getif,
+        "cart_url": p["cart_url"], "getif": getif, "skip_html": skip_html,
+        "savebtn": savebtn,
         "keyword": p["keyword"], "more": more,
     }
     return (head("%s — Zero Regret Buys" % p["title"],
                  meta_pitch(p["pitch"]),
                  "products/%s.html" % p["slug"], root)
-            + header(root, "shop.html", tab=False) + body + footer(root))
+            + header(root, "shop.html") + body + footer(root))
 
 
 # ---------------- about ----------------
@@ -533,6 +593,134 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
 """
 
 
+# ---------------- shortlist (save picks, add them to Amazon cart) ----------------
+SHORTLIST_JS = """// Zero Regret Buys — shortlist. Save picks, add them all to Amazon cart.
+// Runs on every page; the shop filter (site.js) is separate and untouched.
+(function () {
+  "use strict";
+  var TAG = "__TAG__";
+  var KEY = "zrb-shortlist";
+  var PRODUCTS = __PRODUCTS_JSON__;
+
+  var panel = document.getElementById("shortlist");
+  var list = document.getElementById("shortlist-list");
+  var emptyMsg = document.getElementById("shortlist-empty");
+  var foot = document.getElementById("shortlist-foot");
+  var cartBtn = document.getElementById("shortlist-cart");
+  var clearBtn = document.getElementById("shortlist-clear");
+  if (!panel) return;
+
+  function load() {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr.filter(function (s) { return PRODUCTS[s]; }) : [];
+    } catch (e) { return []; }
+  }
+  function save(arr) {
+    try { window.localStorage.setItem(KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function prefix() {
+    return window.location.pathname.indexOf("/products/") !== -1 ? "../" : "";
+  }
+  function cartUrl(slugs) {
+    var parts = slugs.map(function (slug, i) {
+      return "ASIN." + (i + 1) + "=" + PRODUCTS[slug].asin + "&Quantity." + (i + 1) + "=1";
+    });
+    return "https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=" + TAG + "&" + parts.join("&");
+  }
+  function render() {
+    var slugs = load();
+    var counts = document.querySelectorAll("[data-picks-count]");
+    counts.forEach(function (el) {
+      el.textContent = String(slugs.length);
+      if (el.closest(".tab-picks")) el.style.display = slugs.length ? "" : "none";
+    });
+    var btns = document.querySelectorAll(".js-save");
+    btns.forEach(function (btn) {
+      var on = slugs.indexOf(btn.dataset.slug) !== -1;
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      if (btn.classList.contains("savebtn")) {
+        btn.textContent = on ? "\\u2713" : "+";
+      } else {
+        btn.textContent = on ? "\\u2713 Saved to your picks" : "+ Save to your picks";
+      }
+    });
+    list.innerHTML = "";
+    if (!slugs.length) {
+      emptyMsg.hidden = false;
+      foot.hidden = true;
+      return;
+    }
+    emptyMsg.hidden = true;
+    foot.hidden = false;
+    slugs.forEach(function (slug) {
+      var p = PRODUCTS[slug];
+      var li = document.createElement("li");
+      li.className = "shortlist-item";
+      var a = document.createElement("a");
+      a.href = prefix() + "products/" + slug + ".html";
+      var img = document.createElement("img");
+      img.src = prefix() + p.img;
+      img.alt = "";
+      var span = document.createElement("span");
+      span.textContent = p.t;
+      a.appendChild(img);
+      a.appendChild(span);
+      var rm = document.createElement("button");
+      rm.type = "button";
+      rm.className = "shortlist-remove";
+      rm.setAttribute("aria-label", "Remove " + p.t + " from your picks");
+      rm.textContent = "\\u00d7";
+      rm.addEventListener("click", function () { toggle(slug); });
+      li.appendChild(a);
+      li.appendChild(rm);
+      list.appendChild(li);
+    });
+    cartBtn.href = cartUrl(slugs);
+  }
+  function toggle(slug) {
+    var slugs = load();
+    var i = slugs.indexOf(slug);
+    if (i === -1) slugs.push(slug); else slugs.splice(i, 1);
+    save(slugs);
+    render();
+  }
+  function open() {
+    render();
+    panel.hidden = false;
+    document.body.classList.add("shortlist-open");
+    var close = panel.querySelector(".shortlist-close");
+    if (close) close.focus();
+  }
+  function close() {
+    panel.hidden = true;
+    document.body.classList.remove("shortlist-open");
+  }
+  document.querySelectorAll(".js-save").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      toggle(btn.dataset.slug);
+    });
+  });
+  document.querySelectorAll(".js-open-shortlist").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      open();
+    });
+  });
+  document.querySelectorAll(".js-close-shortlist").forEach(function (el) {
+    el.addEventListener("click", close);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !panel.hidden) close();
+  });
+  if (clearBtn) clearBtn.addEventListener("click", function () { save([]); render(); });
+  render();
+})();
+"""
+
+
 def write(path, content):
     full = os.path.join(SITE, path)
     os.makedirs(os.path.dirname(full) or ".", exist_ok=True)
@@ -542,6 +730,13 @@ def write(path, content):
 
 def main():
     write("site.js", SITE_JS)
+    shortlist_index = json.dumps({
+        p["slug"]: {"t": p["title"],
+                    "img": p["photos"][0] if p.get("photos") else "",
+                    "asin": p["asin"]}
+        for p in PRODUCTS
+    })
+    write("shortlist.js", SHORTLIST_JS.replace("__TAG__", TAG).replace("__PRODUCTS_JSON__", shortlist_index))
     write("index.html", build_index())
     write("shop.html", build_shop())
     write("about.html", build_about())
