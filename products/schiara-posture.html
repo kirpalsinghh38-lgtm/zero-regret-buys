@@ -24,14 +24,14 @@
     </a>
     <nav class="mainnav" aria-label="Primary">
       <a href="../index.html">Home</a><a href="../shop.html" aria-current="page">Shop</a><a href="../about.html">About</a>
-      <a class="nav-picks js-open-shortlist" href="#">Your picks <span class="picks-count" data-picks-count>0</span></a>
+      <a class="nav-cart" href="../cart.html">Your cart <span class="cart-count" data-cart-count>0</span></a>
       <a class="nav-cta" href="../shop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
 </header>
 
 <nav class="tabbar" aria-label="Mobile">
-  <a href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="../shop.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="../about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a><button type="button" class="tab-picks js-open-shortlist" aria-label="Your picks"><span class="tab-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4.5L6 21z"/></svg><span class="picks-count" data-picks-count>0</span></span><span>Picks</span></button>
+  <a href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="../shop.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="../about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a><a href="../cart.html" class="tab-cart"><span class="tab-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 12.4A2 2 0 009.36 17h7.9a2 2 0 001.95-1.55L21 7H6"/><circle cx="10" cy="21" r="1.6"/><circle cx="18" cy="21" r="1.6"/></svg><span class="cart-count" data-cart-count>0</span></span><span>Cart</span></a>
 </nav>
 
 <main id="main">
@@ -47,10 +47,11 @@
           <p class="key">Adjustable corrector — trains posture habits</p>
           <p class="verdict">30,000+ ratings — a chiropractor noticed the difference in weeks.</p>
           <div class="pdp-buy">
+            <div class="price price--pdp" data-price-asin="B07VST9VYH">Price on Amazon</div>
             <a class="btn btn-shelf" href="https://www.amazon.ca/dp/B07VST9VYH?tag=zeroregretb04-20" target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
             <a class="btn" href="https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=zeroregretb04-20&ASIN.1=B07VST9VYH&Quantity.1=1" target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
             <div class="paidnote">(paid links)</div>
-            <button type="button" class="btn btn-outline js-save" data-slug="schiara-posture" data-asin="B07VST9VYH" aria-pressed="false">+ Save to your picks</button>
+            <button type="button" class="btn btn-outline js-save" data-slug="schiara-posture" data-asin="B07VST9VYH" aria-pressed="false">+ Add to cart</button>
           </div>
           <div class="getif">
             <h2>Get this if…</h2>
@@ -73,12 +74,13 @@
   <div class="card-photo">
     <a href="../products/myhalos-sleep-mask.html"><img src="../images/products/myhalos-sleep-mask.jpg" alt="MyHalos 3D Blackout Sleep Mask product photo" loading="lazy"></a>
     
-    <button type="button" class="savebtn js-save" data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" aria-pressed="false" aria-label="Save MyHalos 3D Blackout Sleep Mask to your picks">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" aria-pressed="false" aria-label="Add MyHalos 3D Blackout Sleep Mask to your cart">+</button>
   </div>
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Blackout Sleep</span> <span class="ep">Ep 19</span></div>
     <h3><a href="../products/myhalos-sleep-mask.html">MyHalos 3D Blackout Sleep Mask</a></h3>
     <p class="pitch">A 3D contoured blackout mask — 100% darkness, zero eye pressure. Insomniacs call it a game-changer.</p>
+    <div class="price" data-price-asin="B09CZ68WV3">Price on Amazon</div>
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B09CZ68WV3?tag=zeroregretb04-20"
        target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
     <div class="paidnote">(paid link)</div>
@@ -90,12 +92,13 @@
   <div class="card-photo">
     <a href="../products/philips-wake-up.html"><img src="../images/products/philips-wake-up.jpg" alt="Philips SmartSleep Wake-Up Light product photo" loading="lazy"></a>
     
-    <button type="button" class="savebtn js-save" data-slug="philips-wake-up" data-asin="B0093162RM" aria-pressed="false" aria-label="Save Philips SmartSleep Wake-Up Light to your picks">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="philips-wake-up" data-asin="B0093162RM" aria-pressed="false" aria-label="Add Philips SmartSleep Wake-Up Light to your cart">+</button>
   </div>
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Mornings</span> <span class="ep">Ep 21</span></div>
     <h3><a href="../products/philips-wake-up.html">Philips SmartSleep Wake-Up Light</a></h3>
     <p class="pitch">A sunrise-simulating alarm — 14,000+ ratings. Wake up to gradually brightening light, not a blaring alarm.</p>
+    <div class="price" data-price-asin="B0093162RM">Price on Amazon</div>
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0093162RM?tag=zeroregretb04-20"
        target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
     <div class="paidnote">(paid link)</div>
@@ -107,12 +110,13 @@
   <div class="card-photo">
     <a href="../products/acupressure-mat.html"><img src="../images/products/acupressure-mat.jpg" alt="ELEBOX Acupressure Mat + Pillow Set product photo" loading="lazy"></a>
     <span class="newtag">New</span>
-    <button type="button" class="savebtn js-save" data-slug="acupressure-mat" data-asin="B07M9CGZNY" aria-pressed="false" aria-label="Save ELEBOX Acupressure Mat + Pillow Set to your picks">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="acupressure-mat" data-asin="B07M9CGZNY" aria-pressed="false" aria-label="Add ELEBOX Acupressure Mat + Pillow Set to your cart">+</button>
   </div>
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Back Relief</span> <span class="ep">Ep 28</span></div>
     <h3><a href="../products/acupressure-mat.html">ELEBOX Acupressure Mat + Pillow Set</a></h3>
     <p class="pitch">An acupressure mat and pillow set for back and neck relief — lie back, breathe, decompress. The 20-minute reset.</p>
+    <div class="price" data-price-asin="B07M9CGZNY">Price on Amazon</div>
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07M9CGZNY?tag=zeroregretb04-20"
        target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
     <div class="paidnote">(paid link)</div>
@@ -140,23 +144,8 @@
     <p class="footer-copy">© 2026 Zero Regret Buys</p>
   </div>
 </footer>
-<div class="shortlist" id="shortlist" hidden>
-  <div class="shortlist-backdrop js-close-shortlist"></div>
-  <aside class="shortlist-panel" role="dialog" aria-modal="true" aria-label="Your picks">
-    <div class="shortlist-head">
-      <h2>Your picks <span class="picks-count" data-picks-count>0</span></h2>
-      <button type="button" class="shortlist-close js-close-shortlist" aria-label="Close">×</button>
-    </div>
-    <p class="shortlist-empty" id="shortlist-empty">Nothing saved yet. Tap + on any pick to save it here.</p>
-    <ul class="shortlist-list" id="shortlist-list"></ul>
-    <div class="shortlist-foot" id="shortlist-foot" hidden>
-      <a class="btn btn-shelf btn-block" id="shortlist-cart" href="#" target="_blank" rel="sponsored nofollow noopener">Add your picks to Amazon cart</a>
-      <div class="paidnote">(paid link)</div>
-      <button type="button" class="shortlist-clear" id="shortlist-clear">Clear all</button>
-    </div>
-  </aside>
-</div>
 <script src="../site.js"></script>
-<script src="../shortlist.js"></script>
+<script src="../prices.js"></script>
+<script src="../cart.js"></script>
 </body>
 </html>

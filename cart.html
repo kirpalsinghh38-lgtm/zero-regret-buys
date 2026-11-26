@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your cart — Zero Regret Buys</title>
+<meta name="description" content="Your saved picks, in one place. One click loads them into your Amazon.ca cart.">
+<meta property="og:title" content="Your cart — Zero Regret Buys">
+<meta property="og:description" content="Your saved picks, in one place. One click loads them into your Amazon.ca cart.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zero-regret-buys-kirpal-singh.vercel.app/cart.html">
+<meta property="og:image" content="https://zero-regret-buys-kirpal-singh.vercel.app/images/logo.jpg">
+<meta name="theme-color" content="#faf9f6">
+<link rel="icon" href="images/logo.jpg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brandmark" href="index.html" aria-label="Zero Regret Buys — home">
+      <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
+      <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
+    </a>
+    <nav class="mainnav" aria-label="Primary">
+      <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a>
+      <a class="nav-cart" href="cart.html">Your cart <span class="cart-count" data-cart-count>0</span></a>
+      <a class="nav-cta" href="shop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
+    </nav>
+  </div>
+</header>
+
+<nav class="tabbar" aria-label="Mobile">
+  <a href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="shop.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a><a href="cart.html" class="tab-cart" aria-current="page"><span class="tab-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 12.4A2 2 0 009.36 17h7.9a2 2 0 001.95-1.55L21 7H6"/><circle cx="10" cy="21" r="1.6"/><circle cx="18" cy="21" r="1.6"/></svg><span class="cart-count" data-cart-count>0</span></span><span>Cart</span></a>
+</nav>
+
+<main id="main">
+  <div class="wrap">
+    <div class="section">
+      <h1>Your cart</h1>
+      <p class="sub" style="color: var(--ink-soft); margin-top: 8px;">Saved here, in this browser only. One click loads them into your Amazon.ca cart.</p>
+      <div class="cart-empty" id="cart-empty">
+        <p>Your cart is empty. Tap + on any product to add it here.</p>
+        <a class="btn btn-outline" href="shop.html">Browse the picks</a>
+      </div>
+      <ul class="cart-list" id="cart-list"></ul>
+      <div class="cart-summary" id="cart-summary" hidden>
+        <div class="cart-total-row" id="cart-total-row" hidden><span>Estimated total</span><strong data-cart-total></strong></div>
+        <p class="micro">Prices are fetched live from Amazon. The final total is set by Amazon at checkout.</p>
+        <a class="btn btn-shelf btn-big btn-block" id="cart-checkout" href="#" target="_blank" rel="sponsored nofollow noopener">Checkout on Amazon</a>
+        <div class="paidnote">(paid link)</div>
+        <button type="button" class="cart-clear" id="cart-clear">Clear cart</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="brandmark" href="index.html">
+      <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
+      <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="shop.html">Shop all picks</a>
+      <a href="about.html">About</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p class="footer-disclosure">As an Amazon Associate I earn from qualifying purchases. Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. <a href="about.html">Why this matters</a></p>
+    <p class="footer-copy">© 2026 Zero Regret Buys</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+<script src="prices.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>

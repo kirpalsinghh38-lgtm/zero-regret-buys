@@ -24,14 +24,14 @@
     </a>
     <nav class="mainnav" aria-label="Primary">
       <a href="../index.html">Home</a><a href="../shop.html" aria-current="page">Shop</a><a href="../about.html">About</a>
-      <a class="nav-picks js-open-shortlist" href="#">Your picks <span class="picks-count" data-picks-count>0</span></a>
+      <a class="nav-cart" href="../cart.html">Your cart <span class="cart-count" data-cart-count>0</span></a>
       <a class="nav-cta" href="../shop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
 </header>
 
 <nav class="tabbar" aria-label="Mobile">
-  <a href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="../shop.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="../about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a><button type="button" class="tab-picks js-open-shortlist" aria-label="Your picks"><span class="tab-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4.5L6 21z"/></svg><span class="picks-count" data-picks-count>0</span></span><span>Picks</span></button>
+  <a href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Home</span></a><a href="../shop.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2L5 8z"/><path d="M9 10V6.5a3 3 0 016 0V10"/></svg><span>Shop</span></a><a href="../about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.4"/></svg><span>About</span></a><a href="../cart.html" class="tab-cart"><span class="tab-icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 12.4A2 2 0 009.36 17h7.9a2 2 0 001.95-1.55L21 7H6"/><circle cx="10" cy="21" r="1.6"/><circle cx="18" cy="21" r="1.6"/></svg><span class="cart-count" data-cart-count>0</span></span><span>Cart</span></a>
 </nav>
 
 <main id="main">
@@ -47,10 +47,11 @@
           <p class="key">Niacinamide serum — for the look of dark spots</p>
           <p class="verdict">The dark-spot serum for the patient: a niacinamide formula that targets the appearance of dark spots and post-blemish marks for a more even-looking tone — on a timeline of weeks, not days.</p>
           <div class="pdp-buy">
+            <div class="price price--pdp" data-price-asin="B091238V7N">Price on Amazon</div>
             <a class="btn btn-shelf" href="https://www.amazon.ca/dp/B091238V7N?tag=zeroregretb04-20" target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
             <a class="btn" href="https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=zeroregretb04-20&ASIN.1=B091238V7N&Quantity.1=1" target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
             <div class="paidnote">(paid links)</div>
-            <button type="button" class="btn btn-outline js-save" data-slug="axis-y-dark-spot" data-asin="B091238V7N" aria-pressed="false">+ Save to your picks</button>
+            <button type="button" class="btn btn-outline js-save" data-slug="axis-y-dark-spot" data-asin="B091238V7N" aria-pressed="false">+ Add to cart</button>
           </div>
           <div class="getif">
             <h2>Get this if…</h2>
@@ -73,12 +74,13 @@
   <div class="card-photo">
     <a href="../products/retinal-shot-booster.html"><img src="../images/products/retinal-shot-celimax.webp" alt="celimax Vita A Retinal Shot Tightening Booster product photo" loading="lazy"></a>
     
-    <button type="button" class="savebtn js-save" data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" aria-pressed="false" aria-label="Save celimax Vita A Retinal Shot Tightening Booster to your picks">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" aria-pressed="false" aria-label="Add celimax Vita A Retinal Shot Tightening Booster to your cart">+</button>
   </div>
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Firmness</span> <span class="ep">Ep 7</span></div>
     <h3><a href="../products/retinal-shot-booster.html">celimax Vita A Retinal Shot Tightening Booster</a></h3>
     <p class="pitch">A 0.1% retinal booster with micro-fine A-Shot particles, made for the look of firmer skin and tighter-looking pores. Nighttime only — retinal and sunlight don’t mix.</p>
+    <div class="price" data-price-asin="B0DK4Y2YP3">Price on Amazon</div>
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0DK4Y2YP3?tag=zeroregretb04-20"
        target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
     <div class="paidnote">(paid link)</div>
@@ -90,12 +92,13 @@
   <div class="card-photo">
     <a href="../products/dr-althea-345.html"><img src="../images/products/dr-althea-345.jpg" alt="Dr. Althea 345 Relief Cream product photo" loading="lazy"></a>
     
-    <button type="button" class="savebtn js-save" data-slug="dr-althea-345" data-asin="B07PK2P2XB" aria-pressed="false" aria-label="Save Dr. Althea 345 Relief Cream to your picks">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="dr-althea-345" data-asin="B07PK2P2XB" aria-pressed="false" aria-label="Add Dr. Althea 345 Relief Cream to your cart">+</button>
   </div>
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Glass Skin</span> <span class="ep">Ep 8</span></div>
     <h3><a href="../products/dr-althea-345.html">Dr. Althea 345 Relief Cream</a></h3>
     <p class="pitch">A niacinamide cream built for the glass-skin look — calm, even-looking skin with a dewy finish. Fragrance-free and made for all skin types.</p>
+    <div class="price" data-price-asin="B07PK2P2XB">Price on Amazon</div>
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07PK2P2XB?tag=zeroregretb04-20"
        target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
     <div class="paidnote">(paid link)</div>
@@ -107,12 +110,13 @@
   <div class="card-photo">
     <a href="../products/arencia-rice-cleanser.html"><img src="../images/products/arencia-rice-cleanser.jpg" alt="Arencia Fresh Green Rice Mochi Cleanser product photo" loading="lazy"></a>
     
-    <button type="button" class="savebtn js-save" data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" aria-pressed="false" aria-label="Save Arencia Fresh Green Rice Mochi Cleanser to your picks">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" aria-pressed="false" aria-label="Add Arencia Fresh Green Rice Mochi Cleanser to your cart">+</button>
   </div>
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Bright Cleanse</span> <span class="ep">Ep 10</span></div>
     <h3><a href="../products/arencia-rice-cleanser.html">Arencia Fresh Green Rice Mochi Cleanser</a></h3>
     <p class="pitch">A rice-powder mochi cleanser for hydrating, deep cleansing with a brightening angle. The fun-textured first step that made the screenshots.</p>
+    <div class="price" data-price-asin="B0C1BMWPR2">Price on Amazon</div>
     <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0C1BMWPR2?tag=zeroregretb04-20"
        target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
     <div class="paidnote">(paid link)</div>
@@ -140,23 +144,8 @@
     <p class="footer-copy">© 2026 Zero Regret Buys</p>
   </div>
 </footer>
-<div class="shortlist" id="shortlist" hidden>
-  <div class="shortlist-backdrop js-close-shortlist"></div>
-  <aside class="shortlist-panel" role="dialog" aria-modal="true" aria-label="Your picks">
-    <div class="shortlist-head">
-      <h2>Your picks <span class="picks-count" data-picks-count>0</span></h2>
-      <button type="button" class="shortlist-close js-close-shortlist" aria-label="Close">×</button>
-    </div>
-    <p class="shortlist-empty" id="shortlist-empty">Nothing saved yet. Tap + on any pick to save it here.</p>
-    <ul class="shortlist-list" id="shortlist-list"></ul>
-    <div class="shortlist-foot" id="shortlist-foot" hidden>
-      <a class="btn btn-shelf btn-block" id="shortlist-cart" href="#" target="_blank" rel="sponsored nofollow noopener">Add your picks to Amazon cart</a>
-      <div class="paidnote">(paid link)</div>
-      <button type="button" class="shortlist-clear" id="shortlist-clear">Clear all</button>
-    </div>
-  </aside>
-</div>
 <script src="../site.js"></script>
-<script src="../shortlist.js"></script>
+<script src="../prices.js"></script>
+<script src="../cart.js"></script>
 </body>
 </html>
