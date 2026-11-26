@@ -10,7 +10,13 @@
  *
  * Response JSON:
  *   { "available": true,  "prices": { "ASIN": { "amount": 12.34,
- *       "currency": "CAD", "display": "$12.34" } } }
+ *       "currency": "CAD", "display": "$12.34",
+ *       "was": { "amount": 24.99, "currency": "CAD", "display": "$24.99" },
+ *       "off": 51 } } }
+ * `was` is the pre-discount list price and `off` the discount percent,
+ * both taken from the PA-API Savings block (was = price + savings amount).
+ * They are present only when Amazon reports a real saving; otherwise the
+ * entry has only amount/currency/display.
  *
  * Credentials come ONLY from environment variables (set them in Vercel,
  * never in this file):
@@ -144,7 +150,7 @@ function fetchPricesFromAmazon({ accessKey, secretKey, partnerTag, asins }) {
       PartnerType: 'Associates',
       Marketplace: 'www.amazon.ca',
       ItemIds: asins,
-      Resources: ['Offers.Listings.Price', 'ItemInfo.Title'],
+      Resources: ['Offers.Listings.Price', 'Offers.Listings.Savings', 'ItemInfo.Title'],
     });
 
     const signed = signRequest({ accessKey, secretKey, body });
@@ -177,19 +183,42 @@ function fetchPricesFromAmazon({ accessKey, secretKey, partnerTag, asins }) {
           const out = {};
           for (const item of items) {
             const asin = item && item.ASIN;
-            const price =
+            const listing =
               item &&
               item.Offers &&
               Array.isArray(item.Offers.Listings) &&
-              item.Offers.Listings[0] &&
-              item.Offers.Listings[0].Price;
+              item.Offers.Listings[0];
+            const price = listing && listing.Price;
             // Only real prices: an item with no price is omitted, never invented.
             if (!asin || !price || typeof price.Amount !== 'number') continue;
-            out[asin] = {
+            const entry = {
               amount: price.Amount,
               currency: price.Currency,
               display: price.DisplayAmount,
             };
+            // Savings (discount) — only when Amazon reports one.
+            const savings = listing && listing.Savings;
+            if (
+              savings &&
+              typeof savings.Amount === 'number' &&
+              savings.Amount > 0 &&
+              typeof savings.Percentage === 'number' &&
+              savings.Percentage > 0
+            ) {
+              const wasAmount = price.Amount + savings.Amount;
+              // Build the was display from the price display so the
+              // currency symbol matches Amazon's formatting.
+              entry.was = {
+                amount: wasAmount,
+                currency: price.Currency,
+                display: price.DisplayAmount.replace(
+                  /[0-9][0-9,.]*/,
+                  wasAmount.toFixed(2)
+                ),
+              };
+              entry.off = savings.Percentage;
+            }
+            out[asin] = entry;
           }
           done(out);
         });

@@ -92,9 +92,14 @@
   if (search) search.addEventListener("input", function () { state.q = search.value; state.job = "all"; apply(); });
   if (sort) sort.addEventListener("change", function () { state.sort = sort.value; apply(); });
 
-  // Deep links (?cat= / ?sub=) apply on load; a sub implies its aisle
-  // unless a cat was given explicitly.
+  // Deep links (?cat= / ?sub= / ?job= / ?q=) apply on load; a sub implies
+  // its aisle unless a cat was given explicitly. ?q= is the header search.
   var params = new URLSearchParams(window.location.search);
+  var qParam = params.get("q");
+  if (qParam) {
+    state.q = qParam;
+    if (search) search.value = qParam;
+  }
   var catParam = params.get("cat");
   var subParam = params.get("sub");
   var jobParam = params.get("job");

@@ -109,7 +109,7 @@ def head(title, desc, path, root, body_class=""):
 <meta property="og:type" content="website">
 <meta property="og:url" content="%s/%s">
 <meta property="og:image" content="%s/images/logo.jpg">
-<meta name="theme-color" content="#faf9f6">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="%simages/logo.jpg">
 <link rel="stylesheet" href="%sstyles.css">
 </head>
@@ -139,6 +139,9 @@ def header(root, current, tab=True):
         % (root, href, ' aria-current="page"' if href == current else "",
            TAB_ICONS[href][0], TAB_ICONS[href][1])
         for href in TAB_ICONS), cart_tab)) if tab else ""
+    subnav = "".join(
+        '<a href="%sshop.html?job=%s">%s</a>' % (root, slug, label)
+        for slug, label in THEMES)
     return """
 <header class="site-header">
   <div class="header-inner">
@@ -146,33 +149,62 @@ def header(root, current, tab=True):
       <img class="logoimg" src="%simages/logo.jpg" alt="Zero Regret Buys logo">
       <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
     </a>
+    <form class="header-search" action="%sshop.html" method="get" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input type="search" name="q" placeholder="Search picks, ingredients, keywords…" aria-label="Search picks">
+    </form>
     <nav class="mainnav" aria-label="Primary">
       %s
       %s
       <a class="nav-cta" href="%sshop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
+  <nav class="subnav" aria-label="Themes">
+    <div class="subnav-inner">
+      <a href="%sshop.html">All picks</a>
+      %s
+      <a href="%sabout.html">About</a>
+    </div>
+  </nav>
 </header>
 %s
-""" % (root, root, links, nav_cart, root, tabbar)
+""" % (root, root, root, links, nav_cart, root, root, subnav, root, tabbar)
 
 
 def footer(root):
+    theme_links = "".join(
+        '<a href="%sshop.html?job=%s">%s</a>' % (root, slug, label)
+        for slug, label in THEMES)
     return """
 </main>
 <footer class="site-footer">
   <div class="footer-inner">
-    <a class="brandmark" href="%sindex.html">
-      <img class="logoimg" src="%simages/logo.jpg" alt="Zero Regret Buys logo">
-      <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
-    </a>
-    <nav aria-label="Footer">
-      <a href="%sshop.html">Shop all picks</a>
-      <a href="%sabout.html">About</a>
-      <a href="%sterms.html">Terms</a>
-      <a href="%sprivacy.html">Privacy</a>
-    </nav>
-    <p class="footer-disclosure">%s Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. <a href="%sabout.html">Why this matters</a></p>
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <a class="brandmark" href="%sindex.html">
+          <img class="logoimg" src="%simages/logo.jpg" alt="Zero Regret Buys logo">
+          <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
+        </a>
+        <p class="footer-tag">Thirty worth-it picks. One job each. No hype.</p>
+      </div>
+      <nav class="footer-col" aria-label="Deals">
+        <h3>Deals</h3>
+        <a href="%sindex.html#top-deals">Today’s top deals</a>
+        <a href="%sshop.html">Shop all picks</a>
+        <a href="%scart.html">Your cart</a>
+      </nav>
+      <nav class="footer-col" aria-label="Themes">
+        <h3>Themes</h3>
+        %s
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <h3>Company</h3>
+        <a href="%sabout.html">About</a>
+        <a href="%sterms.html">Terms</a>
+        <a href="%sprivacy.html">Privacy</a>
+      </nav>
+    </div>
+    <p class="footer-disclosure">%s Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. Certain content that appears on this site comes from Amazon. This content is provided “as is” and is subject to change or removal at any time. <a href="%sabout.html">Read our full affiliate disclosure here</a></p>
     <p class="footer-copy">© %s Zero Regret Buys</p>
   </div>
 </footer>
@@ -181,8 +213,8 @@ def footer(root):
 <script src="%scart.js"></script>
 </body>
 </html>
-""" % (root, root, root, root, root, root, DISCLOSURE, root,
-       datetime.now().year, root, root, root)
+""" % (root, root, root, root, root, theme_links, root, root, root,
+       DISCLOSURE, root, datetime.now().year, root, root, root)
 
 
 def badge(p):
@@ -195,12 +227,13 @@ def search_blob(p):
 
 
 def card(p, root, pitch=True):
-    """One product card: photo, job, title, one line, buy button.
-    pitch=False drops the pitch line (home grid: visual only)."""
+    """DealSeek-style deal card: photo, title, discount pill + deal type,
+    live price + struck-through list price, store, View Deal on Amazon.
+    The discount pill, deal type and list price stay hidden until the
+    live price service returns a real saving for that ASIN."""
     photo = p["photos"][0] if p.get("photos") else ""
     img = ('<img src="%s%s" alt="%s product photo" loading="lazy">'
            % (root, photo, p["title"])) if photo else ""
-    pitch_html = '<p class="pitch">%s</p>' % p["pitch"] if pitch else ""
     savebtn = ('<button type="button" class="cartbtn js-save" data-slug="%(slug)s" data-asin="%(asin)s" aria-pressed="false" aria-label="Add %(title)s to your cart">+</button>'
                % {"slug": p["slug"], "asin": p["asin"], "title": p["title"]})
     return """
@@ -215,10 +248,17 @@ def card(p, root, pitch=True):
   <div class="card-body">
     <div class="card-meta">%(badge)s %(ep)s</div>
     <h3><a href="%(root)sproducts/%(slug)s.html">%(title)s</a></h3>
-    %(pitch_html)s
-    <div class="price" data-price-asin="%(asin)s">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="%(url)s"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="%(asin)s" hidden></span>
+      <span class="dealtype" data-dealtype-asin="%(asin)s" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="%(asin)s">Price on Amazon</span>
+      <s class="was" data-was-asin="%(asin)s" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="%(url)s"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>""" % {
@@ -226,41 +266,69 @@ def card(p, root, pitch=True):
         "sub_slug": p["sub_slug"], "job": JOB_BY_BADGE[BADGES[p["slug"]]],
         "search": search_blob(p), "root": root, "slug": p["slug"],
         "asin": p["asin"], "img": img, "badge": badge(p), "ep": ep_label(p),
-        "newtag": new_tag(p), "savebtn": savebtn,
-        "pitch_html": pitch_html, "url": p["url"],
+        "newtag": new_tag(p), "savebtn": savebtn, "url": p["url"],
     }
 
 
 def cartall_block():
     return """
       <div class="cartall">
-        <a class="btn btn-shelf btn-big" href="%s"
+        <a class="btn btn-deal btn-big" href="%s"
            target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
         <div class="paidnote">(paid link)</div>
         <p class="micro">One click loads all thirty picks into your Amazon.ca cart — remove anything you don’t want before checkout.</p>
       </div>""" % CART_ALL_HTML
 
 
+# The five newest picks, ranked Top 1-5 on the home carousel.
+TOP_DEALS = sorted(PRODUCTS, key=lambda p: p["num"], reverse=True)[:5]
+
+
+def bento_tiles(root):
+    """DealSeek-style bento: a big Top Picks tile + one tile per theme."""
+    picks = TOP_DEALS[:3]
+    pick_items = "".join(
+        '<a class="bento-pick" href="%(root)sproducts/%(slug)s.html">'
+        '<span class="bento-rank">%(n)d</span>'
+        '<img src="%(root)s%(photo)s" alt="%(title)s" loading="lazy">'
+        '<span class="bento-pick-title">%(title)s</span></a>'
+        % {"root": root, "slug": q["slug"], "n": i + 1,
+           "photo": q["photos"][0] if q.get("photos") else "",
+           "title": q["title"]}
+        for i, q in enumerate(picks))
+    theme_tiles = ""
+    for slug, label in THEMES:
+        items = theme_products(slug)
+        top = items[0]
+        photo = top["photos"][0] if top.get("photos") else ""
+        img = ('<img src="%s%s" alt="%s" loading="lazy">'
+               % (root, photo, label)) if photo else ""
+        theme_tiles += """
+      <a class="bento-tile" href="shop.html?job=%s">
+        %s
+        <span class="bento-tile-label">%s</span>
+        <span class="bento-tile-count">%d picks</span>
+      </a>""" % (slug, img, label, len(items))
+    return """
+    <div class="bento">
+      <div class="bento-tile bento-toppicks">
+        <span class="bento-tile-label">Top Picks</span>
+        <div class="bento-picks">%s</div>
+        <a class="bento-viewall" href="shop.html">View All &rarr;</a>
+      </div>
+%s
+    </div>""" % (pick_items, theme_tiles)
+
+
 # ---------------- index ----------------
 def build_index():
     root = ""
-    sections = ""
-    for slug, label in THEMES:
-        items = theme_products(slug)
-        cards = "".join(card(p, root, pitch=False) for p in items)
-        sections += """
-    <section class="theme" id="theme-%s">
-      <div class="theme-head">
-        <h2>%s</h2>
-        <span class="theme-count">%d picks</span>
-        <a class="theme-all" href="shop.html?job=%s">See all &rarr;</a>
-      </div>
-      <div class="theme-row">
-%s
-      </div>
-      <div class="shelf-rail" aria-hidden="true"></div>
-    </section>
-""" % (slug, label, len(items), slug, cards)
+    top_cards = "".join(
+        '<div class="deal-wrap"><span class="rank rank-%d">Top %d</span>%s</div>'
+        % (i + 1, i + 1, card(p, root))
+        for i, p in enumerate(TOP_DEALS))
+    all_cards = "".join(
+        card(p, root) for p in sorted(PRODUCTS, key=lambda p: p["num"], reverse=True))
     body = """
 <main id="main">
   <div class="hero">
@@ -268,17 +336,35 @@ def build_index():
       <h1>Thirty picks. Zero regret.</h1>
       <p class="sub">One job each. Live prices from Amazon, no hype.</p>
       <div class="hero-ctas">
-        <a class="btn btn-shelf" href="#themes">See the picks</a>
+        <a class="btn btn-deal" href="#top-deals">Today’s top deals</a>
         <a class="btn btn-outline" href="shop.html">Browse the shop</a>
       </div>
     </div>
   </div>
 
-  <div class="wrap" id="themes">
+  <div class="wrap">
 %s
+    <section class="topdeals" id="top-deals">
+      <div class="section-head">
+        <h2>Today’s Top Deals</h2>
+        <a class="viewall" href="shop.html">View All &rarr;</a>
+      </div>
+      <div class="hrow">
+%s
+      </div>
+    </section>
+    <section class="explore" id="explore">
+      <div class="section-head">
+        <h2>Explore</h2>
+        <span class="explore-sub">All thirty picks, in one place.</span>
+      </div>
+      <div class="grid">
+%s
+      </div>
+    </section>
 %s
   </div>
-""" % (sections, cartall_block())
+""" % (bento_tiles(root), top_cards, all_cards, cartall_block())
     return (head("Zero Regret Buys — Thirty picks. Zero regret.",
                  "Zero Regret Buys: thirty worth-it products, each with one clear job. Paid Amazon links, labeled on every card.",
                  "index.html", root)
@@ -299,11 +385,6 @@ def build_shop():
         '<button type="button" class="chip" data-group="sub" data-value="%s" data-cat="%s" aria-pressed="%s">%s</button>'
         % (slug, cat, "true" if slug == "all" else "false", label)
         for label, slug, cat in [("All", "all", "")] + subs)
-    rows = "".join(
-        '<tr><td><a href="products/%s.html">%s</a></td><td>%s</td>'
-        '<td><a href="%s" target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a> <span class="paidnote">(paid link)</span></td></tr>'
-        % (p["slug"], p["title"], BADGES[p["slug"]], p["url"])
-        for p in PRODUCTS)
     body = """
 <main id="main">
   <div class="wrap">
@@ -333,15 +414,6 @@ def build_shop():
       </div>
       <div class="shelf-rail" aria-hidden="true"></div>
       <p class="empty" id="shop-empty" hidden>Nothing matches — try a different word.</p>
-      <div class="cmp">
-        <h2>Compare</h2>
-        <div class="cmp-scroll">
-          <table>
-            <thead><tr><th>Pick</th><th>Best for</th><th>Amazon</th></tr></thead>
-            <tbody>%s</tbody>
-          </table>
-        </div>
-      </div>
 %s
       <div class="sticky-cart">
         <a class="btn btn-shelf" href="%s" target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
@@ -349,7 +421,7 @@ def build_shop():
       </div>
     </div>
   </div>
-""" % (aisle_chips, shelf_chips, cards, rows, cartall_block(), CART_ALL_HTML)
+""" % (aisle_chips, shelf_chips, cards, cartall_block(), CART_ALL_HTML)
     return (head("The Shop — Zero Regret Buys",
                  "All thirty picks in one place. Search, filter, compare — then check today’s live price on Amazon.",
                  "shop.html", root, body_class="shop-page")
@@ -361,7 +433,7 @@ def related(p):
     others = [q for q in PRODUCTS if q["slug"] != p["slug"]]
     same_sub = [q for q in others if q["sub_slug"] == p["sub_slug"]]
     same_cat = [q for q in others if q["cat_slug"] == p["cat_slug"] and q not in same_sub]
-    return (same_sub + same_cat + others)[:3]
+    return (same_sub + same_cat + others)[:4]
 
 
 def build_product(p):
@@ -385,14 +457,22 @@ def build_product(p):
       <div class="pdp-grid">
         <div class="pdp-photo">%(img)s</div>
         <div class="pdp-info">
+          <div class="pdp-store">Amazon</div>
           <div class="pdp-meta">%(badge)s %(ep)s %(newtag)s</div>
           <h1>%(title)s</h1>
           <p class="key">%(key)s</p>
           <p class="verdict">%(verdict)s</p>
+          <div class="pdp-deal">
+            <span class="off off--pdp" data-offpdp-asin="%(asin)s" hidden></span>
+            <div class="pricerow">
+              <span class="price price--pdp" data-price-asin="%(asin)s">Price on Amazon</span>
+              <s class="was" data-was-asin="%(asin)s" hidden></s>
+            </div>
+          </div>
           <div class="pdp-buy">
-            <div class="price price--pdp" data-price-asin="%(asin)s">Price on Amazon</div>
-            <a class="btn btn-shelf" href="%(url)s" target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-            <a class="btn" href="%(cart_url)s" target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
+            <a class="btn btn-deal" href="%(url)s" target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+            <p class="pdp-disc">%(disc)s Prices and availability are accurate as of the date and time shown and are subject to change.</p>
+            <a class="btn btn-outline" href="%(cart_url)s" target="_blank" rel="sponsored nofollow noopener">Add to Cart on Amazon</a>
             <div class="paidnote">(paid links)</div>
             %(savebtn)s
           </div>
@@ -408,8 +488,11 @@ def build_product(p):
         </div>
       </div>
       <div class="more">
-        <h2>More picks</h2>
-        <div class="grid">
+        <div class="section-head">
+          <h2>Similar Deals</h2>
+          <a class="viewall" href="../shop.html">View All &rarr;</a>
+        </div>
+        <div class="hrow">
 %(more)s
         </div>
       </div>
@@ -422,7 +505,7 @@ def build_product(p):
         "key": copy["key"],
         "verdict": short_verdict(p), "url": p["url"],
         "cart_url": p["cart_url"], "getif": getif, "skip_html": skip_html,
-        "savebtn": savebtn,
+        "savebtn": savebtn, "disc": DISCLOSURE,
         "keyword": p["keyword"], "more": more,
     }
     return (head("%s — Zero Regret Buys" % p["title"],
@@ -635,9 +718,14 @@ SITE_JS = """// Zero Regret Buys — shop search, filter and sort. Dependency-fr
   if (search) search.addEventListener("input", function () { state.q = search.value; state.job = "all"; apply(); });
   if (sort) sort.addEventListener("change", function () { state.sort = sort.value; apply(); });
 
-  // Deep links (?cat= / ?sub=) apply on load; a sub implies its aisle
-  // unless a cat was given explicitly.
+  // Deep links (?cat= / ?sub= / ?job= / ?q=) apply on load; a sub implies
+  // its aisle unless a cat was given explicitly. ?q= is the header search.
   var params = new URLSearchParams(window.location.search);
+  var qParam = params.get("q");
+  if (qParam) {
+    state.q = qParam;
+    if (search) search.value = qParam;
+  }
   var catParam = params.get("cat");
   var subParam = params.get("sub");
   var jobParam = params.get("job");
@@ -786,8 +874,11 @@ CART_JS = """// Zero Regret Buys — cart. Add products, view them on the cart p
 
 # ---------------- prices (live Amazon prices, never typed) ----------------
 PRICES_JS = """// Zero Regret Buys — prices. Fetches live Amazon prices from /api/prices
-// and writes them into [data-price-asin] elements. Never types a price:
-// without a live price the element keeps its "Price on Amazon" placeholder.
+// and writes them into [data-price-asin] elements, plus the discount pill
+// [data-off-asin], the deal type [data-dealtype-asin] and the struck-through
+// list price [data-was-asin] when Amazon reports a real saving.
+// Never types a price: without a live price the element keeps its
+// "Price on Amazon" placeholder, and the discount stays hidden.
 (function () {
   "use strict";
   var loaded = {};
@@ -816,6 +907,28 @@ PRICES_JS = """// Zero Regret Buys — prices. Fetches live Amazon prices from /
       row.hidden = true;
     }
   }
+  // Fill a live deal: discount pill, deal type, struck-through list
+  // price. Any of these stay hidden until a real saving arrives.
+  function applyDeal(asin, p) {
+    if (!p || typeof p.off !== "number" || p.off <= 0) return;
+    document.querySelectorAll('[data-off-asin="' + asin + '"]').forEach(function (el) {
+      el.textContent = "-" + p.off + "%";
+      el.hidden = false;
+    });
+    document.querySelectorAll('[data-offpdp-asin="' + asin + '"]').forEach(function (el) {
+      el.textContent = p.off + "% OFF";
+      el.hidden = false;
+    });
+    document.querySelectorAll('[data-dealtype-asin="' + asin + '"]').forEach(function (el) {
+      el.hidden = false;
+    });
+    if (p.was && p.was.display) {
+      document.querySelectorAll('[data-was-asin="' + asin + '"]').forEach(function (el) {
+        el.textContent = p.was.display;
+        el.hidden = false;
+      });
+    }
+  }
   function applyPrices(prices) {
     Object.keys(prices).forEach(function (asin) {
       var p = prices[asin];
@@ -827,6 +940,7 @@ PRICES_JS = """// Zero Regret Buys — prices. Fetches live Amazon prices from /
       if (p) {
         el.textContent = p.display || fmt(p.amount, p.currency);
         el.classList.add("price--live");
+        applyDeal(asin, p);
       }
     });
     updateTotal();

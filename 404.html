@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zero-regret-buys-kirpal-singh.vercel.app/404.html">
 <meta property="og:image" content="https://zero-regret-buys-kirpal-singh.vercel.app/images/logo.jpg">
-<meta name="theme-color" content="#faf9f6">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="images/logo.jpg">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,12 +22,23 @@
       <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
       <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
     </a>
+    <form class="header-search" action="shop.html" method="get" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input type="search" name="q" placeholder="Search picks, ingredients, keywords…" aria-label="Search picks">
+    </form>
     <nav class="mainnav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a>
       <a class="nav-cart" href="cart.html">Your cart <span class="cart-count" data-cart-count>0</span></a>
       <a class="nav-cta" href="shop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
+  <nav class="subnav" aria-label="Themes">
+    <div class="subnav-inner">
+      <a href="shop.html">All picks</a>
+      <a href="shop.html?job=sleep">Sleep</a><a href="shop.html?job=skin">Skin</a><a href="shop.html?job=hair-scalp">Hair & Scalp</a><a href="shop.html?job=body-recovery">Body & Recovery</a><a href="shop.html?job=inner-health">Inner Health</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
 </header>
 
 <nav class="tabbar" aria-label="Mobile">
@@ -45,17 +56,32 @@
 </main>
 <footer class="site-footer">
   <div class="footer-inner">
-    <a class="brandmark" href="index.html">
-      <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
-      <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
-    </a>
-    <nav aria-label="Footer">
-      <a href="shop.html">Shop all picks</a>
-      <a href="about.html">About</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-    <p class="footer-disclosure">As an Amazon Associate I earn from qualifying purchases. Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. <a href="about.html">Why this matters</a></p>
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <a class="brandmark" href="index.html">
+          <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
+          <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
+        </a>
+        <p class="footer-tag">Thirty worth-it picks. One job each. No hype.</p>
+      </div>
+      <nav class="footer-col" aria-label="Deals">
+        <h3>Deals</h3>
+        <a href="index.html#top-deals">Today’s top deals</a>
+        <a href="shop.html">Shop all picks</a>
+        <a href="cart.html">Your cart</a>
+      </nav>
+      <nav class="footer-col" aria-label="Themes">
+        <h3>Themes</h3>
+        <a href="shop.html?job=sleep">Sleep</a><a href="shop.html?job=skin">Skin</a><a href="shop.html?job=hair-scalp">Hair & Scalp</a><a href="shop.html?job=body-recovery">Body & Recovery</a><a href="shop.html?job=inner-health">Inner Health</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <h3>Company</h3>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <p class="footer-disclosure">As an Amazon Associate I earn from qualifying purchases. Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. Certain content that appears on this site comes from Amazon. This content is provided “as is” and is subject to change or removal at any time. <a href="about.html">Read our full affiliate disclosure here</a></p>
     <p class="footer-copy">© 2026 Zero Regret Buys</p>
   </div>
 </footer>

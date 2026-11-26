@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zero-regret-buys-kirpal-singh.vercel.app/index.html">
 <meta property="og:image" content="https://zero-regret-buys-kirpal-singh.vercel.app/images/logo.jpg">
-<meta name="theme-color" content="#faf9f6">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="images/logo.jpg">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,12 +22,23 @@
       <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
       <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
     </a>
+    <form class="header-search" action="shop.html" method="get" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input type="search" name="q" placeholder="Search picks, ingredients, keywords…" aria-label="Search picks">
+    </form>
     <nav class="mainnav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a>
       <a class="nav-cart" href="cart.html">Your cart <span class="cart-count" data-cart-count>0</span></a>
       <a class="nav-cta" href="shop.html"><span class="cta-full">Browse the picks</span><span class="cta-short">Browse</span></a>
     </nav>
   </div>
+  <nav class="subnav" aria-label="Themes">
+    <div class="subnav-inner">
+      <a href="shop.html">All picks</a>
+      <a href="shop.html?job=sleep">Sleep</a><a href="shop.html?job=skin">Skin</a><a href="shop.html?job=hair-scalp">Hair & Scalp</a><a href="shop.html?job=body-recovery">Body & Recovery</a><a href="shop.html?job=inner-health">Inner Health</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
 </header>
 
 <nav class="tabbar" aria-label="Mobile">
@@ -40,124 +51,129 @@
       <h1>Thirty picks. Zero regret.</h1>
       <p class="sub">One job each. Live prices from Amazon, no hype.</p>
       <div class="hero-ctas">
-        <a class="btn btn-shelf" href="#themes">See the picks</a>
+        <a class="btn btn-deal" href="#top-deals">Today’s top deals</a>
         <a class="btn btn-outline" href="shop.html">Browse the shop</a>
       </div>
     </div>
   </div>
 
-  <div class="wrap" id="themes">
+  <div class="wrap">
 
-    <section class="theme" id="theme-sleep">
-      <div class="theme-head">
-        <h2>Sleep</h2>
-        <span class="theme-count">5 picks</span>
-        <a class="theme-all" href="shop.html?job=sleep">See all &rarr;</a>
+    <div class="bento">
+      <div class="bento-tile bento-toppicks">
+        <span class="bento-tile-label">Top Picks</span>
+        <div class="bento-picks"><a class="bento-pick" href="products/olaplex-no3.html"><span class="bento-rank">1</span><img src="images/products/olaplex-no3.jpg" alt="Olaplex No.3 Hair Perfector" loading="lazy"><span class="bento-pick-title">Olaplex No.3 Hair Perfector</span></a><a class="bento-pick" href="products/scalp-massager.html"><span class="bento-rank">2</span><img src="images/products/scalp-massager.jpg" alt="Comfier Cordless Scalp Massager" loading="lazy"><span class="bento-pick-title">Comfier Cordless Scalp Massager</span></a><a class="bento-pick" href="products/acupressure-mat.html"><span class="bento-rank">3</span><img src="images/products/acupressure-mat.jpg" alt="ELEBOX Acupressure Mat + Pillow Set" loading="lazy"><span class="bento-pick-title">ELEBOX Acupressure Mat + Pillow Set</span></a></div>
+        <a class="bento-viewall" href="shop.html">View All &rarr;</a>
       </div>
-      <div class="theme-row">
 
-<article class="card" data-num="24" data-title="Jamieson Melatonin 10mg Dual-Action"
-         data-cat="supplements" data-sub="sleep" data-job="sleep"
-         data-slug="melatonin-10mg" data-asin="B0797NJW1Q" data-search="Jamieson Melatonin 10mg Dual-Action A dual-action melatonin — helps you fall asleep faster and resets a scrambled sleep cycle. The training-wheels bottle for broken sleep. Supplements Sleep Falling Asleep REST ep24">
-  <div class="card-photo">
-    <a href="products/melatonin-10mg.html"><img src="images/products/melatonin-10mg.jpg" alt="Jamieson Melatonin 10mg Dual-Action product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="melatonin-10mg" data-asin="B0797NJW1Q" aria-pressed="false" aria-label="Add Jamieson Melatonin 10mg Dual-Action to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Falling Asleep</span> <span class="ep">Ep 24</span></div>
-    <h3><a href="products/melatonin-10mg.html">Jamieson Melatonin 10mg Dual-Action</a></h3>
-    
-    <div class="price" data-price-asin="B0797NJW1Q">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0797NJW1Q?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="21" data-title="Philips SmartSleep Wake-Up Light"
-         data-cat="gadgets" data-sub="sleep" data-job="sleep"
-         data-slug="philips-wake-up" data-asin="B0093162RM" data-search="Philips SmartSleep Wake-Up Light A sunrise-simulating alarm — 14,000+ ratings. Wake up to gradually brightening light, not a blaring alarm. Gadgets Sleep Mornings DAWN ep21">
-  <div class="card-photo">
-    <a href="products/philips-wake-up.html"><img src="images/products/philips-wake-up.jpg" alt="Philips SmartSleep Wake-Up Light product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="philips-wake-up" data-asin="B0093162RM" aria-pressed="false" aria-label="Add Philips SmartSleep Wake-Up Light to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Mornings</span> <span class="ep">Ep 21</span></div>
-    <h3><a href="products/philips-wake-up.html">Philips SmartSleep Wake-Up Light</a></h3>
-    
-    <div class="price" data-price-asin="B0093162RM">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0093162RM?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="19" data-title="MyHalos 3D Blackout Sleep Mask"
-         data-cat="gadgets" data-sub="sleep" data-job="sleep"
-         data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" data-search="MyHalos 3D Blackout Sleep Mask A 3D contoured blackout mask — 100% darkness, zero eye pressure. Insomniacs call it a game-changer. Gadgets Sleep Blackout Sleep DARK ep19">
-  <div class="card-photo">
-    <a href="products/myhalos-sleep-mask.html"><img src="images/products/myhalos-sleep-mask.jpg" alt="MyHalos 3D Blackout Sleep Mask product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" aria-pressed="false" aria-label="Add MyHalos 3D Blackout Sleep Mask to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Blackout Sleep</span> <span class="ep">Ep 19</span></div>
-    <h3><a href="products/myhalos-sleep-mask.html">MyHalos 3D Blackout Sleep Mask</a></h3>
-    
-    <div class="price" data-price-asin="B09CZ68WV3">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B09CZ68WV3?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="13" data-title="Webber Naturals Ashwagandha 7200mg (KSM-66)"
-         data-cat="supplements" data-sub="adaptogens" data-job="sleep"
-         data-slug="ashwagandha-ksm66" data-asin="B0B8PGT48W" data-search="Webber Naturals Ashwagandha 7200mg (KSM-66) A KSM-66 ashwagandha — the studied extract form — for stress and sleep. People say it calmed their stress and fixed their sleep. Supplements Adaptogens Stress & Sleep CALM ep13">
-  <div class="card-photo">
-    <a href="products/ashwagandha-ksm66.html"><img src="images/products/ashwagandha-ksm66.jpg" alt="Webber Naturals Ashwagandha 7200mg (KSM-66) product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="ashwagandha-ksm66" data-asin="B0B8PGT48W" aria-pressed="false" aria-label="Add Webber Naturals Ashwagandha 7200mg (KSM-66) to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Stress & Sleep</span> <span class="ep">Ep 13</span></div>
-    <h3><a href="products/ashwagandha-ksm66.html">Webber Naturals Ashwagandha 7200mg (KSM-66)</a></h3>
-    
-    <div class="price" data-price-asin="B0B8PGT48W">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0B8PGT48W?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="1" data-title="Magnesium Bisglycinate"
-         data-cat="supplements" data-sub="minerals" data-job="sleep"
-         data-slug="magnesium-glycinate" data-asin="B08WVD2YDB" data-search="Magnesium Bisglycinate A source of magnesium — a mineral that helps maintain proper muscle function and plays a role in tissue formation. Supplements Minerals Sleep SLEEP ep1">
-  <div class="card-photo">
-    <a href="products/magnesium-glycinate.html"><img src="images/products/mg-glycinate-webber-1.jpg" alt="Magnesium Bisglycinate product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="magnesium-glycinate" data-asin="B08WVD2YDB" aria-pressed="false" aria-label="Add Magnesium Bisglycinate to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Sleep</span> <span class="ep">Ep 1</span></div>
-    <h3><a href="products/magnesium-glycinate.html">Magnesium Bisglycinate</a></h3>
-    
-    <div class="price" data-price-asin="B08WVD2YDB">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08WVD2YDB?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
+      <a class="bento-tile" href="shop.html?job=sleep">
+        <img src="images/products/melatonin-10mg.jpg" alt="Sleep" loading="lazy">
+        <span class="bento-tile-label">Sleep</span>
+        <span class="bento-tile-count">5 picks</span>
+      </a>
+      <a class="bento-tile" href="shop.html?job=skin">
+        <img src="images/products/hydro-boost-gel.jpg" alt="Skin" loading="lazy">
+        <span class="bento-tile-label">Skin</span>
+        <span class="bento-tile-count">12 picks</span>
+      </a>
+      <a class="bento-tile" href="shop.html?job=hair-scalp">
+        <img src="images/products/olaplex-no3.jpg" alt="Hair & Scalp" loading="lazy">
+        <span class="bento-tile-label">Hair & Scalp</span>
+        <span class="bento-tile-count">4 picks</span>
+      </a>
+      <a class="bento-tile" href="shop.html?job=body-recovery">
+        <img src="images/products/acupressure-mat.jpg" alt="Body & Recovery" loading="lazy">
+        <span class="bento-tile-label">Body & Recovery</span>
+        <span class="bento-tile-count">4 picks</span>
+      </a>
+      <a class="bento-tile" href="shop.html?job=inner-health">
+        <img src="images/products/b12-2500.jpg" alt="Inner Health" loading="lazy">
+        <span class="bento-tile-label">Inner Health</span>
+        <span class="bento-tile-count">5 picks</span>
+      </a>
+    </div>
+    <section class="topdeals" id="top-deals">
+      <div class="section-head">
+        <h2>Today’s Top Deals</h2>
+        <a class="viewall" href="shop.html">View All &rarr;</a>
       </div>
-      <div class="shelf-rail" aria-hidden="true"></div>
-    </section>
-
-    <section class="theme" id="theme-skin">
-      <div class="theme-head">
-        <h2>Skin</h2>
-        <span class="theme-count">12 picks</span>
-        <a class="theme-all" href="shop.html?job=skin">See all &rarr;</a>
-      </div>
-      <div class="theme-row">
-
+      <div class="hrow">
+<div class="deal-wrap"><span class="rank rank-1">Top 1</span>
+<article class="card" data-num="30" data-title="Olaplex No.3 Hair Perfector"
+         data-cat="personal-care" data-sub="haircare" data-job="hair-scalp"
+         data-slug="olaplex-no3" data-asin="B08TWTQDCX" data-search="Olaplex No.3 Hair Perfector The at-home bond builder — 22,000+ reviews. Repairs the look of damaged hair and reduces breakage. The salon step you do in your shower. Personal Care Haircare Damaged Hair REPAIR ep30">
+  <div class="card-photo">
+    <a href="products/olaplex-no3.html"><img src="images/products/olaplex-no3.jpg" alt="Olaplex No.3 Hair Perfector product photo" loading="lazy"></a>
+    <span class="newtag">New</span>
+    <button type="button" class="cartbtn js-save" data-slug="olaplex-no3" data-asin="B08TWTQDCX" aria-pressed="false" aria-label="Add Olaplex No.3 Hair Perfector to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Damaged Hair</span> <span class="ep">Ep 30</span></div>
+    <h3><a href="products/olaplex-no3.html">Olaplex No.3 Hair Perfector</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B08TWTQDCX" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B08TWTQDCX" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B08TWTQDCX">Price on Amazon</span>
+      <s class="was" data-was-asin="B08TWTQDCX" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B08TWTQDCX?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article></div><div class="deal-wrap"><span class="rank rank-2">Top 2</span>
+<article class="card" data-num="29" data-title="Comfier Cordless Scalp Massager"
+         data-cat="gadgets" data-sub="recovery" data-job="hair-scalp"
+         data-slug="scalp-massager" data-asin="B08KGD8JWK" data-search="Comfier Cordless Scalp Massager A cordless scalp massager with deep-kneading nodes — waterproof, for stress relief and the best head massage you’ve had at home. Gadgets Recovery Scalp Care KNEAD ep29">
+  <div class="card-photo">
+    <a href="products/scalp-massager.html"><img src="images/products/scalp-massager.jpg" alt="Comfier Cordless Scalp Massager product photo" loading="lazy"></a>
+    <span class="newtag">New</span>
+    <button type="button" class="cartbtn js-save" data-slug="scalp-massager" data-asin="B08KGD8JWK" aria-pressed="false" aria-label="Add Comfier Cordless Scalp Massager to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Scalp Care</span> <span class="ep">Ep 29</span></div>
+    <h3><a href="products/scalp-massager.html">Comfier Cordless Scalp Massager</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B08KGD8JWK" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B08KGD8JWK" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B08KGD8JWK">Price on Amazon</span>
+      <s class="was" data-was-asin="B08KGD8JWK" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B08KGD8JWK?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article></div><div class="deal-wrap"><span class="rank rank-3">Top 3</span>
+<article class="card" data-num="28" data-title="ELEBOX Acupressure Mat + Pillow Set"
+         data-cat="gadgets" data-sub="recovery" data-job="body-recovery"
+         data-slug="acupressure-mat" data-asin="B07M9CGZNY" data-search="ELEBOX Acupressure Mat + Pillow Set An acupressure mat and pillow set for back and neck relief — lie back, breathe, decompress. The 20-minute reset. Gadgets Recovery Back Relief RELIEF ep28">
+  <div class="card-photo">
+    <a href="products/acupressure-mat.html"><img src="images/products/acupressure-mat.jpg" alt="ELEBOX Acupressure Mat + Pillow Set product photo" loading="lazy"></a>
+    <span class="newtag">New</span>
+    <button type="button" class="cartbtn js-save" data-slug="acupressure-mat" data-asin="B07M9CGZNY" aria-pressed="false" aria-label="Add ELEBOX Acupressure Mat + Pillow Set to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Back Relief</span> <span class="ep">Ep 28</span></div>
+    <h3><a href="products/acupressure-mat.html">ELEBOX Acupressure Mat + Pillow Set</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B07M9CGZNY" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B07M9CGZNY" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B07M9CGZNY">Price on Amazon</span>
+      <s class="was" data-was-asin="B07M9CGZNY" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B07M9CGZNY?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article></div><div class="deal-wrap"><span class="rank rank-4">Top 4</span>
 <article class="card" data-num="27" data-title="Neutrogena Hydro Boost Gel Cream"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
          data-slug="hydro-boost-gel" data-asin="B00YPBGIIS" data-search="Neutrogena Hydro Boost Gel Cream A hyaluronic gel-cream for instant hydration — lightweight, never greasy. The drugstore hydrator that punches above its price. Personal Care Skincare Lightweight Hydration BOOST ep27">
@@ -169,13 +185,20 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Lightweight Hydration</span> <span class="ep">Ep 27</span></div>
     <h3><a href="products/hydro-boost-gel.html">Neutrogena Hydro Boost Gel Cream</a></h3>
-    
-    <div class="price" data-price-asin="B00YPBGIIS">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00YPBGIIS?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B00YPBGIIS" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B00YPBGIIS" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B00YPBGIIS">Price on Amazon</span>
+      <s class="was" data-was-asin="B00YPBGIIS" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B00YPBGIIS?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
-</article>
+</article></div><div class="deal-wrap"><span class="rank rank-5">Top 5</span>
 <article class="card" data-num="26" data-title="The Ordinary Niacinamide 10% + Zinc 1%"
          data-cat="personal-care" data-sub="skincare" data-job="skin"
          data-slug="ordinary-niacinamide" data-asin="B01MDTVZTZ" data-search="The Ordinary Niacinamide 10% + Zinc 1% The cult pore-minimizer — 10% niacinamide with 1% zinc, 51,000+ reviews. Regulates oil and refines the look of pores. Personal Care Skincare Pores & Oil PORES ep26">
@@ -187,204 +210,28 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Pores & Oil</span> <span class="ep">Ep 26</span></div>
     <h3><a href="products/ordinary-niacinamide.html">The Ordinary Niacinamide 10% + Zinc 1%</a></h3>
-    
-    <div class="price" data-price-asin="B01MDTVZTZ">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01MDTVZTZ?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B01MDTVZTZ" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B01MDTVZTZ" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B01MDTVZTZ">Price on Amazon</span>
+      <s class="was" data-was-asin="B01MDTVZTZ" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B01MDTVZTZ?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
-</article>
-<article class="card" data-num="25" data-title="CeraVe Moisturizing Cream"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="cerave-cream" data-asin="B083GGFTPW" data-search="CeraVe Moisturizing Cream The 24-hour moisturizer with three essential ceramides — dermatologist-developed, fragrance-free. The tub that dermatologists actually name. Personal Care Skincare 24hr Moisture SOFT ep25">
-  <div class="card-photo">
-    <a href="products/cerave-cream.html"><img src="images/products/cerave-cream.jpg" alt="CeraVe Moisturizing Cream product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="cerave-cream" data-asin="B083GGFTPW" aria-pressed="false" aria-label="Add CeraVe Moisturizing Cream to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for 24hr Moisture</span> <span class="ep">Ep 25</span></div>
-    <h3><a href="products/cerave-cream.html">CeraVe Moisturizing Cream</a></h3>
-    
-    <div class="price" data-price-asin="B083GGFTPW">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B083GGFTPW?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="18" data-title="Garnier Ombrelle Anti-Shine SPF 60"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="ombrelle-spf60" data-asin="B081DNB1B2" data-search="Garnier Ombrelle Anti-Shine SPF 60 Canada’s daily sunscreen — SPF 60, lightweight, no white cast. The one reviewers actually wear every day. Personal Care Skincare Daily SPF SHADE ep18">
-  <div class="card-photo">
-    <a href="products/ombrelle-spf60.html"><img src="images/products/ombrelle-spf60.jpg" alt="Garnier Ombrelle Anti-Shine SPF 60 product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="ombrelle-spf60" data-asin="B081DNB1B2" aria-pressed="false" aria-label="Add Garnier Ombrelle Anti-Shine SPF 60 to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Daily SPF</span> <span class="ep">Ep 18</span></div>
-    <h3><a href="products/ombrelle-spf60.html">Garnier Ombrelle Anti-Shine SPF 60</a></h3>
-    
-    <div class="price" data-price-asin="B081DNB1B2">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B081DNB1B2?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="17" data-title="The Ordinary Hyaluronic Acid 2% + B5"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="ordinary-hyaluronic" data-asin="B01MYEZPC8" data-search="The Ordinary Hyaluronic Acid 2% + B5 The cult budget hydrator — 2% hyaluronic acid with B5. A 73-year-old reviewer said it virtually erased her fine lines. Personal Care Skincare Budget Hydration QUENCH ep17">
-  <div class="card-photo">
-    <a href="products/ordinary-hyaluronic.html"><img src="images/products/ordinary-hyaluronic.jpg" alt="The Ordinary Hyaluronic Acid 2% + B5 product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="ordinary-hyaluronic" data-asin="B01MYEZPC8" aria-pressed="false" aria-label="Add The Ordinary Hyaluronic Acid 2% + B5 to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Budget Hydration</span> <span class="ep">Ep 17</span></div>
-    <h3><a href="products/ordinary-hyaluronic.html">The Ordinary Hyaluronic Acid 2% + B5</a></h3>
-    
-    <div class="price" data-price-asin="B01MYEZPC8">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01MYEZPC8?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="16" data-title="TruSkin Vitamin C Serum"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="truskin-vitamin-c" data-asin="B01M4MCUAF" data-search="TruSkin Vitamin C Serum A vitamin C serum for brighter-looking skin — 106,000+ ratings. People say their skin looks brighter and spots are fading. Personal Care Skincare Brightness GLOW ep16">
-  <div class="card-photo">
-    <a href="products/truskin-vitamin-c.html"><img src="images/products/truskin-vitamin-c.jpg" alt="TruSkin Vitamin C Serum product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="truskin-vitamin-c" data-asin="B01M4MCUAF" aria-pressed="false" aria-label="Add TruSkin Vitamin C Serum to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Brightness</span> <span class="ep">Ep 16</span></div>
-    <h3><a href="products/truskin-vitamin-c.html">TruSkin Vitamin C Serum</a></h3>
-    
-    <div class="price" data-price-asin="B01M4MCUAF">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01M4MCUAF?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="12" data-title="The Ordinary Azelaic Acid Suspension 10%"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="azelaic-acid-10" data-asin="B06WD5J8KY" data-search="The Ordinary Azelaic Acid Suspension 10% A 10% azelaic acid suspension for the look of blemish-prone skin and a brighter, more even tone. The multitasker that doesn’t brag. Personal Care Skincare Even Tone EVEN ep12">
-  <div class="card-photo">
-    <a href="products/azelaic-acid-10.html"><img src="images/products/azelaic-acid-10.png" alt="The Ordinary Azelaic Acid Suspension 10% product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="azelaic-acid-10" data-asin="B06WD5J8KY" aria-pressed="false" aria-label="Add The Ordinary Azelaic Acid Suspension 10% to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Even Tone</span> <span class="ep">Ep 12</span></div>
-    <h3><a href="products/azelaic-acid-10.html">The Ordinary Azelaic Acid Suspension 10%</a></h3>
-    
-    <div class="price" data-price-asin="B06WD5J8KY">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B06WD5J8KY?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="11" data-title="Complex 15 Daily Face Cream"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="complex-15-cream" data-asin="B00BPDF0YC" data-search="Complex 15 Daily Face Cream A propylene-glycol daily face cream — hypoallergenic, unscented, non-greasy, oil-free. The Canadian pharmacy answer to the viral cheap-cream slot. Personal Care Skincare Dry Skin DEW ep11">
-  <div class="card-photo">
-    <a href="products/complex-15-cream.html"><img src="images/products/complex-15.jpg" alt="Complex 15 Daily Face Cream product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="complex-15-cream" data-asin="B00BPDF0YC" aria-pressed="false" aria-label="Add Complex 15 Daily Face Cream to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Dry Skin</span> <span class="ep">Ep 11</span></div>
-    <h3><a href="products/complex-15-cream.html">Complex 15 Daily Face Cream</a></h3>
-    
-    <div class="price" data-price-asin="B00BPDF0YC">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00BPDF0YC?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="10" data-title="Arencia Fresh Green Rice Mochi Cleanser"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" data-search="Arencia Fresh Green Rice Mochi Cleanser A rice-powder mochi cleanser for hydrating, deep cleansing with a brightening angle. The fun-textured first step that made the screenshots. Personal Care Skincare Bright Cleanse BRIGHT ep10">
-  <div class="card-photo">
-    <a href="products/arencia-rice-cleanser.html"><img src="images/products/arencia-rice-cleanser.jpg" alt="Arencia Fresh Green Rice Mochi Cleanser product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" aria-pressed="false" aria-label="Add Arencia Fresh Green Rice Mochi Cleanser to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Bright Cleanse</span> <span class="ep">Ep 10</span></div>
-    <h3><a href="products/arencia-rice-cleanser.html">Arencia Fresh Green Rice Mochi Cleanser</a></h3>
-    
-    <div class="price" data-price-asin="B0C1BMWPR2">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0C1BMWPR2?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="9" data-title="Axis-Y Dark Spot Correcting Glow Serum"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="axis-y-dark-spot" data-asin="B091238V7N" data-search="Axis-Y Dark Spot Correcting Glow Serum A niacinamide serum aimed at the look of dark spots and post-blemish marks, for a more even-looking tone. The slow, steady brightening lane. Personal Care Skincare Dark Spots CLEAR ep9">
-  <div class="card-photo">
-    <a href="products/axis-y-dark-spot.html"><img src="images/products/axis-y-dark-spot.jpg" alt="Axis-Y Dark Spot Correcting Glow Serum product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="axis-y-dark-spot" data-asin="B091238V7N" aria-pressed="false" aria-label="Add Axis-Y Dark Spot Correcting Glow Serum to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Dark Spots</span> <span class="ep">Ep 9</span></div>
-    <h3><a href="products/axis-y-dark-spot.html">Axis-Y Dark Spot Correcting Glow Serum</a></h3>
-    
-    <div class="price" data-price-asin="B091238V7N">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B091238V7N?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="8" data-title="Dr. Althea 345 Relief Cream"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="dr-althea-345" data-asin="B07PK2P2XB" data-search="Dr. Althea 345 Relief Cream A niacinamide cream built for the glass-skin look — calm, even-looking skin with a dewy finish. Fragrance-free and made for all skin types. Personal Care Skincare Glass Skin GLASS ep8">
-  <div class="card-photo">
-    <a href="products/dr-althea-345.html"><img src="images/products/dr-althea-345.jpg" alt="Dr. Althea 345 Relief Cream product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="dr-althea-345" data-asin="B07PK2P2XB" aria-pressed="false" aria-label="Add Dr. Althea 345 Relief Cream to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Glass Skin</span> <span class="ep">Ep 8</span></div>
-    <h3><a href="products/dr-althea-345.html">Dr. Althea 345 Relief Cream</a></h3>
-    
-    <div class="price" data-price-asin="B07PK2P2XB">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07PK2P2XB?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="7" data-title="celimax Vita A Retinal Shot Tightening Booster"
-         data-cat="personal-care" data-sub="skincare" data-job="skin"
-         data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" data-search="celimax Vita A Retinal Shot Tightening Booster A 0.1% retinal booster with micro-fine A-Shot particles, made for the look of firmer skin and tighter-looking pores. Nighttime only — retinal and sunlight don’t mix. Personal Care Skincare Firmness FIRM ep7">
-  <div class="card-photo">
-    <a href="products/retinal-shot-booster.html"><img src="images/products/retinal-shot-celimax.webp" alt="celimax Vita A Retinal Shot Tightening Booster product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" aria-pressed="false" aria-label="Add celimax Vita A Retinal Shot Tightening Booster to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Firmness</span> <span class="ep">Ep 7</span></div>
-    <h3><a href="products/retinal-shot-booster.html">celimax Vita A Retinal Shot Tightening Booster</a></h3>
-    
-    <div class="price" data-price-asin="B0DK4Y2YP3">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0DK4Y2YP3?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
+</article></div>
       </div>
-      <div class="shelf-rail" aria-hidden="true"></div>
     </section>
-
-    <section class="theme" id="theme-hair-scalp">
-      <div class="theme-head">
-        <h2>Hair & Scalp</h2>
-        <span class="theme-count">4 picks</span>
-        <a class="theme-all" href="shop.html?job=hair-scalp">See all &rarr;</a>
+    <section class="explore" id="explore">
+      <div class="section-head">
+        <h2>Explore</h2>
+        <span class="explore-sub">All thirty picks, in one place.</span>
       </div>
-      <div class="theme-row">
+      <div class="grid">
 
 <article class="card" data-num="30" data-title="Olaplex No.3 Hair Perfector"
          data-cat="personal-care" data-sub="haircare" data-job="hair-scalp"
@@ -397,10 +244,17 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Damaged Hair</span> <span class="ep">Ep 30</span></div>
     <h3><a href="products/olaplex-no3.html">Olaplex No.3 Hair Perfector</a></h3>
-    
-    <div class="price" data-price-asin="B08TWTQDCX">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08TWTQDCX?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B08TWTQDCX" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B08TWTQDCX" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B08TWTQDCX">Price on Amazon</span>
+      <s class="was" data-was-asin="B08TWTQDCX" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B08TWTQDCX?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -415,61 +269,20 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Scalp Care</span> <span class="ep">Ep 29</span></div>
     <h3><a href="products/scalp-massager.html">Comfier Cordless Scalp Massager</a></h3>
-    
-    <div class="price" data-price-asin="B08KGD8JWK">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08KGD8JWK?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B08KGD8JWK" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B08KGD8JWK" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B08KGD8JWK">Price on Amazon</span>
+      <s class="was" data-was-asin="B08KGD8JWK" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B08KGD8JWK?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
-<article class="card" data-num="14" data-title="Organika Enhanced Collagen Powder"
-         data-cat="supplements" data-sub="beauty" data-job="hair-scalp"
-         data-slug="organika-collagen" data-asin="B01MZ1FC46" data-search="Organika Enhanced Collagen Powder A Canadian-made collagen powder — unflavoured, 500g — for hair, skin, and nails. People say their hair got thicker and nails stronger. Supplements Beauty Hair, Skin & Nails PLUMP ep14">
-  <div class="card-photo">
-    <a href="products/organika-collagen.html"><img src="images/products/organika-collagen.jpg" alt="Organika Enhanced Collagen Powder product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="organika-collagen" data-asin="B01MZ1FC46" aria-pressed="false" aria-label="Add Organika Enhanced Collagen Powder to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Hair, Skin & Nails</span> <span class="ep">Ep 14</span></div>
-    <h3><a href="products/organika-collagen.html">Organika Enhanced Collagen Powder</a></h3>
-    
-    <div class="price" data-price-asin="B01MZ1FC46">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01MZ1FC46?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-<article class="card" data-num="6" data-title="Vichy Dercos Anti-Dandruff Shampoo"
-         data-cat="personal-care" data-sub="hair-scalp" data-job="hair-scalp"
-         data-slug="vichy-dercos" data-asin="B01BPHAD1W" data-search="Vichy Dercos Anti-Dandruff Shampoo An anti-dandruff shampoo that visibly reduces flakes for a calmer-feeling scalp. Pharmacy-aisle serious, not salon-perfume serious. Personal Care Hair & Scalp Scalp SHINE ep6">
-  <div class="card-photo">
-    <a href="products/vichy-dercos.html"><img src="images/products/vichy-dercos.jpg" alt="Vichy Dercos Anti-Dandruff Shampoo product photo" loading="lazy"></a>
-    
-    <button type="button" class="cartbtn js-save" data-slug="vichy-dercos" data-asin="B01BPHAD1W" aria-pressed="false" aria-label="Add Vichy Dercos Anti-Dandruff Shampoo to your cart">+</button>
-  </div>
-  <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Scalp</span> <span class="ep">Ep 6</span></div>
-    <h3><a href="products/vichy-dercos.html">Vichy Dercos Anti-Dandruff Shampoo</a></h3>
-    
-    <div class="price" data-price-asin="B01BPHAD1W">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B01BPHAD1W?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
-    <div class="paidnote">(paid link)</div>
-  </div>
-</article>
-      </div>
-      <div class="shelf-rail" aria-hidden="true"></div>
-    </section>
-
-    <section class="theme" id="theme-body-recovery">
-      <div class="theme-head">
-        <h2>Body & Recovery</h2>
-        <span class="theme-count">4 picks</span>
-        <a class="theme-all" href="shop.html?job=body-recovery">See all &rarr;</a>
-      </div>
-      <div class="theme-row">
-
 <article class="card" data-num="28" data-title="ELEBOX Acupressure Mat + Pillow Set"
          data-cat="gadgets" data-sub="recovery" data-job="body-recovery"
          data-slug="acupressure-mat" data-asin="B07M9CGZNY" data-search="ELEBOX Acupressure Mat + Pillow Set An acupressure mat and pillow set for back and neck relief — lie back, breathe, decompress. The 20-minute reset. Gadgets Recovery Back Relief RELIEF ep28">
@@ -481,10 +294,117 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Back Relief</span> <span class="ep">Ep 28</span></div>
     <h3><a href="products/acupressure-mat.html">ELEBOX Acupressure Mat + Pillow Set</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B07M9CGZNY" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B07M9CGZNY" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B07M9CGZNY">Price on Amazon</span>
+      <s class="was" data-was-asin="B07M9CGZNY" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B07M9CGZNY?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="27" data-title="Neutrogena Hydro Boost Gel Cream"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="hydro-boost-gel" data-asin="B00YPBGIIS" data-search="Neutrogena Hydro Boost Gel Cream A hyaluronic gel-cream for instant hydration — lightweight, never greasy. The drugstore hydrator that punches above its price. Personal Care Skincare Lightweight Hydration BOOST ep27">
+  <div class="card-photo">
+    <a href="products/hydro-boost-gel.html"><img src="images/products/hydro-boost-gel.jpg" alt="Neutrogena Hydro Boost Gel Cream product photo" loading="lazy"></a>
     
-    <div class="price" data-price-asin="B07M9CGZNY">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07M9CGZNY?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <button type="button" class="cartbtn js-save" data-slug="hydro-boost-gel" data-asin="B00YPBGIIS" aria-pressed="false" aria-label="Add Neutrogena Hydro Boost Gel Cream to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Lightweight Hydration</span> <span class="ep">Ep 27</span></div>
+    <h3><a href="products/hydro-boost-gel.html">Neutrogena Hydro Boost Gel Cream</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B00YPBGIIS" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B00YPBGIIS" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B00YPBGIIS">Price on Amazon</span>
+      <s class="was" data-was-asin="B00YPBGIIS" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B00YPBGIIS?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="26" data-title="The Ordinary Niacinamide 10% + Zinc 1%"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="ordinary-niacinamide" data-asin="B01MDTVZTZ" data-search="The Ordinary Niacinamide 10% + Zinc 1% The cult pore-minimizer — 10% niacinamide with 1% zinc, 51,000+ reviews. Regulates oil and refines the look of pores. Personal Care Skincare Pores & Oil PORES ep26">
+  <div class="card-photo">
+    <a href="products/ordinary-niacinamide.html"><img src="images/products/ordinary-niacinamide.jpg" alt="The Ordinary Niacinamide 10% + Zinc 1% product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="ordinary-niacinamide" data-asin="B01MDTVZTZ" aria-pressed="false" aria-label="Add The Ordinary Niacinamide 10% + Zinc 1% to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Pores & Oil</span> <span class="ep">Ep 26</span></div>
+    <h3><a href="products/ordinary-niacinamide.html">The Ordinary Niacinamide 10% + Zinc 1%</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B01MDTVZTZ" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B01MDTVZTZ" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B01MDTVZTZ">Price on Amazon</span>
+      <s class="was" data-was-asin="B01MDTVZTZ" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B01MDTVZTZ?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="25" data-title="CeraVe Moisturizing Cream"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="cerave-cream" data-asin="B083GGFTPW" data-search="CeraVe Moisturizing Cream The 24-hour moisturizer with three essential ceramides — dermatologist-developed, fragrance-free. The tub that dermatologists actually name. Personal Care Skincare 24hr Moisture SOFT ep25">
+  <div class="card-photo">
+    <a href="products/cerave-cream.html"><img src="images/products/cerave-cream.jpg" alt="CeraVe Moisturizing Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="cerave-cream" data-asin="B083GGFTPW" aria-pressed="false" aria-label="Add CeraVe Moisturizing Cream to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for 24hr Moisture</span> <span class="ep">Ep 25</span></div>
+    <h3><a href="products/cerave-cream.html">CeraVe Moisturizing Cream</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B083GGFTPW" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B083GGFTPW" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B083GGFTPW">Price on Amazon</span>
+      <s class="was" data-was-asin="B083GGFTPW" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B083GGFTPW?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="24" data-title="Jamieson Melatonin 10mg Dual-Action"
+         data-cat="supplements" data-sub="sleep" data-job="sleep"
+         data-slug="melatonin-10mg" data-asin="B0797NJW1Q" data-search="Jamieson Melatonin 10mg Dual-Action A dual-action melatonin — helps you fall asleep faster and resets a scrambled sleep cycle. The training-wheels bottle for broken sleep. Supplements Sleep Falling Asleep REST ep24">
+  <div class="card-photo">
+    <a href="products/melatonin-10mg.html"><img src="images/products/melatonin-10mg.jpg" alt="Jamieson Melatonin 10mg Dual-Action product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="melatonin-10mg" data-asin="B0797NJW1Q" aria-pressed="false" aria-label="Add Jamieson Melatonin 10mg Dual-Action to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Falling Asleep</span> <span class="ep">Ep 24</span></div>
+    <h3><a href="products/melatonin-10mg.html">Jamieson Melatonin 10mg Dual-Action</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B0797NJW1Q" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B0797NJW1Q" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B0797NJW1Q">Price on Amazon</span>
+      <s class="was" data-was-asin="B0797NJW1Q" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B0797NJW1Q?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -499,10 +419,67 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Joint Comfort</span> <span class="ep">Ep 23</span></div>
     <h3><a href="products/turmeric-curcumin.html">Webber Naturals Turmeric Curcumin + Black Pepper</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B09T8PKKRG" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B09T8PKKRG" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B09T8PKKRG">Price on Amazon</span>
+      <s class="was" data-was-asin="B09T8PKKRG" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B09T8PKKRG?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="22" data-title="Nature's Bounty Vitamin B12 2500mcg"
+         data-cat="supplements" data-sub="energy" data-job="inner-health"
+         data-slug="b12-2500" data-asin="B00BMEHEXE" data-search="Nature's Bounty Vitamin B12 2500mcg A high-potency B12 for energy metabolism — cherry-flavoured fast-dissolve tablets. B12 helps prevent deficiency, and this is the easy daily. Supplements Energy Energy Metabolism ENERGY ep22">
+  <div class="card-photo">
+    <a href="products/b12-2500.html"><img src="images/products/b12-2500.jpg" alt="Nature's Bounty Vitamin B12 2500mcg product photo" loading="lazy"></a>
     
-    <div class="price" data-price-asin="B09T8PKKRG">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B09T8PKKRG?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <button type="button" class="cartbtn js-save" data-slug="b12-2500" data-asin="B00BMEHEXE" aria-pressed="false" aria-label="Add Nature's Bounty Vitamin B12 2500mcg to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Energy Metabolism</span> <span class="ep">Ep 22</span></div>
+    <h3><a href="products/b12-2500.html">Nature's Bounty Vitamin B12 2500mcg</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B00BMEHEXE" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B00BMEHEXE" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B00BMEHEXE">Price on Amazon</span>
+      <s class="was" data-was-asin="B00BMEHEXE" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B00BMEHEXE?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="21" data-title="Philips SmartSleep Wake-Up Light"
+         data-cat="gadgets" data-sub="sleep" data-job="sleep"
+         data-slug="philips-wake-up" data-asin="B0093162RM" data-search="Philips SmartSleep Wake-Up Light A sunrise-simulating alarm — 14,000+ ratings. Wake up to gradually brightening light, not a blaring alarm. Gadgets Sleep Mornings DAWN ep21">
+  <div class="card-photo">
+    <a href="products/philips-wake-up.html"><img src="images/products/philips-wake-up.jpg" alt="Philips SmartSleep Wake-Up Light product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="philips-wake-up" data-asin="B0093162RM" aria-pressed="false" aria-label="Add Philips SmartSleep Wake-Up Light to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Mornings</span> <span class="ep">Ep 21</span></div>
+    <h3><a href="products/philips-wake-up.html">Philips SmartSleep Wake-Up Light</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B0093162RM" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B0093162RM" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B0093162RM">Price on Amazon</span>
+      <s class="was" data-was-asin="B0093162RM" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B0093162RM?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -517,58 +494,117 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Posture</span> <span class="ep">Ep 20</span></div>
     <h3><a href="products/schiara-posture.html">Schiara Posture Corrector</a></h3>
-    
-    <div class="price" data-price-asin="B07VST9VYH">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B07VST9VYH?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B07VST9VYH" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B07VST9VYH" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B07VST9VYH">Price on Amazon</span>
+      <s class="was" data-was-asin="B07VST9VYH" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B07VST9VYH?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
-<article class="card" data-num="2" data-title="Creatine Monohydrate"
-         data-cat="supplements" data-sub="performance" data-job="body-recovery"
-         data-slug="creatine-monohydrate" data-asin="B0043YLNSC" data-search="Creatine Monohydrate Supports lean mass and strength gains when combined with resistance training. One of the most studied sports supplements out there. Supplements Performance Gym Days GAINS ep2">
+<article class="card" data-num="19" data-title="MyHalos 3D Blackout Sleep Mask"
+         data-cat="gadgets" data-sub="sleep" data-job="sleep"
+         data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" data-search="MyHalos 3D Blackout Sleep Mask A 3D contoured blackout mask — 100% darkness, zero eye pressure. Insomniacs call it a game-changer. Gadgets Sleep Blackout Sleep DARK ep19">
   <div class="card-photo">
-    <a href="products/creatine-monohydrate.html"><img src="images/products/creatine-monohydrate-2.jpg" alt="Creatine Monohydrate product photo" loading="lazy"></a>
+    <a href="products/myhalos-sleep-mask.html"><img src="images/products/myhalos-sleep-mask.jpg" alt="MyHalos 3D Blackout Sleep Mask product photo" loading="lazy"></a>
     
-    <button type="button" class="cartbtn js-save" data-slug="creatine-monohydrate" data-asin="B0043YLNSC" aria-pressed="false" aria-label="Add Creatine Monohydrate to your cart">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="myhalos-sleep-mask" data-asin="B09CZ68WV3" aria-pressed="false" aria-label="Add MyHalos 3D Blackout Sleep Mask to your cart">+</button>
   </div>
   <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Gym Days</span> <span class="ep">Ep 2</span></div>
-    <h3><a href="products/creatine-monohydrate.html">Creatine Monohydrate</a></h3>
-    
-    <div class="price" data-price-asin="B0043YLNSC">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B0043YLNSC?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="card-meta"><span class="badge">Best for Blackout Sleep</span> <span class="ep">Ep 19</span></div>
+    <h3><a href="products/myhalos-sleep-mask.html">MyHalos 3D Blackout Sleep Mask</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B09CZ68WV3" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B09CZ68WV3" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B09CZ68WV3">Price on Amazon</span>
+      <s class="was" data-was-asin="B09CZ68WV3" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B09CZ68WV3?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
-      </div>
-      <div class="shelf-rail" aria-hidden="true"></div>
-    </section>
-
-    <section class="theme" id="theme-inner-health">
-      <div class="theme-head">
-        <h2>Inner Health</h2>
-        <span class="theme-count">5 picks</span>
-        <a class="theme-all" href="shop.html?job=inner-health">See all &rarr;</a>
-      </div>
-      <div class="theme-row">
-
-<article class="card" data-num="22" data-title="Nature's Bounty Vitamin B12 2500mcg"
-         data-cat="supplements" data-sub="energy" data-job="inner-health"
-         data-slug="b12-2500" data-asin="B00BMEHEXE" data-search="Nature's Bounty Vitamin B12 2500mcg A high-potency B12 for energy metabolism — cherry-flavoured fast-dissolve tablets. B12 helps prevent deficiency, and this is the easy daily. Supplements Energy Energy Metabolism ENERGY ep22">
+<article class="card" data-num="18" data-title="Garnier Ombrelle Anti-Shine SPF 60"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="ombrelle-spf60" data-asin="B081DNB1B2" data-search="Garnier Ombrelle Anti-Shine SPF 60 Canada’s daily sunscreen — SPF 60, lightweight, no white cast. The one reviewers actually wear every day. Personal Care Skincare Daily SPF SHADE ep18">
   <div class="card-photo">
-    <a href="products/b12-2500.html"><img src="images/products/b12-2500.jpg" alt="Nature's Bounty Vitamin B12 2500mcg product photo" loading="lazy"></a>
+    <a href="products/ombrelle-spf60.html"><img src="images/products/ombrelle-spf60.jpg" alt="Garnier Ombrelle Anti-Shine SPF 60 product photo" loading="lazy"></a>
     
-    <button type="button" class="cartbtn js-save" data-slug="b12-2500" data-asin="B00BMEHEXE" aria-pressed="false" aria-label="Add Nature's Bounty Vitamin B12 2500mcg to your cart">+</button>
+    <button type="button" class="cartbtn js-save" data-slug="ombrelle-spf60" data-asin="B081DNB1B2" aria-pressed="false" aria-label="Add Garnier Ombrelle Anti-Shine SPF 60 to your cart">+</button>
   </div>
   <div class="card-body">
-    <div class="card-meta"><span class="badge">Best for Energy Metabolism</span> <span class="ep">Ep 22</span></div>
-    <h3><a href="products/b12-2500.html">Nature's Bounty Vitamin B12 2500mcg</a></h3>
+    <div class="card-meta"><span class="badge">Best for Daily SPF</span> <span class="ep">Ep 18</span></div>
+    <h3><a href="products/ombrelle-spf60.html">Garnier Ombrelle Anti-Shine SPF 60</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B081DNB1B2" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B081DNB1B2" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B081DNB1B2">Price on Amazon</span>
+      <s class="was" data-was-asin="B081DNB1B2" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B081DNB1B2?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="17" data-title="The Ordinary Hyaluronic Acid 2% + B5"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="ordinary-hyaluronic" data-asin="B01MYEZPC8" data-search="The Ordinary Hyaluronic Acid 2% + B5 The cult budget hydrator — 2% hyaluronic acid with B5. A 73-year-old reviewer said it virtually erased her fine lines. Personal Care Skincare Budget Hydration QUENCH ep17">
+  <div class="card-photo">
+    <a href="products/ordinary-hyaluronic.html"><img src="images/products/ordinary-hyaluronic.jpg" alt="The Ordinary Hyaluronic Acid 2% + B5 product photo" loading="lazy"></a>
     
-    <div class="price" data-price-asin="B00BMEHEXE">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00BMEHEXE?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <button type="button" class="cartbtn js-save" data-slug="ordinary-hyaluronic" data-asin="B01MYEZPC8" aria-pressed="false" aria-label="Add The Ordinary Hyaluronic Acid 2% + B5 to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Budget Hydration</span> <span class="ep">Ep 17</span></div>
+    <h3><a href="products/ordinary-hyaluronic.html">The Ordinary Hyaluronic Acid 2% + B5</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B01MYEZPC8" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B01MYEZPC8" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B01MYEZPC8">Price on Amazon</span>
+      <s class="was" data-was-asin="B01MYEZPC8" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B01MYEZPC8?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="16" data-title="TruSkin Vitamin C Serum"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="truskin-vitamin-c" data-asin="B01M4MCUAF" data-search="TruSkin Vitamin C Serum A vitamin C serum for brighter-looking skin — 106,000+ ratings. People say their skin looks brighter and spots are fading. Personal Care Skincare Brightness GLOW ep16">
+  <div class="card-photo">
+    <a href="products/truskin-vitamin-c.html"><img src="images/products/truskin-vitamin-c.jpg" alt="TruSkin Vitamin C Serum product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="truskin-vitamin-c" data-asin="B01M4MCUAF" aria-pressed="false" aria-label="Add TruSkin Vitamin C Serum to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Brightness</span> <span class="ep">Ep 16</span></div>
+    <h3><a href="products/truskin-vitamin-c.html">TruSkin Vitamin C Serum</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B01M4MCUAF" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B01M4MCUAF" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B01M4MCUAF">Price on Amazon</span>
+      <s class="was" data-was-asin="B01M4MCUAF" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B01M4MCUAF?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -583,10 +619,242 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Gut Health</span> <span class="ep">Ep 15</span></div>
     <h3><a href="products/probiotic-30b.html">Webber Naturals Probiotic 30 Billion</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B00L3WSHDG" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B00L3WSHDG" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B00L3WSHDG">Price on Amazon</span>
+      <s class="was" data-was-asin="B00L3WSHDG" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B00L3WSHDG?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="14" data-title="Organika Enhanced Collagen Powder"
+         data-cat="supplements" data-sub="beauty" data-job="hair-scalp"
+         data-slug="organika-collagen" data-asin="B01MZ1FC46" data-search="Organika Enhanced Collagen Powder A Canadian-made collagen powder — unflavoured, 500g — for hair, skin, and nails. People say their hair got thicker and nails stronger. Supplements Beauty Hair, Skin & Nails PLUMP ep14">
+  <div class="card-photo">
+    <a href="products/organika-collagen.html"><img src="images/products/organika-collagen.jpg" alt="Organika Enhanced Collagen Powder product photo" loading="lazy"></a>
     
-    <div class="price" data-price-asin="B00L3WSHDG">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B00L3WSHDG?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <button type="button" class="cartbtn js-save" data-slug="organika-collagen" data-asin="B01MZ1FC46" aria-pressed="false" aria-label="Add Organika Enhanced Collagen Powder to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Hair, Skin & Nails</span> <span class="ep">Ep 14</span></div>
+    <h3><a href="products/organika-collagen.html">Organika Enhanced Collagen Powder</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B01MZ1FC46" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B01MZ1FC46" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B01MZ1FC46">Price on Amazon</span>
+      <s class="was" data-was-asin="B01MZ1FC46" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B01MZ1FC46?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="13" data-title="Webber Naturals Ashwagandha 7200mg (KSM-66)"
+         data-cat="supplements" data-sub="adaptogens" data-job="sleep"
+         data-slug="ashwagandha-ksm66" data-asin="B0B8PGT48W" data-search="Webber Naturals Ashwagandha 7200mg (KSM-66) A KSM-66 ashwagandha — the studied extract form — for stress and sleep. People say it calmed their stress and fixed their sleep. Supplements Adaptogens Stress & Sleep CALM ep13">
+  <div class="card-photo">
+    <a href="products/ashwagandha-ksm66.html"><img src="images/products/ashwagandha-ksm66.jpg" alt="Webber Naturals Ashwagandha 7200mg (KSM-66) product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="ashwagandha-ksm66" data-asin="B0B8PGT48W" aria-pressed="false" aria-label="Add Webber Naturals Ashwagandha 7200mg (KSM-66) to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Stress & Sleep</span> <span class="ep">Ep 13</span></div>
+    <h3><a href="products/ashwagandha-ksm66.html">Webber Naturals Ashwagandha 7200mg (KSM-66)</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B0B8PGT48W" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B0B8PGT48W" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B0B8PGT48W">Price on Amazon</span>
+      <s class="was" data-was-asin="B0B8PGT48W" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B0B8PGT48W?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="12" data-title="The Ordinary Azelaic Acid Suspension 10%"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="azelaic-acid-10" data-asin="B06WD5J8KY" data-search="The Ordinary Azelaic Acid Suspension 10% A 10% azelaic acid suspension for the look of blemish-prone skin and a brighter, more even tone. The multitasker that doesn’t brag. Personal Care Skincare Even Tone EVEN ep12">
+  <div class="card-photo">
+    <a href="products/azelaic-acid-10.html"><img src="images/products/azelaic-acid-10.png" alt="The Ordinary Azelaic Acid Suspension 10% product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="azelaic-acid-10" data-asin="B06WD5J8KY" aria-pressed="false" aria-label="Add The Ordinary Azelaic Acid Suspension 10% to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Even Tone</span> <span class="ep">Ep 12</span></div>
+    <h3><a href="products/azelaic-acid-10.html">The Ordinary Azelaic Acid Suspension 10%</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B06WD5J8KY" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B06WD5J8KY" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B06WD5J8KY">Price on Amazon</span>
+      <s class="was" data-was-asin="B06WD5J8KY" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B06WD5J8KY?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="11" data-title="Complex 15 Daily Face Cream"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="complex-15-cream" data-asin="B00BPDF0YC" data-search="Complex 15 Daily Face Cream A propylene-glycol daily face cream — hypoallergenic, unscented, non-greasy, oil-free. The Canadian pharmacy answer to the viral cheap-cream slot. Personal Care Skincare Dry Skin DEW ep11">
+  <div class="card-photo">
+    <a href="products/complex-15-cream.html"><img src="images/products/complex-15.jpg" alt="Complex 15 Daily Face Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="complex-15-cream" data-asin="B00BPDF0YC" aria-pressed="false" aria-label="Add Complex 15 Daily Face Cream to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Dry Skin</span> <span class="ep">Ep 11</span></div>
+    <h3><a href="products/complex-15-cream.html">Complex 15 Daily Face Cream</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B00BPDF0YC" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B00BPDF0YC" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B00BPDF0YC">Price on Amazon</span>
+      <s class="was" data-was-asin="B00BPDF0YC" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B00BPDF0YC?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="10" data-title="Arencia Fresh Green Rice Mochi Cleanser"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" data-search="Arencia Fresh Green Rice Mochi Cleanser A rice-powder mochi cleanser for hydrating, deep cleansing with a brightening angle. The fun-textured first step that made the screenshots. Personal Care Skincare Bright Cleanse BRIGHT ep10">
+  <div class="card-photo">
+    <a href="products/arencia-rice-cleanser.html"><img src="images/products/arencia-rice-cleanser.jpg" alt="Arencia Fresh Green Rice Mochi Cleanser product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="arencia-rice-cleanser" data-asin="B0C1BMWPR2" aria-pressed="false" aria-label="Add Arencia Fresh Green Rice Mochi Cleanser to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Bright Cleanse</span> <span class="ep">Ep 10</span></div>
+    <h3><a href="products/arencia-rice-cleanser.html">Arencia Fresh Green Rice Mochi Cleanser</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B0C1BMWPR2" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B0C1BMWPR2" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B0C1BMWPR2">Price on Amazon</span>
+      <s class="was" data-was-asin="B0C1BMWPR2" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B0C1BMWPR2?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="9" data-title="Axis-Y Dark Spot Correcting Glow Serum"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="axis-y-dark-spot" data-asin="B091238V7N" data-search="Axis-Y Dark Spot Correcting Glow Serum A niacinamide serum aimed at the look of dark spots and post-blemish marks, for a more even-looking tone. The slow, steady brightening lane. Personal Care Skincare Dark Spots CLEAR ep9">
+  <div class="card-photo">
+    <a href="products/axis-y-dark-spot.html"><img src="images/products/axis-y-dark-spot.jpg" alt="Axis-Y Dark Spot Correcting Glow Serum product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="axis-y-dark-spot" data-asin="B091238V7N" aria-pressed="false" aria-label="Add Axis-Y Dark Spot Correcting Glow Serum to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Dark Spots</span> <span class="ep">Ep 9</span></div>
+    <h3><a href="products/axis-y-dark-spot.html">Axis-Y Dark Spot Correcting Glow Serum</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B091238V7N" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B091238V7N" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B091238V7N">Price on Amazon</span>
+      <s class="was" data-was-asin="B091238V7N" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B091238V7N?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="8" data-title="Dr. Althea 345 Relief Cream"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="dr-althea-345" data-asin="B07PK2P2XB" data-search="Dr. Althea 345 Relief Cream A niacinamide cream built for the glass-skin look — calm, even-looking skin with a dewy finish. Fragrance-free and made for all skin types. Personal Care Skincare Glass Skin GLASS ep8">
+  <div class="card-photo">
+    <a href="products/dr-althea-345.html"><img src="images/products/dr-althea-345.jpg" alt="Dr. Althea 345 Relief Cream product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="dr-althea-345" data-asin="B07PK2P2XB" aria-pressed="false" aria-label="Add Dr. Althea 345 Relief Cream to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Glass Skin</span> <span class="ep">Ep 8</span></div>
+    <h3><a href="products/dr-althea-345.html">Dr. Althea 345 Relief Cream</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B07PK2P2XB" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B07PK2P2XB" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B07PK2P2XB">Price on Amazon</span>
+      <s class="was" data-was-asin="B07PK2P2XB" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B07PK2P2XB?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="7" data-title="celimax Vita A Retinal Shot Tightening Booster"
+         data-cat="personal-care" data-sub="skincare" data-job="skin"
+         data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" data-search="celimax Vita A Retinal Shot Tightening Booster A 0.1% retinal booster with micro-fine A-Shot particles, made for the look of firmer skin and tighter-looking pores. Nighttime only — retinal and sunlight don’t mix. Personal Care Skincare Firmness FIRM ep7">
+  <div class="card-photo">
+    <a href="products/retinal-shot-booster.html"><img src="images/products/retinal-shot-celimax.webp" alt="celimax Vita A Retinal Shot Tightening Booster product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="retinal-shot-booster" data-asin="B0DK4Y2YP3" aria-pressed="false" aria-label="Add celimax Vita A Retinal Shot Tightening Booster to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Firmness</span> <span class="ep">Ep 7</span></div>
+    <h3><a href="products/retinal-shot-booster.html">celimax Vita A Retinal Shot Tightening Booster</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B0DK4Y2YP3" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B0DK4Y2YP3" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B0DK4Y2YP3">Price on Amazon</span>
+      <s class="was" data-was-asin="B0DK4Y2YP3" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B0DK4Y2YP3?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="6" data-title="Vichy Dercos Anti-Dandruff Shampoo"
+         data-cat="personal-care" data-sub="hair-scalp" data-job="hair-scalp"
+         data-slug="vichy-dercos" data-asin="B01BPHAD1W" data-search="Vichy Dercos Anti-Dandruff Shampoo An anti-dandruff shampoo that visibly reduces flakes for a calmer-feeling scalp. Pharmacy-aisle serious, not salon-perfume serious. Personal Care Hair & Scalp Scalp SHINE ep6">
+  <div class="card-photo">
+    <a href="products/vichy-dercos.html"><img src="images/products/vichy-dercos.jpg" alt="Vichy Dercos Anti-Dandruff Shampoo product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="vichy-dercos" data-asin="B01BPHAD1W" aria-pressed="false" aria-label="Add Vichy Dercos Anti-Dandruff Shampoo to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Scalp</span> <span class="ep">Ep 6</span></div>
+    <h3><a href="products/vichy-dercos.html">Vichy Dercos Anti-Dandruff Shampoo</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B01BPHAD1W" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B01BPHAD1W" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B01BPHAD1W">Price on Amazon</span>
+      <s class="was" data-was-asin="B01BPHAD1W" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B01BPHAD1W?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -601,10 +869,17 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Bones</span> <span class="ep">Ep 5</span></div>
     <h3><a href="products/vitamin-d3-k2.html">Vitamin D3 + K2</a></h3>
-    
-    <div class="price" data-price-asin="B08WNTMWRV">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B08WNTMWRV?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B08WNTMWRV" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B08WNTMWRV" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B08WNTMWRV">Price on Amazon</span>
+      <s class="was" data-was-asin="B08WNTMWRV" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B08WNTMWRV?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -619,10 +894,17 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Immunity</span> <span class="ep">Ep 4</span></div>
     <h3><a href="products/zinc-citrate.html">Zinc Citrate</a></h3>
-    
-    <div class="price" data-price-asin="B009D9NIGW">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B009D9NIGW?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B009D9NIGW" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B009D9NIGW" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B009D9NIGW">Price on Amazon</span>
+      <s class="was" data-was-asin="B009D9NIGW" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B009D9NIGW?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
@@ -637,20 +919,75 @@
   <div class="card-body">
     <div class="card-meta"><span class="badge">Best for Daily Omegas</span> <span class="ep">Ep 3</span></div>
     <h3><a href="products/omega-3-fish-oil.html">Omega-3 Fish Oil</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B079NP724M" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B079NP724M" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B079NP724M">Price on Amazon</span>
+      <s class="was" data-was-asin="B079NP724M" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B079NP724M?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="2" data-title="Creatine Monohydrate"
+         data-cat="supplements" data-sub="performance" data-job="body-recovery"
+         data-slug="creatine-monohydrate" data-asin="B0043YLNSC" data-search="Creatine Monohydrate Supports lean mass and strength gains when combined with resistance training. One of the most studied sports supplements out there. Supplements Performance Gym Days GAINS ep2">
+  <div class="card-photo">
+    <a href="products/creatine-monohydrate.html"><img src="images/products/creatine-monohydrate-2.jpg" alt="Creatine Monohydrate product photo" loading="lazy"></a>
     
-    <div class="price" data-price-asin="B079NP724M">Price on Amazon</div>
-    <a class="btn btn-shelf btn-block" href="https://www.amazon.ca/dp/B079NP724M?tag=zeroregretb04-20"
-       target="_blank" rel="sponsored nofollow noopener">Check on Amazon</a>
+    <button type="button" class="cartbtn js-save" data-slug="creatine-monohydrate" data-asin="B0043YLNSC" aria-pressed="false" aria-label="Add Creatine Monohydrate to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Gym Days</span> <span class="ep">Ep 2</span></div>
+    <h3><a href="products/creatine-monohydrate.html">Creatine Monohydrate</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B0043YLNSC" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B0043YLNSC" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B0043YLNSC">Price on Amazon</span>
+      <s class="was" data-was-asin="B0043YLNSC" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B0043YLNSC?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
+    <div class="paidnote">(paid link)</div>
+  </div>
+</article>
+<article class="card" data-num="1" data-title="Magnesium Bisglycinate"
+         data-cat="supplements" data-sub="minerals" data-job="sleep"
+         data-slug="magnesium-glycinate" data-asin="B08WVD2YDB" data-search="Magnesium Bisglycinate A source of magnesium — a mineral that helps maintain proper muscle function and plays a role in tissue formation. Supplements Minerals Sleep SLEEP ep1">
+  <div class="card-photo">
+    <a href="products/magnesium-glycinate.html"><img src="images/products/mg-glycinate-webber-1.jpg" alt="Magnesium Bisglycinate product photo" loading="lazy"></a>
+    
+    <button type="button" class="cartbtn js-save" data-slug="magnesium-glycinate" data-asin="B08WVD2YDB" aria-pressed="false" aria-label="Add Magnesium Bisglycinate to your cart">+</button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span class="badge">Best for Sleep</span> <span class="ep">Ep 1</span></div>
+    <h3><a href="products/magnesium-glycinate.html">Magnesium Bisglycinate</a></h3>
+    <div class="deal-line">
+      <span class="off" data-off-asin="B08WVD2YDB" hidden></span>
+      <span class="dealtype" data-dealtype-asin="B08WVD2YDB" hidden>Price Drop</span>
+    </div>
+    <div class="pricerow">
+      <span class="price" data-price-asin="B08WVD2YDB">Price on Amazon</span>
+      <s class="was" data-was-asin="B08WVD2YDB" hidden></s>
+    </div>
+    <div class="store">Amazon</div>
+    <a class="btn btn-deal btn-block" href="https://www.amazon.ca/dp/B08WVD2YDB?tag=zeroregretb04-20"
+       target="_blank" rel="sponsored nofollow noopener">View Deal on Amazon</a>
     <div class="paidnote">(paid link)</div>
   </div>
 </article>
       </div>
-      <div class="shelf-rail" aria-hidden="true"></div>
     </section>
 
-
       <div class="cartall">
-        <a class="btn btn-shelf btn-big" href="https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=zeroregretb04-20&amp;ASIN.1=B08WVD2YDB&amp;Quantity.1=1&amp;ASIN.2=B0043YLNSC&amp;Quantity.2=1&amp;ASIN.3=B079NP724M&amp;Quantity.3=1&amp;ASIN.4=B009D9NIGW&amp;Quantity.4=1&amp;ASIN.5=B08WNTMWRV&amp;Quantity.5=1&amp;ASIN.6=B01BPHAD1W&amp;Quantity.6=1&amp;ASIN.7=B0DK4Y2YP3&amp;Quantity.7=1&amp;ASIN.8=B07PK2P2XB&amp;Quantity.8=1&amp;ASIN.9=B091238V7N&amp;Quantity.9=1&amp;ASIN.10=B0C1BMWPR2&amp;Quantity.10=1&amp;ASIN.11=B00BPDF0YC&amp;Quantity.11=1&amp;ASIN.12=B06WD5J8KY&amp;Quantity.12=1&amp;ASIN.13=B0B8PGT48W&amp;Quantity.13=1&amp;ASIN.14=B01MZ1FC46&amp;Quantity.14=1&amp;ASIN.15=B00L3WSHDG&amp;Quantity.15=1&amp;ASIN.16=B01M4MCUAF&amp;Quantity.16=1&amp;ASIN.17=B01MYEZPC8&amp;Quantity.17=1&amp;ASIN.18=B081DNB1B2&amp;Quantity.18=1&amp;ASIN.19=B09CZ68WV3&amp;Quantity.19=1&amp;ASIN.20=B07VST9VYH&amp;Quantity.20=1&amp;ASIN.21=B0093162RM&amp;Quantity.21=1&amp;ASIN.22=B00BMEHEXE&amp;Quantity.22=1&amp;ASIN.23=B09T8PKKRG&amp;Quantity.23=1&amp;ASIN.24=B0797NJW1Q&amp;Quantity.24=1&amp;ASIN.25=B083GGFTPW&amp;Quantity.25=1&amp;ASIN.26=B01MDTVZTZ&amp;Quantity.26=1&amp;ASIN.27=B00YPBGIIS&amp;Quantity.27=1&amp;ASIN.28=B07M9CGZNY&amp;Quantity.28=1&amp;ASIN.29=B08KGD8JWK&amp;Quantity.29=1&amp;ASIN.30=B08TWTQDCX&amp;Quantity.30=1"
+        <a class="btn btn-deal btn-big" href="https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=zeroregretb04-20&amp;ASIN.1=B08WVD2YDB&amp;Quantity.1=1&amp;ASIN.2=B0043YLNSC&amp;Quantity.2=1&amp;ASIN.3=B079NP724M&amp;Quantity.3=1&amp;ASIN.4=B009D9NIGW&amp;Quantity.4=1&amp;ASIN.5=B08WNTMWRV&amp;Quantity.5=1&amp;ASIN.6=B01BPHAD1W&amp;Quantity.6=1&amp;ASIN.7=B0DK4Y2YP3&amp;Quantity.7=1&amp;ASIN.8=B07PK2P2XB&amp;Quantity.8=1&amp;ASIN.9=B091238V7N&amp;Quantity.9=1&amp;ASIN.10=B0C1BMWPR2&amp;Quantity.10=1&amp;ASIN.11=B00BPDF0YC&amp;Quantity.11=1&amp;ASIN.12=B06WD5J8KY&amp;Quantity.12=1&amp;ASIN.13=B0B8PGT48W&amp;Quantity.13=1&amp;ASIN.14=B01MZ1FC46&amp;Quantity.14=1&amp;ASIN.15=B00L3WSHDG&amp;Quantity.15=1&amp;ASIN.16=B01M4MCUAF&amp;Quantity.16=1&amp;ASIN.17=B01MYEZPC8&amp;Quantity.17=1&amp;ASIN.18=B081DNB1B2&amp;Quantity.18=1&amp;ASIN.19=B09CZ68WV3&amp;Quantity.19=1&amp;ASIN.20=B07VST9VYH&amp;Quantity.20=1&amp;ASIN.21=B0093162RM&amp;Quantity.21=1&amp;ASIN.22=B00BMEHEXE&amp;Quantity.22=1&amp;ASIN.23=B09T8PKKRG&amp;Quantity.23=1&amp;ASIN.24=B0797NJW1Q&amp;Quantity.24=1&amp;ASIN.25=B083GGFTPW&amp;Quantity.25=1&amp;ASIN.26=B01MDTVZTZ&amp;Quantity.26=1&amp;ASIN.27=B00YPBGIIS&amp;Quantity.27=1&amp;ASIN.28=B07M9CGZNY&amp;Quantity.28=1&amp;ASIN.29=B08KGD8JWK&amp;Quantity.29=1&amp;ASIN.30=B08TWTQDCX&amp;Quantity.30=1"
            target="_blank" rel="sponsored nofollow noopener">Add all 30 to cart on Amazon</a>
         <div class="paidnote">(paid link)</div>
         <p class="micro">One click loads all thirty picks into your Amazon.ca cart — remove anything you don’t want before checkout.</p>
@@ -660,17 +997,32 @@
 </main>
 <footer class="site-footer">
   <div class="footer-inner">
-    <a class="brandmark" href="index.html">
-      <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
-      <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
-    </a>
-    <nav aria-label="Footer">
-      <a href="shop.html">Shop all picks</a>
-      <a href="about.html">About</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
-    <p class="footer-disclosure">As an Amazon Associate I earn from qualifying purchases. Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. <a href="about.html">Why this matters</a></p>
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <a class="brandmark" href="index.html">
+          <img class="logoimg" src="images/logo.jpg" alt="Zero Regret Buys logo">
+          <span class="wordmark">Zero Regret Buys<small>THIRTY PICKS · ZERO REGRET</small></span>
+        </a>
+        <p class="footer-tag">Thirty worth-it picks. One job each. No hype.</p>
+      </div>
+      <nav class="footer-col" aria-label="Deals">
+        <h3>Deals</h3>
+        <a href="index.html#top-deals">Today’s top deals</a>
+        <a href="shop.html">Shop all picks</a>
+        <a href="cart.html">Your cart</a>
+      </nav>
+      <nav class="footer-col" aria-label="Themes">
+        <h3>Themes</h3>
+        <a href="shop.html?job=sleep">Sleep</a><a href="shop.html?job=skin">Skin</a><a href="shop.html?job=hair-scalp">Hair & Scalp</a><a href="shop.html?job=body-recovery">Body & Recovery</a><a href="shop.html?job=inner-health">Inner Health</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <h3>Company</h3>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <p class="footer-disclosure">As an Amazon Associate I earn from qualifying purchases. Product links on this site are affiliate (paid) links — if you buy through them, we may earn a commission at no extra cost to you. Certain content that appears on this site comes from Amazon. This content is provided “as is” and is subject to change or removal at any time. <a href="about.html">Read our full affiliate disclosure here</a></p>
     <p class="footer-copy">© 2026 Zero Regret Buys</p>
   </div>
 </footer>

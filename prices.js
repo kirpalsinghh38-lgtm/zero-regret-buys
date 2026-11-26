@@ -1,6 +1,9 @@
 // Zero Regret Buys — prices. Fetches live Amazon prices from /api/prices
-// and writes them into [data-price-asin] elements. Never types a price:
-// without a live price the element keeps its "Price on Amazon" placeholder.
+// and writes them into [data-price-asin] elements, plus the discount pill
+// [data-off-asin], the deal type [data-dealtype-asin] and the struck-through
+// list price [data-was-asin] when Amazon reports a real saving.
+// Never types a price: without a live price the element keeps its
+// "Price on Amazon" placeholder, and the discount stays hidden.
 (function () {
   "use strict";
   var loaded = {};
@@ -29,6 +32,28 @@
       row.hidden = true;
     }
   }
+  // Fill a live deal: discount pill, deal type, struck-through list
+  // price. Any of these stay hidden until a real saving arrives.
+  function applyDeal(asin, p) {
+    if (!p || typeof p.off !== "number" || p.off <= 0) return;
+    document.querySelectorAll('[data-off-asin="' + asin + '"]').forEach(function (el) {
+      el.textContent = "-" + p.off + "%";
+      el.hidden = false;
+    });
+    document.querySelectorAll('[data-offpdp-asin="' + asin + '"]').forEach(function (el) {
+      el.textContent = p.off + "% OFF";
+      el.hidden = false;
+    });
+    document.querySelectorAll('[data-dealtype-asin="' + asin + '"]').forEach(function (el) {
+      el.hidden = false;
+    });
+    if (p.was && p.was.display) {
+      document.querySelectorAll('[data-was-asin="' + asin + '"]').forEach(function (el) {
+        el.textContent = p.was.display;
+        el.hidden = false;
+      });
+    }
+  }
   function applyPrices(prices) {
     Object.keys(prices).forEach(function (asin) {
       var p = prices[asin];
@@ -40,6 +65,7 @@
       if (p) {
         el.textContent = p.display || fmt(p.amount, p.currency);
         el.classList.add("price--live");
+        applyDeal(asin, p);
       }
     });
     updateTotal();
